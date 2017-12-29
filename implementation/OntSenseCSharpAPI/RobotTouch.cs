@@ -30,17 +30,8 @@ namespace ontsenseAPI
 	/// The unique ID of known object or the position of an unknown object is supplied with the tactil information. Note that, the unique ID is only known if the object is in one of the hands of the robot.  In this case, the knowledge is obtained because, for the robot to catch the object, it must have seen this object first .
 	public class RobotTouch : RobotPerceptionEvent
 	{
-		public double hardness;
-
-		public double moisture;
-
-		public double pressure;
-
-		public double roughness;
-
-		public double temperature;
-
-		private CartesianPos pos;
+        private string sTouch;                   // Sparql command for generate the touch information
+        private string sPosition = null;        // Sparql command for generate the position information
 
 		/// Constructor of the RobotTouch class. The objective is to create a instance for a touch perception. 
 		/// The instant parameter represens the exact moment of the touch capture. 
@@ -50,8 +41,19 @@ namespace ontsenseAPI
 ///  
 		public RobotTouch(DateTime instant, long idObject, double hard, double mois, double press, double rough, double temp)
 		{
+            long countEv = getEventCount();          // get a unique identifier for position and color
 
-		}
+            // to create a Sparql command for generate the touch information
+            sTouch = string.Format(SparqlAccess.INSERT_TOUCH, countEv, instant.ToString(SparqlAccess.XSD_DATETIME), idObject, temp, hard, mois, rough, press);
+
+
+        //
+        // Será que deu certo ?
+        //
+        Console.WriteLine(sTouch);
+        }
+
+
 
 		/// Constructor of the RobotTouch class. The objective is to create a instance for a touch perception.
 		/// The instant parameter represens the exact moment of the touch capture. 
@@ -59,15 +61,38 @@ namespace ontsenseAPI
 		/// The hardness, moisture, pressure, roughness and temperature represent specific  caractheristics of the touch perception.  
 		public RobotTouch(DateTime instant, CartesianPos pos, double hard, double mois, double press, double rough, double temp)
 		{
+            long countEv = getEventCount();          // get a unique identifier for position and color
 
-		}
+            // to create a Sparql command for generate the position information
+            //
+            sPosition = string.Format(SparqlAccess.INSERT_POSITION_LOCAL, countEv, pos.cartesianX, pos.cartesianY, pos.cartesianZ);
 
-		/// insert the touch information captured by the touch sensor. Returns true if the insertion in the triple store basewas a success, false otherwise.
-		public override Boolean insert()
-		{
-			return false;
-		}
 
+
+            // to create a Sparql command for generate the touch information
+            sTouch = string.Format(SparqlAccess.INSERT_TOUCH_POS, countEv, instant.ToString(SparqlAccess.XSD_DATETIME), temp, hard, mois, rough, press);
+
+
+        //
+        // Será que deu certo ?
+        //
+        Console.WriteLine(sPosition);
+            Console.WriteLine(sTouch);
+        }
+
+        /// insert the touch information captured by the touch sensor. 
+        public override void insert()
+        {
+            SparqlEndPoint instanceSparql = SparqlEndPoint.getInstance();       // gets the instance for the  singleton object
+
+            // updates all information associated with the event
+            if (!String.IsNullOrEmpty(sPosition))                               // if a position was defined then updated it
+            {                         
+                instanceSparql.executeSparqlUpdate(sPosition);
+                sPosition = null;                                               // just in case...
+            }
+            instanceSparql.executeSparqlUpdate(sTouch);
+        }
 	}
 
 }

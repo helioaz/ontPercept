@@ -20,21 +20,20 @@ namespace ontsenseAPI
 	/// 
 	public class Human : Thing
 	{
-		private EmotionalState emotion;
+        public EmotionalState emotion { get; }
 
-		/// Constructor for the Thing class. The objective is to create a instance of an animate agent. 
-		/// All the parameter defines this agent in a similar way of the super class Thing. 
-		/// There are just an additional parameter, named emotion, that defines the emotion state of the agent.
-		/// 
-///  
-		///  
-		///  
-		///  
-		///  
-		public Human(long objId, string tag, RGBValue color, PhisicalState state, Material mat, string uri, EmotionalState emotion, CartesianPos pos)
-		{
 
-		}
+        /// Constructor for the Thing class. The objective is to create a instance of an animate agent. 
+        /// All the parameter defines this agent in a similar way of the super class Thing. 
+        /// There are just an additional parameter, named emotion, that defines the emotion state of the agent.
+        /// 
+
+        public Human(long objId, string tag, RGBValue color, CartesianPos pos, PhysicalState state, Material mat, string uri, EmotionalState emotion): base(objId, tag, color, pos, state, mat, uri)
+
+        {
+            this.emotion = emotion;
+
+        }
 
 	}
 

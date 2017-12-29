@@ -24,10 +24,11 @@ namespace ontsenseAPI
 		/// All  parameters together defines this robot.
 		/// 
 ///  
-		public Robot(long objId, String tag, RGBValue color, CartesianPos pos, PhisicalState state, Material mat, string uri)
-		{
+		public Robot(long objId, string tag, RGBValue color, CartesianPos pos, PhysicalState state, Material mat, string uri) : base(objId, tag, color, pos, state, mat, uri)
+        {
 
-		}
+
+        }
 
 	}
 

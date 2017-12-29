@@ -31,8 +31,8 @@ namespace ontsenseAPI
 		/// Defines the object  responsable by the event generation. Note that, this knowledge is not always present. As an example, when an odor is present but the source is unknown.
 		protected Thing generateBy;
 
-		/// abstract function that is responsibile in the subclasses for the information update.  Returns true if the insertion in the triple store basewas a success, false otherwise.
-		public abstract Boolean insert();
+		/// abstract function that is responsibile in the subclasses for the information update.  
+		public abstract void insert();
 
 		/// return a unique identification for the event. 
 		public long getEventCount()

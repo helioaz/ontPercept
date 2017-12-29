@@ -12,7 +12,10 @@
 /// If not, see<http://www.gnu.org/licenses/>.
 /// 
 ///
-/// using System;
+/// 
+
+
+using System;
 
 
 using VDS.RDF;
@@ -20,68 +23,60 @@ using VDS.RDF;
 using VDS.RDF.Query;
 using VDS.RDF.Update;
 using ontsenseAPI;
-
+using System.Threading;
+using System.Globalization;
 
 namespace OntSenseCSharpAPI
 {
     class Program {
 
-        private static readonly String INSERT_VISION = 
-
-		"PREFIX os: <http://example.org/sense/> " +
-		"PREFIX ontsense: <http://example.org/sense#> " +
-		"PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> " +
-		"PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> " +
-		"PREFIX owl: <http://www.w3.org/2002/07/owl#> " +
-		"PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> " + 
-        
-            	" INSERT DATA {" +
-		"  ontsense:vision020 	rdf:type 		ontsense:RobotVision ; " +
-		"  			rdf:type 		owl:NamedIndividual ; " +
-		"   			ontsense:occursAt 	\"2018-04-12T13:24:00.0\"^^xsd:dateTime ; " + 
-		"   			ontsense:generateBy 	ontsense:object002 ; " + 
-	    	" }   ";
-
-
-
-        private static readonly String INSERT_OBJECT =
-		"PREFIX os: <http://example.org/sense/> " +
-        "PREFIX sumo: <http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#>  " +
-		"PREFIX ontsense: <http://example.org/sense#> " +
-		"PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> " +
-		"PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> " +
-		"PREFIX owl: <http://www.w3.org/2002/07/owl#> " +
-		"PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> " +  
-        " INSERT DATA {" +
-		"  ontsense:object020 	rdf:type 					sumo:Object ; " +
-		"   					ontsense:objectId 			\"0000024\"^^xsd:long ; " +		
-		"   					ontsense:hasColor 			ontsense:color002 ; " +		
-		"   					ontsense:isMadeOf 			ontsense:organicMaterial ; " +		
-		"   					ontsense:isPositionedAt 	ontsense:pos1 ; " +	
-	    " }   ";
-
-
-
 
 
         public static void Main(String[] args)
         {
-            DateTime dat = new DateTime(2009, 6, 15, 13, 45, 30,
-                                        DateTimeKind.Unspecified);
-            Console.WriteLine("{0} ({1}) --> {0:O}", dat, dat.Kind);
+            Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture("");   // to ensure point as separator in decimal numbers
+            CartesianPos cPos = new CartesianPos(0.90, 0.91, 0.92);     // creates a CartesianPos object with (x,y,z) = (0.90, 0.91, 0.92)
 
-            DateTime uDat = new DateTime(2009, 6, 15, 13, 45, 30,
-                                         DateTimeKind.Utc);
-            Console.WriteLine("{0} ({1}) --> {0:O}", uDat, uDat.Kind);
 
-            DateTime lDat = new DateTime(2009, 6, 15, 13, 45, 30,
-                                         DateTimeKind.Local);
-            Console.WriteLine("{0} ({1}) --> {0:O}\n", lDat, lDat.Kind);
+            RobotTouch rTouch1 = new RobotTouch(
+                DateTime.Now,                           // the event occurs now
+                9876543211,                             //  object definition
+                0.67,                                   // hardness level 
+                0.68,                                   // moisture level 
+                0.69,                                   // pressure level 
+                0.70,                                   // roughness level 
+                25.5);                                  // temperature level 
 
-            DateTimeOffset dto = new DateTimeOffset(lDat);
-            Console.WriteLine("{0} --> {0:O}", dto);
 
-            Console.WriteLine(SparqlAccess.INSERT_THING);
+            try                                         // Try to access a resource.
+            {
+                rTouch1.insert();                       // using dotNetRDF library inserts the information in the triple store
+            }
+
+            catch (Exception e)
+            {
+                Console.WriteLine(e);                   // change for your: LogError(e);     // Call a custom error logging procedure.
+                throw;                                  // Re-throw the error. Probaly will borken the simulator
+            }
+
+
+            /*                DateTime dat = new DateTime(2009, 6, 15, 13, 45, 30,
+                                                    DateTimeKind.Unspecified);
+                        Console.WriteLine("{0} ({1}) --> {0:O}", dat, dat.Kind);
+
+                        DateTime uDat = new DateTime(2009, 6, 15, 13, 45, 30,
+                                                     DateTimeKind.Utc);
+                        Console.WriteLine("{0} ({1}) --> {0:O}", uDat, uDat.Kind);
+
+                        DateTime lDat = new DateTime(2009, 6, 15, 13, 45, 30,
+                                                     DateTimeKind.Local);
+                        Console.WriteLine("{0} ({1}) --> {0:O}\n", lDat, lDat.Kind);
+
+                        DateTimeOffset dto = new DateTimeOffset(lDat);
+                        Console.WriteLine("{0} --> {0:O}", dto);
+
+                        Console.WriteLine(SparqlAccess.INSERT_THING);
+            */
             //First build the update we want to send
             //In this example we are making a copy of a Graph then deleting the rdf:type triples
             //from our copy
@@ -92,9 +87,9 @@ namespace OntSenseCSharpAPI
             //SparqlRemoteUpdateEndpoint endpoint = new SparqlRemoteUpdateEndpoint("http://localhost:3030/ontsense");
 
             //And finally send the update request
-           // endpoint.Update(update.ToString());
+            // endpoint.Update(update.ToString());
 
-            Console.WriteLine("primeira escrita");  Console.ReadLine();
+            Console.WriteLine("insira um caracter");  Console.ReadLine();
         }
 
         /*

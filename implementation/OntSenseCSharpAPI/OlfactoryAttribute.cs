@@ -14,19 +14,28 @@
 ///
 namespace ontsenseAPI
 {
-	/// Represents a set of states that a given object would assume. This is a concept that must evolve in the future versions.
-	public enum PhysicalState
+	/// The Class of properties that are detectable by smell.
+	public enum OlfactoryAttribute
 	{
+        decayedSmell,
 
-        openedState,
+        fragrantSmell,
 
-        closedState,
+        fruitySmell,
 
-        offState,
+        lemonSmell,
 
-        onState,
+        chemicalSmell,
 
-        noneState
+        mintySmell,
+
+        popcornSmell,
+
+        pungentSmell,
+
+        sweetSmell,
+
+        woodySmell
 
     }
 

@@ -12,7 +12,7 @@
 /// If not, see<http://www.gnu.org/licenses/>.
 /// 
 ///
-/// namespace ontsenseAPI
+namespace ontsenseAPI
 {
 	/// Define a set of sounds knowed by the robot agent. 
 	/// Ifi the sound is unknown, then it will be classified as UNKNOW.
@@ -24,7 +24,7 @@
 
         birdsSound,
 
-        liquidflowingSound,
+        liquidFlowingSound,
 
         motorSound,
 

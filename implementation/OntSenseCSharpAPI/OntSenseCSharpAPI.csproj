@@ -59,8 +59,8 @@
     <Compile Include="HearingAttribute.cs" />
     <Compile Include="Human.cs" />
     <Compile Include="Material.cs" />
-    <Compile Include="OlfatoryAttribute.cs" />
-    <Compile Include="PhisicalState.cs" />
+    <Compile Include="OlfactoryAttribute.cs" />
+    <Compile Include="PhysicalState.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RGBValue.cs" />
@@ -72,11 +72,15 @@
     <Compile Include="RobotTouch.cs" />
     <Compile Include="RobotVision.cs" />
     <Compile Include="SparqlAccess.cs" />
+    <Compile Include="SparqlEndPoint.cs" />
     <Compile Include="Thing.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="UsingAPI.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

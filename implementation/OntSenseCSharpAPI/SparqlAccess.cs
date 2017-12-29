@@ -16,19 +16,20 @@
 /// Basically, the following XML Schema (XSD) formats are defined:
 ///     xsd:dateTime - Instant of time(Gregorian calendar) Format:[-] CCYY-MM-DDThh:mm:ss[Z | (+| -)hh:mm]
 ///     xsd:double  - A signed (64 bits) floating-point number as defined by the IEEE (Institute of Electrical and Electronic Engineers)
-///     xsd:long	- A signed 64-bit integer. Integers between -9223372036854775808 and 9223372036854775807.
+///     xsd:long	- A signed 64-bit integer. Integers between -9223372036854775808 and 9223372036854775807. 
 ///                   Note: only 32bits are used by the Unity tool. So, in this implementation we will consider 10 digits.
 ///                   Note: When used as OntSense identifier the first caracter defines the kind of identifier:
-///                         "O" : defines an object.  Example: O0000000789
-///                         "P" : defines a position. Example: P0000000123
-///                         "C" : defines a color.    Exemple: C0000000456
-///                         "V" : vision event identifier   Example:
-///                         "S" : smell event identifier   Example:
-///                         "A" : taste event identifier   Example:
-///                         "T" : touch event identifier   Example:
-///                         "H" : hear event identifier   Example:
+///                         "O" : defines an object.            Example: O0000000789
+///                         "P" : defines a object position.    Example: P0000000123
+///                         "L" : defines a local in the space. Example: L9876543210 
+///                         "C" : defines a color.              Exemple: C0000000456
+///                         "V" : vision event identifier       Example: L9876543211 
+///                         "S" : smell event identifier        Example: L9876543212 
+///                         "A" : taste event identifier        Example: L9876543213 
+///                         "T" : touch event identifier        Example: L9876543214 
+///                         "H" : hear event identifier         Example: L9876543215 
 /// 
-/// 
+///                    Note: An object is the superclass of: Human and Robot concepts, so they also starts with "O" letter
 /// 
 /// 
 /// 
@@ -71,7 +72,7 @@ namespace ontsenseAPI
     {
         /// Define a string format adherent to XML Schema (XSD) Date and Time Data type.
         /// for use:  String = DateTime.ToString(XSD_DATETIME);
-        public static readonly string XSD_DATETIME = @"yyyy-MM-ddThh:mm:ss.fff";
+        public static readonly string XSD_DATETIME = @"yyyy-MM-ddTHH:mm:ss.fff";
 
 
 
@@ -84,13 +85,13 @@ namespace ontsenseAPI
     "PREFIX owl: <http://www.w3.org/2002/07/owl#>" +
     "PREFIX basicPos: <http://www.inf.ufrgs.br/phi-group/ontologies/basicPos.owl#>" +
     "INSERT DATA" +
-    "    {" +
+    "    {{" +
     "        ontsense:P{0:D10}  rdf:type basicPos:CartesianPositionPoint;" +         // {0} defines the  object position point name  Ex:  P0000000789
     "        rdf:type owl:NamedIndividual;" +
     "        basicPos:cartesianX 	\"{1:G}\"^^xsd:double ;" +                      // {1} defines the posX  Ex:  20.123
     "        basicPos:cartesianY 	\"{2:G}\"^^xsd:double ;" +                      // {2} defines the posY  Ex:  20.123
-    "        basicPos:cartesianZ 	\"{3:G}\"^^xsd:double ;" +                      // {3} defines the posY  Ex:  20.123
-    "}";
+    "        basicPos:cartesianZ 	\"{3:G}\"^^xsd:double ." +                      // {3} defines the posY  Ex:  20.123
+    "}}";
 
         /// script for a sparql insert operation with a cartesian point information.
         /// This script must be used when the position just represents a local in the Space cartesian coordenate and we do not know the associated Object
@@ -101,13 +102,13 @@ namespace ontsenseAPI
     "PREFIX owl: <http://www.w3.org/2002/07/owl#>" +
     "PREFIX basicPos: <http://www.inf.ufrgs.br/phi-group/ontologies/basicPos.owl#>" +
     "INSERT DATA" +
-    "    {" +
+    "    {{" +
     "        ontsense:L{0:D10}  rdf:type basicPos:CartesianPositionPoint;" +         // {0} defines the  local position point name  Ex:  L0000001961
     "        rdf:type owl:NamedIndividual;" +
     "        basicPos:cartesianX 	\"{1:G}\"^^xsd:double ;" +                      // {1} defines the posX  Ex:  20.123
     "        basicPos:cartesianY 	\"{2:G}\"^^xsd:double ;" +                      // {2} defines the posY  Ex:  20.123
-    "        basicPos:cartesianZ 	\"{3:G}\"^^xsd:double ;" +                      // {3} defines the posY  Ex:  20.123
-    "}";
+    "        basicPos:cartesianZ 	\"{3:G}\"^^xsd:double ." +                      // {3} defines the posY  Ex:  20.123
+    "}}";
 
 
 
@@ -119,13 +120,13 @@ namespace ontsenseAPI
     "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
     "PREFIX owl: <http://www.w3.org/2002/07/owl#>" +
     "INSERT DATA" +
-    "    {" +
+    "    {{" +
     "        ontsense:C{0:D10}  rdf:type ontsense:RGBColor;" +         // {0} defines the  color  Ex:  C0000000789
     "        rdf:type           owl:NamedIndividual;" +
-    "        ontsense:red 	    \"{1:G}\"^^xsd:double ;" +             // {1} defines the posX  Ex:  20.1E-10
-    "        ontsense:green     \"{2:G}\"^^xsd:double ;" +             // {2} defines the posY  Ex:  21.1E-11
-    "        ontsense:blue 	    \"{3:G}\"^^xsd:double ;" +             // {3} defines the posY  Ex:  22.1E-12
-    "}";
+    "        ontsense:red 	    \"{1:G}\"^^xsd:double ;" +             // {1} defines the red component  Ex:    70.1E-10
+    "        ontsense:green     \"{2:G}\"^^xsd:double ;" +             // {2} defines the green component  Ex:  71.1E-11
+    "        ontsense:blue 	    \"{3:G}\"^^xsd:double ." +             // {3} defines the blue component  Ex:   72.1E-12
+    "}}";
 
 
 
@@ -136,16 +137,16 @@ namespace ontsenseAPI
     "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>" +
     "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
     " INSERT DATA" +
-    "    {" +
-    "            ontsense:O{0:D10} rdf:type sumo:Object;" +        // {0} defines the object Ex:  O0000000789
-    "            ontsense:objectId 	\"{0:D10}\"^^xsd:long ;" +     // {0} also defines the objectId  Ex:  0000000789		 		
-    "            ontsense:hasColor ontsense:C{0:D10} ;" +          // {0} also defines the Color  Ex:  C0000000789		
-    "            ontsense:isMadeOf ontsense:{1} ; " +              // {1} defines the Material		
-    "            ontsense:isPositionedAt ontsense:P{0:D10} ;" +    // {0} also defines the CartesianPosition  Ex:  P0000000789	
-    "            ontsense:hasInternalState ontsense:{2}; " +       // {2} defines the InternalState
-    "            ontsense:tag        	\"{3}\"; " +               // {3} defines a tag associated with the concept
-    "            ontsense:associateURI \"{4}\". " +                // {4} defines the URI address
-    "    }";
+    "    {{" +
+    "            ontsense:O{1:D10} rdf:type sumo:Object;" +        // {0} defines the object Ex:  O0000000789
+    "            ontsense:objectId 	\"{1}\"^^xsd:long ;" +         // {1} defines the unique objectId  Ex:  1234567892		 		
+    "            ontsense:hasColor ontsense:C{0:D10} ;" +          // {0} also defines the color id Ex:  C0000000789		
+    "            ontsense:isMadeOf ontsense:{2} ; " +              // {2} defines the Material		
+    "            ontsense:isPositionedAt ontsense:P{0:D10} ;" +    // {0} also defines the CartesianPosition id Ex:  P0000000789	
+    "            ontsense:hasInternalState ontsense:{3}; " +       // {3} defines the InternalState
+    "            ontsense:tag        	\"{4}\"; " +               // {4} defines a tag associated with the concept
+    "            ontsense:associateURI \"{5}\". " +                // {5} defines the URI address
+    "}}";
 
 
 
@@ -156,16 +157,20 @@ namespace ontsenseAPI
     "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>" +
     "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
     " INSERT DATA" +
-    "    {" +
-    "            ontsense:O{0:D10} rdf:type ontsense:Human;" +     // {0} defines the object Ex:  O0000000789
-    "            ontsense:objectId 	\"{0:D10}\"^^xsd:long ;" +     // {0} also defines the objectId  Ex:  0000000789		 		
+    "    {{" +
+    "            ontsense:O{1:D10} rdf:type ontsense:Human;" +     // {0} defines the object Ex:  O0000000789
+    "            ontsense:objectId 	\"{1}\"^^xsd:long ;" +         // {1} defines the unique objectId  Ex:  1234567892		 		
     "            ontsense:hasColor ontsense:C{0:D10} ;" +          // {0} also defines the Color  Ex:  C0000000789		
-    "            ontsense:isMadeOf ontsense:{1} ; " +              // {1} defines the Material		
+    "            ontsense:isMadeOf ontsense:{2} ; " +              // {2} defines the Material		
     "            ontsense:isPositionedAt ontsense:P{0:D10} ;" +    // {0} also defines the CartesianPosition  Ex:  P0000000789	
-    "            ontsense:hasInternalState ontsense:{2}; " +       // {2} defines the InternalState
-    "            ontsense:tag        	\"{3}\"; " +               // {3} defines a tag associated with the concept
-    "            ontsense:associateURI \"{4}\". " +                // {4} defines the URI address
-    "    }";
+    "            ontsense:hasInternalState ontsense:{3}; " +       // {3} defines the InternalState
+    "            ontsense:tag        	\"{4}\"; " +               // {4} defines a tag associated with the concept
+    "            ontsense:associateURI \"{5}\"; " +                // {5} defines the URI address
+    "            ontsense:hasEmotionalState ontsense:{6}. " +      // {6} defines the Emotional State
+    "}}";
+
+
+
 
         /// script for a sparql insert operation with Robot agent information
         public static string INSERT_ROBOT =
@@ -174,16 +179,16 @@ namespace ontsenseAPI
         "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>" +
         "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
         " INSERT DATA" +
-        "    {" +
-        "            ontsense:O{0:D10} rdf:type ontsense:Robot;" +     // {0} defines the object Ex:  O0000000789
-        "            ontsense:objectId 	\"{0:D10}\"^^xsd:long ;" +     // {0} also defines the objectId  Ex:  0000000789		 		
+        "    {{" +
+        "            ontsense:O{1:D10} rdf:type ontsense:Robot;" +     // {0} defines the object Ex:  O0000000789
+        "            ontsense:objectId 	\"{1}\"^^xsd:long ;" +         // {1} defines the unique objectId  Ex:  1234567892		 		
         "            ontsense:hasColor ontsense:C{0:D10} ;" +          // {0} also defines the Color  Ex:  C0000000789		
-        "            ontsense:isMadeOf ontsense:{1} ; " +              // {1} defines the Material		
+        "            ontsense:isMadeOf ontsense:{2} ; " +              // {2} defines the Material		
         "            ontsense:isPositionedAt ontsense:P{0:D10} ;" +    // {0} also defines the CartesianPosition  Ex:  P0000000789	
-        "            ontsense:hasEmotionalState ontsense:{2}; " +      // {2} defines the InternalState
-        "            ontsense:tag        	\"{3}\"; " +               // {3} defines a tag associated with the concept
-        "            ontsense:associateURI \"{4}\". " +                // {4} defines the URI address
-        "    }";
+        "            ontsense:hasEmotionalState ontsense:{3}; " +      // {3} defines the InternalState
+        "            ontsense:tag        	\"{4}\"; " +               // {4} defines a tag associated with the concept
+        "            ontsense:associateURI \"{5}\". " +                // {5} defines the URI address
+        "}}";
 
 
         ///
@@ -197,12 +202,15 @@ namespace ontsenseAPI
         "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> " +
         "PREFIX owl: <http://www.w3.org/2002/07/owl#> " +
         "INSERT DATA" +
-        "   {" +
+        "   {{" +
         "       ontsense:H{0:D10} rdf:type ontsense:RobotHear;" +        // {0} defines the hear unique identifier  Ex:  H0000002119
         "       rdf:type owl:NamedIndividual;" +
         "       ontsense:occursAt 	\"{1}\"^^xsd:dateTime;" +            // {1} defines the instant of event ocurrence. It is adherent to XSD_DATETIME = @"yyyy-MM-ddThh:mm:ss.fff";
-        "       ontsense:isPositionedAt ontsense:L{0:D10} ." +           // {2} also defines the CartesianPosition  Ex:  L0000002119
-        "   }";
+        "       ontsense:isPositionedAt ontsense:L{0:D10} ;" +           // {0} also defines the CartesianPosition  Ex:  L0000002119
+        "       ontsense:volume \"{2:G}\"^^xsd:double ;" +               // {2} defines the volume level
+        "       ontsense:hasSoundType ontsense:{3} ;" +                  // {3} defines the kind of sound 
+        "       ontsense:detail \"{4}\"^^xsd:string ." +                 // {4} defines a string dependent on the identity of the sound. It could be empty if no detail is associated.
+        "}}";
 
 
 
@@ -213,12 +221,13 @@ namespace ontsenseAPI
         "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> " +
         "PREFIX owl: <http://www.w3.org/2002/07/owl#> " +
         "INSERT DATA" +
-        "   {" +
-        "       ontsense:S{0:D10} rdf:type ontsense:RobotSmell;" +        // {0} defines the hear unique identifier  Ex:  S0000002111
+        "   {{" +
+        "       ontsense:S{0:D10} rdf:type ontsense:RobotSmell;" +       // {0} defines the hear unique identifier  Ex:  S0000002111
         "       rdf:type owl:NamedIndividual;" +
         "       ontsense:occursAt 	\"{1}\"^^xsd:dateTime;" +            // {1} defines the instant of event ocurrence. It is adherent to XSD_DATETIME = @"yyyy-MM-ddThh:mm:ss.fff";
-        "       ontsense:isPositionedAt ontsense:L{0:D10} ." +           // {2} also defines the CartesianPosition  Ex:  L0000002111
-        "   }";
+        "       ontsense:isPositionedAt ontsense:L{0:D10} ;" +           // {0} also defines the CartesianPosition  Ex:  L0000002111
+        "       ontsense:hasSmellType ontsense:{2} ." +                  // {2} defines the kind of smell
+        "}}";
 
 
         /// script for a sparql insert operation with touch sense  information
@@ -228,12 +237,17 @@ namespace ontsenseAPI
         "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> " +
         "PREFIX owl: <http://www.w3.org/2002/07/owl#> " +
         "INSERT DATA" +
-        "   {" +
-        "       ontsense:T{0:D10} rdf:type ontsense:RobotHear;" +        // {0} defines the hear unique identifier  Ex:  T0000002122
+        "   {{" +
+        "       ontsense:T{0:D10} rdf:type ontsense:RobotHear;" +          // {0} defines the hear unique identifier  Ex:  T0000002122
         "       rdf:type owl:NamedIndividual;" +
-        "       ontsense:occursAt 	\"{1}\"^^xsd:dateTime;" +            // {1} defines the instant of event ocurrence. It is adherent to XSD_DATETIME = @"yyyy-MM-ddThh:mm:ss.fff";
-        "       ontsense:isPositionedAt ontsense:L{0:D10} ." +           // {2} also defines the CartesianPosition  Ex:  P0000002122
-        "   }";
+        "       ontsense:occursAt 	\"{1}\"^^xsd:dateTime;" +              // {1} defines the instant of event ocurrence. It is adherent to XSD_DATETIME = @"yyyy-MM-ddThh:mm:ss.fff";
+        "       ontsense:isPositionedAt ontsense:L{0:D10} ;" +             // {0} also defines the CartesianPosition  Ex:  P0000002122
+        "       ontsense:temperature    \"{2:G}\"^^xsd:double ;" +         // {2} defines the temperature 	
+        "       ontsense:hardness       \"{3:G}\"^^xsd:double ;" +         // {3} defines the hardness	
+        "       ontsense:moisture       \"{4:G}\"^^xsd:double ;" +         // {4} defines the moisture	
+        "       ontsense:roughness      \"{5:G}\"^^xsd:double ;" +         // {5} defines the roughness	
+        "       ontsense:pressure       \"{6:G}\"^^xsd:double ." +         // {6} defines the pressure
+        "}}";
 
 
         ///
@@ -247,12 +261,16 @@ namespace ontsenseAPI
         "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> " +
         "PREFIX owl: <http://www.w3.org/2002/07/owl#> " +
         "INSERT DATA" +
-        "   {" +
+        "   {{" +
         "       ontsense:H{0:D10} rdf:type ontsense:RobotHear;" +      // {0} defines the hear unique identifier  Ex:  H0000002129
         "       rdf:type owl:NamedIndividual;" +
-        "       ontsense:occursAt 	\"{1}\"^^xsd:dateTime;" +            // {1} defines the instant of event ocurrence. It is adherent to XSD_DATETIME = @"yyyy-MM-ddThh:mm:ss.fff";
-        "       ontsense:generateBy ontsense:O{0:D10}. " +               // {0} defines object Ex:  O0000002129
-        "   }";
+        "       ontsense:occursAt 	\"{1}\"^^xsd:dateTime;" +          // {1} defines the instant of event ocurrence. It is adherent to XSD_DATETIME = @"yyyy-MM-ddThh:mm:ss.fff";
+        "       ontsense:generateBy ontsense:O{2:D10} ;" +             // {2} defines the unique objectId  generated by Unity tool Ex:  O1234567892
+        "       ontsense:volume \"{3:G}\"^^xsd:double ;" +             // {3} defines the volume level
+        "       ontsense:hasSoundType ontsense:{4} ;" +                // {4} defines the kind of sound 
+        "       ontsense:detail \"{5}\"^^xsd:string ." +               // {5} defines a string dependent on the identity of the sound. It could be empty if no detail is associated.
+        "}}";
+
 
 
         /// script for a sparql insert operation with smell sense  information
@@ -262,12 +280,15 @@ namespace ontsenseAPI
         "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> " +
         "PREFIX owl: <http://www.w3.org/2002/07/owl#> " +
         "INSERT DATA" +
-        "   {" +
-        "       ontsense:S{0:D10} rdf:type ontsense:RobotSmell;" +      // {0} defines the Smell unique identifier  Ex:  S0000002222
+        "   {{" +
+        "       ontsense:S{0:D10} rdf:type ontsense:RobotSmell;" +       // {0} defines the Smell unique identifier  Ex:  S0000002222
         "       rdf:type owl:NamedIndividual;" +
         "       ontsense:occursAt 	\"{1}\"^^xsd:dateTime;" +            // {1} defines the instant of event ocurrence. It is adherent to XSD_DATETIME = @"yyyy-MM-ddThh:mm:ss.fff";
-        "       ontsense:generateBy ontsense:O{0:D10}. " +               // {0} defines object Ex:  O0000002222
-        "   }";
+        "       ontsense:generateBy ontsense:O{2:D10} ;" +               // {2} defines the unique objectId  received from Unity Ex:  O1234567892
+        "       ontsense:hasSmellType ontsense:{3} ." +                  // {3} defines the kind of smell
+        "}}";
+
+
 
 
         /// script for a sparql insert operation with touch sense  information
@@ -277,12 +298,20 @@ namespace ontsenseAPI
         "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> " +
         "PREFIX owl: <http://www.w3.org/2002/07/owl#> " +
         "INSERT DATA" +
-        "   {" +
-        "       ontsense:T{0:D10} rdf:type ontsense:RobotTouch;" +      // {0} defines the Touch unique identifier  Ex:  T0000003117
+        "   {{" +
+        "       ontsense:T{0:D10} rdf:type ontsense:RobotTouch;" +         // {0} defines the Touch unique identifier  Ex:  T0000003117
         "       rdf:type owl:NamedIndividual;" +
-        "       ontsense:occursAt 	\"{1}\"^^xsd:dateTime;" +            // {1} defines the instant of event ocurrence. It is adherent to XSD_DATETIME = @"yyyy-MM-ddThh:mm:ss.fff";
-        "       ontsense:generateBy ontsense:O{0:D10}. " +               // {0} defines object Ex:  O0000003117
-        "   }";
+        "       ontsense:occursAt 	\"{1}\"^^xsd:dateTime;" +              // {1} defines the instant of event ocurrence. It is adherent to XSD_DATETIME = @"yyyy-MM-ddThh:mm:ss.fff";
+        "       ontsense:generateBy ontsense:O{2:D10};" +                  // {2} defines the unique objectId  received from Unity Ex:  O1234567892
+        "       ontsense:temperature    \"{3:G}\"^^xsd:double ;" +         // {3} defines the temperature 	
+        "       ontsense:hardness       \"{4:G}\"^^xsd:double ;" +         // {4} defines the hardness	
+        "       ontsense:moisture       \"{5:G}\"^^xsd:double ;" +         // {5} defines the moisture	
+        "       ontsense:roughness      \"{6:G}\"^^xsd:double ;" +         // {6} defines the roughness	
+        "       ontsense:pressure       \"{7:G}\"^^xsd:double ." +         // {7} defines the pressure
+        "}}";
+
+
+
 
 
         /// script for a sparql insert operation with taste sense  information
@@ -292,12 +321,20 @@ namespace ontsenseAPI
         "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> " +
         "PREFIX owl: <http://www.w3.org/2002/07/owl#> " +
         "INSERT DATA" +
-        "   {" +
-        "       ontsense:A{0:D10} rdf:type ontsense:RobotTaste;" +      // {0} defines the Taste unique identifier  Ex:  A0000002117
+        "   {{" +
+        "       ontsense:A{0:D10} rdf:type ontsense:RobotTaste;" +       // {0} defines the Taste unique identifier  Ex:  A0000002117
         "       rdf:type owl:NamedIndividual;" +
         "       ontsense:occursAt 	\"{1}\"^^xsd:dateTime;" +            // {1} defines the instant of event ocurrence. It is adherent to XSD_DATETIME = @"yyyy-MM-ddThh:mm:ss.fff";
-        "       ontsense:generateBy ontsense:O{0:D10}. " +               // {0} defines object Ex:  O0000002117
-        "   }";
+        "       ontsense:generateBy ontsense:O{2:D10} ;" +               // {2} defines the unique objectId  received from Unity Ex:  O1234567892
+        "       ontsense:sweetness    \"{3:G}\"^^xsd:double ;" +         // {3} defines the temperature 	
+        "       ontsense:umani        \"{4:G}\"^^xsd:double ;" +         // {4} defines the hardness	
+        "       ontsense:saltiness    \"{5:G}\"^^xsd:double ;" +         // {5} defines the moisture	
+        "       ontsense:bitterness   \"{6:G}\"^^xsd:double ;" +         // {6} defines the roughness	
+        "       ontsense:sourness     \"{7:G}\"^^xsd:double ." +         // {7} defines the pressure
+        "}}";
+
+
+
 
 
 
@@ -308,12 +345,12 @@ namespace ontsenseAPI
         "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> " +
         "PREFIX owl: <http://www.w3.org/2002/07/owl#> " +
         "INSERT DATA" +
-        "   {" +
+        "   {{" +
         "       ontsense:V{0:D10} rdf:type ontsense:RobotVision;" +      // {0} defines the vision unique identifier  Ex:  V0000002900
         "       rdf:type owl:NamedIndividual;" +
         "       ontsense:occursAt 	\"{1}\"^^xsd:dateTime;" +            // {1} defines the instant of event ocurrence. It is adherent to XSD_DATETIME = @"yyyy-MM-ddThh:mm:ss.fff";
-        "       ontsense:generateBy ontsense:O{0:D10}. " +               // {0} defines object Ex:  O0000002900
-        "   }";
+        "       ontsense:generateBy ontsense:O{2:D10} ." +               // {2} defines the unique objectId  received from Unity Ex:  O1234567892
+        "}}";
 
 
 

@@ -12,7 +12,7 @@
 /// If not, see<http://www.gnu.org/licenses/>.
 /// 
 ///
-/// namespace ontsenseAPI
+namespace ontsenseAPI
 {
 	/// A emotional state associated with congnitve entities.
 	public enum EmotionalState

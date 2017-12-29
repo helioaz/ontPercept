@@ -29,3 +29,4 @@ C:\Users\hazevedo\Dropbox\ToolTesterArea\dotNetRDF\OntSenseCSharpAPI\OntSenseCSh
 C:\Users\hazevedo\Dropbox\ToolTesterArea\dotNetRDF\OntSenseCSharpAPI\OntSenseCSharpAPI\obj\Debug\OntSenseCSharpAPI.csproj.CoreCompileInputs.cache
 C:\Users\hazevedo\Dropbox\ToolTesterArea\dotNetRDF\OntSenseCSharpAPI\OntSenseCSharpAPI\obj\Debug\OntSenseCSharpAPI.exe
 C:\Users\hazevedo\Dropbox\ToolTesterArea\dotNetRDF\OntSenseCSharpAPI\OntSenseCSharpAPI\obj\Debug\OntSenseCSharpAPI.pdb
+C:\Users\helio\Documents\Dropbox\ToolTesterArea\dotNetRDF\OntSenseCSharpAPI\OntSenseCSharpAPI\obj\Debug\OntSenseCSharpAPI.csprojResolveAssemblyReference.cache

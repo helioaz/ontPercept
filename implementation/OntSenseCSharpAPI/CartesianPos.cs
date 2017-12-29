@@ -1,20 +1,27 @@
+
+using System;
+
 namespace ontsenseAPI
 {
 	/// A CartesianPos denotes the quantitative position of an object in a cartesian coordinate system.
 	public class CartesianPos
 	{
-		public double catertesianX;
+		public double cartesianX { get; }
 
-		public double cartesianY;
+        public double cartesianY { get; }
 
-		public double cartesianZ;
+        public double cartesianZ { get; }
 
-		public CartesianPos(double pX, double pY, double pZ)
+        public CartesianPos(double pX, double pY, double pZ)
 		{
+            cartesianX = pX;
+            cartesianY = pY;
+            cartesianZ = pZ;
+        }
 
-		}
 
-	}
+        
+    }
 
 }
 

@@ -24,30 +24,35 @@ namespace ontsenseAPI
 	{
 		/// 
 		/// 
-		private long objectId;
+		public long objectId { get; }
 
-		private string tagInfo;
+        public string tagInfo { get; }
 
-		private string uriId;
+        public string uriId { get; }
 
-		private CartesianPos pos;
+        public CartesianPos pos { get; }
 
-		private RGBValue color;
+        public RGBValue color { get; }
 
-		private Material material;
+        public Material material { get; }
 
-		private PhisicalState state;
+        public PhysicalState state { get; }
 
-        public Thing() { }
 
 		/// Constructor for the Thing class. The objective is to create a instance of an inanimate object. 
 		/// All  parameters together defines this object.
 		/// 
 ///  
-		public Thing(long objId, string tag, RGBValue color, CartesianPos pos, PhisicalState state, Material mat, string uri)
+		public Thing(long objId, string tag, RGBValue color, CartesianPos pos, PhysicalState state, Material mat, string uri)
 		{
-
-		}
+            objectId = objId;
+            tagInfo = tag;
+            this.color = color;
+            this.pos = pos;
+            this.state = state;
+            material = mat;
+            uriId = uri;
+        }
 
 	}
 

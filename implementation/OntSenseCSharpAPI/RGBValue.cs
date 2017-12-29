@@ -3,18 +3,22 @@ namespace ontsenseAPI
 	/// Represents the main color associated with a given object.
 	public class RGBValue
 	{
-		private double blue;
+		public double blue { get; }
 
-		private double green;
+        public double green { get; }
 
-		private double red;
+        public double red { get; }
 
-		public RGBValue(double blueLevel, double greenLevel, double redLevel)
+		public RGBValue(double redLevel, double greenLevel, double blueLevel)
 		{
+            red = redLevel;
+            green = greenLevel;
+            blue = blueLevel;
+        }
 
-		}
+        
 
-	}
+    }
 
 }
 
