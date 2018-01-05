@@ -25,7 +25,7 @@ namespace OntSenseCSharpAPI
 		/// Defines the  instant of event ocurrence. This instant is assumed to be the time of object  instantiation.  
 		protected DateTime occurs;
 
-		/// this attribute counts the occurence of events. 
+		/// this attribute counts the occurence of events. 000000000 has a special meaning for the API, so its not used as a identifier.
 		private static long eventCount = 0;
 
 		/// Defines the object  responsable by the event generation. Note that, this knowledge is not always present. As an example, when an odor is present but the source is unknown.
@@ -37,8 +37,9 @@ namespace OntSenseCSharpAPI
 		/// return a unique identification for the event. 
 		public long getEventCount()
 		{
-            
-			return eventCount++;
+            		if (++ eventCount == 9999999999)		// reach max positive value with 10 digits
+				eventCount = 1;				// roll back to beginning
+			return eventCount;
 		}
 
 	}

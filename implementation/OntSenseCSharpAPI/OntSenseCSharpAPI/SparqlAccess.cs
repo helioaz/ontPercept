@@ -13,21 +13,22 @@
 /// If not, see<http://www.gnu.org/licenses/>.
 /// 
 ///  This file defines sparql commands to be sent to the triple store.
-/// Basically, the following XML Schema (XSD) formats are defined:
+/// Basically, the following XML Schema (XSD) formats are used:
 ///     xsd:dateTime - Instant of time(Gregorian calendar) Format:[-] CCYY-MM-DDThh:mm:ss[Z | (+| -)hh:mm]
 ///     xsd:double  - A signed (64 bits) floating-point number as defined by the IEEE (Institute of Electrical and Electronic Engineers)
-///     xsd:long	- A signed 64-bit integer. Integers between -9223372036854775808 and 9223372036854775807. 
+///     xsd:long	- A signed 64-bit integer. Integers between -9223372036854775808 and 9223372036854775807.
+///		      Note: 0000000000 has a special meaning for the API, so its not used as a identifier. 
 ///                   Note: only 32bits are used by the Unity tool. So, in this implementation we will consider 10 digits.
 ///                   Note: When used as OntSense identifier the first caracter defines the kind of identifier:
 ///                         "O" : defines an object.            Example: O0000000789
 ///                         "P" : defines a object position.    Example: P0000000123
 ///                         "L" : defines a local in the space. Example: L9876543210 
 ///                         "C" : defines a color.              Exemple: C0000000456
-///                         "V" : vision event identifier       Example: L9876543211 
-///                         "S" : smell event identifier        Example: L9876543212 
-///                         "A" : taste event identifier        Example: L9876543213 
-///                         "T" : touch event identifier        Example: L9876543214 
-///                         "H" : hear event identifier         Example: L9876543215 
+///                         "V" : vision event identifier       Example: V9876543211 
+///                         "S" : smell event identifier        Example: S9876543212 
+///                         "A" : taste event identifier        Example: A9876543213 
+///                         "T" : touch event identifier        Example: T9876543214 
+///                         "H" : hear event identifier         Example: H1961080801 
 /// 
 ///                    Note: An object is the superclass of: Human and Robot concepts, so they also starts with "O" letter
 /// 

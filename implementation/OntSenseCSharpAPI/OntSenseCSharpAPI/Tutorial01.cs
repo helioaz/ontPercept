@@ -23,8 +23,7 @@ using VDS.RDF;
 using VDS.RDF.Query;
 using VDS.RDF.Update;
 using OntSenseCSharpAPI;
-using System.Threading;
-using System.Globalization;
+
 
 namespace OntSenseCSharpAPITest
 {
@@ -33,12 +32,17 @@ namespace OntSenseCSharpAPITest
     // This class is NOT part of OntSenseCSharpAPI.
     class Tutorial01
     {
-
+        private static readonly string ONT_SENSE_URL = "http://localhost:3030/ontsense";	// URL address of the triple store
 
 
         public static void Main(String[] args)
         {
-            Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture("");   // to ensure point as separator in decimal numbers
+
+	    // Start access to Sparql End Point
+            SparqlEndPoint instanceSparql = SparqlEndPoint.getInstance();       // gets the instance for the  singleton object : just one time at main method is enough
+	    instanceSparql.init (ONT_SENSE_URL);				// creates the endpoint access to triple store
+
+
             CartesianPos cPos = new CartesianPos(0.90, 0.91, 0.92);     // creates a CartesianPos object with (x,y,z) = (0.90, 0.91, 0.92)
 
 
