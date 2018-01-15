@@ -24,7 +24,7 @@ namespace OntSenseCSharpAPI
 		/// All  parameters together defines this robot.
 		/// 
 ///  
-		public Robot(long objId, string tag, RGBValue color, CartesianPos pos, PhysicalState state, Material mat, string uri) : base(objId, tag, color, pos, state, mat, uri)
+		public Robot(long objId, string name, string tag, RGBValue color, CartesianPos pos, PhysicalState state, Material mat, string uri) : base(objId, name, tag, color, pos, state, mat, uri)
         {
 
 

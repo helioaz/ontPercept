@@ -35,7 +35,9 @@ namespace OntSenseCSharpAPI
 
         sweetSmell,
 
-        woodySmell
+        woodySmell,
+
+	noSmell
 
     }
 

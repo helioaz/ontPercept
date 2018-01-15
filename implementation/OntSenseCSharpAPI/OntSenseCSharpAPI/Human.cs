@@ -28,7 +28,7 @@ namespace OntSenseCSharpAPI
         /// There are just an additional parameter, named emotion, that defines the emotion state of the agent.
         /// 
 
-        public Human(long objId, string tag, RGBValue color, CartesianPos pos, PhysicalState state, Material mat, string uri, EmotionalState emotion): base(objId, tag, color, pos, state, mat, uri)
+        public Human(long objId, string name, string tag, RGBValue color, CartesianPos pos, PhysicalState state, Material mat, string uri, EmotionalState emotion): base(objId, name, tag, color, pos, state, mat, uri)
 
         {
             this.emotion = emotion;

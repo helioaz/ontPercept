@@ -43,10 +43,10 @@ namespace OntSenseCSharpAPI
             sColor = string.Format(SparqlAccess.INSERT_COLOR, countEv, obj.color.red, obj.color.blue, obj.color.green);
 
             // to create a Sparql command for generate the thing information
-            sAnything = string.Format(SparqlAccess.INSERT_THING, countEv, obj.objectId, obj.material, obj.state, obj.tagInfo, obj.uriId);
+            sAnything = string.Format(SparqlAccess.INSERT_THING, countEv, obj.objectId, obj.material, obj.state, obj.tagInfo, obj.uriId, obj.name);
 
             // to create a Sparql command for generate the vision information
-            sVision = string.Format(SparqlAccess.INSERT_VISION, countEv, instant.ToString(SparqlAccess.XSD_DATETIME));
+            sVision = string.Format(SparqlAccess.INSERT_VISION, countEv, instant.ToString(SparqlAccess.XSD_DATETIME), obj.objectId);
 
 
 
@@ -65,16 +65,14 @@ namespace OntSenseCSharpAPI
             sColor = string.Format(SparqlAccess.INSERT_COLOR, countEv, agent.color.red, agent.color.blue, agent.color.green);
 
             // to create a Sparql command for generate the Human information
-            sAnything = string.Format(SparqlAccess.INSERT_HUMAN, countEv, agent.objectId, agent.material, agent.state, agent.tagInfo, agent.uriId, agent.emotion);
+            sAnything = string.Format(SparqlAccess.INSERT_HUMAN, countEv, agent.objectId, agent.material, agent.state, agent.tagInfo, agent.uriId, agent.emotion, agent.name);
 
             // to create a Sparql command for generate the vision information
-            sVision = string.Format(SparqlAccess.INSERT_VISION, countEv, instant.ToString(SparqlAccess.XSD_DATETIME));
+            //
+            sVision = string.Format(SparqlAccess.INSERT_VISION, countEv, instant.ToString(SparqlAccess.XSD_DATETIME), agent.objectId);
 
 
         }
-
-
-
 
 
         /// Constructor of the RobotVision class. The information about the robot agent is supplied as a vision perception. 
@@ -92,10 +90,10 @@ namespace OntSenseCSharpAPI
             sColor = string.Format(SparqlAccess.INSERT_COLOR, countEv, rob.color.red, rob.color.blue, rob.color.green);
 
             // to create a Sparql command for generate the Robot information
-            sAnything = string.Format(SparqlAccess.INSERT_ROBOT, countEv, rob.objectId, rob.material, rob.state, rob.tagInfo, rob.uriId);
+            sAnything = string.Format(SparqlAccess.INSERT_ROBOT, countEv, rob.objectId, rob.material, rob.state, rob.tagInfo, rob.uriId, rob.name);
 
             // to create a Sparql command for generate the vision information
-            sVision = string.Format(SparqlAccess.INSERT_VISION, countEv, instant.ToString(SparqlAccess.XSD_DATETIME));
+            sVision = string.Format(SparqlAccess.INSERT_VISION, countEv, instant.ToString(SparqlAccess.XSD_DATETIME), rob.objectId);
 
 
         }

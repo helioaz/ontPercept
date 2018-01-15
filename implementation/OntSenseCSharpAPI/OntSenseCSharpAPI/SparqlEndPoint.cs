@@ -19,24 +19,25 @@ using System;
 using VDS.RDF.Query;
 using VDS.RDF.Update;
 using System.Runtime.CompilerServices;
+using System.Threading;
+using System.Globalization;
 
 namespace OntSenseCSharpAPI
 {
     /// This class implements the acess for Spaqrl endPoint. It try a conection with the endPoint located in http://localhost:3030/ontsense
-    /// In this version whe are using the Fuseki triple store, but using Sparql endpint any other triple store could be used.
+    /// In this version whe are using the Fuseki triple store, but using Sparql endpint concept any other triple store could be used.
     /// This class is implemented using the Singleton pattern.
     public class SparqlEndPoint
     {
         private static SparqlEndPoint instance;
         private SparqlRemoteUpdateEndpoint endpoint;
-        private static readonly string ONT_SENSE_URI = "http://localhost:3030/ontsense";
 
-        /// private constructor of class
+
+        /// private constructor of class. only to create the local attributes
         private SparqlEndPoint()
         {
             
-            //Then create our Endpoint instance
-            endpoint = new SparqlRemoteUpdateEndpoint(ONT_SENSE_URI);
+
 
         }
 
@@ -60,6 +61,18 @@ namespace OntSenseCSharpAPI
         {
             //And finally send the update request
             endpoint.Update(updateCmd);
+        }
+
+        /// initialize the singleton with data store URL
+	/// It must be called just after the first singleton instance generation
+
+        public void init( string ontSenseURL)
+        {
+	    // to ensure that point is used as separator in decimal numbers
+            Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture("");  
+ 
+            //Then create our Endpoint instance
+            endpoint = new SparqlRemoteUpdateEndpoint(ontSenseURL);
         }
 
     }

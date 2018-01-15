@@ -23,8 +23,7 @@ using VDS.RDF;
 using VDS.RDF.Query;
 using VDS.RDF.Update;
 using OntSenseCSharpAPI;
-using System.Threading;
-using System.Globalization;
+
 
 namespace OntSenseCSharpAPITest
 {
@@ -33,37 +32,41 @@ namespace OntSenseCSharpAPITest
     // This class is NOT part of OntSenseCSharpAPI.
     class Tutorial01
     {
-
+        private static readonly string ONT_SENSE_URL = "http://localhost:3030/ontsense";	// URL address of the triple store
 
 
         public static void Main(String[] args)
         {
-            Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture("");   // to ensure point as separator in decimal numbers
-            CartesianPos cPos = new CartesianPos(0.90, 0.91, 0.92);     // creates a CartesianPos object with (x,y,z) = (0.90, 0.91, 0.92)
+
+            // Start access to Sparql End Point : just one time at main method is enough
+            SparqlEndPoint instanceSparql = SparqlEndPoint.getInstance();       // gets the instance for the  singleton object
+            instanceSparql.init(ONT_SENSE_URL);
+
+            CartesianPos cPos = new CartesianPos(0.25, 0.326, 0.27);        // creates a CartesianPos object with (x,y,z) = (0.25, 0.326, 0.27))
+            RGBValue rgb = new RGBValue(0.25, 0.326, 0.27);             // creates a  RGBValue value with (red, green, blue) = (0.25, 0.326, 0.27))
+            Robot robot = new Robot(
+                987654322,                             // object  identifier
+                "Kyle",                                // object name 
+                "Robot",                               // internal object tag, 
+                rgb,                                   // color in RGBValue 
+                cPos,                                  // CartesianPos
+                PhysicalState.noneState,               // object Phisical State
+                Material.organicMaterial,              // object Material type
+                "http://dbpedia.org/page/Robot");      // URI associated with the robot 
 
 
-            RobotTouch rTouch1 = new RobotTouch(
-                DateTime.Now,                           // the event occurs now
-                9876543211,                             //  object definition
-                0.67,                                   // hardness level 
-                0.68,                                   // moisture level 
-                0.69,                                   // pressure level 
-                0.70,                                   // roughness level 
-                25.5);                                  // temperature level 
-
+            RobotVision rVision = new RobotVision(DateTime.Now, robot);         // creates a RobotVision object  seen at this very moment
 
             try                                         // Try to access a resource.
             {
-                rTouch1.insert();                       // using dotNetRDF library inserts the information in the triple store
+                rVision.insert();                       // using dotNetRDF library inserts the information in the triple store
             }
 
             catch (Exception e)
             {
                 Console.WriteLine(e);                   // change for your: LogError(e);     // Call a custom error logging procedure.
-                throw;                                  // Re-throw the error. Probaly will borken the simulator
+                throw;                                  // Re-throw the error. It is likely to interrupt the simulator
             }
-
-
 
             Console.WriteLine("- You can see the results of this execution in Fuseki start terminal or");
             Console.WriteLine("  doing a query to the triple store with your browser at : localhost:3030");

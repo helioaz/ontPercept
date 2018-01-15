@@ -24,6 +24,7 @@ namespace OntSenseCSharpAPI
 		/// 
 		/// 
 		public long objectId { get; }
+        public string name { get; }
 
         public string tagInfo { get; }
 
@@ -42,9 +43,10 @@ namespace OntSenseCSharpAPI
 		/// All  parameters together defines this object.
 		/// 
 ///  
-		public Thing(long objId, string tag, RGBValue color, CartesianPos pos, PhysicalState state, Material mat, string uri)
+		public Thing(long objId, string name, string tag, RGBValue color, CartesianPos pos, PhysicalState state, Material mat, string uri)
 		{
             objectId = objId;
+            this.name = name;
             tagInfo = tag;
             this.color = color;
             this.pos = pos;

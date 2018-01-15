@@ -18,9 +18,9 @@ namespace OntSenseCSharpAPI
 	public enum PhysicalState
 	{
 
-        openedState,
+        openState,
 
-        closedState,
+        closeState,
 
         offState,
 
