@@ -12,33 +12,35 @@
 /// If not, see<http://www.gnu.org/licenses/>.
 /// 
 ///
-namespace OntSenseCSharpAPI
-{
-	/// Define a set of sounds knowed by the robot agent. 
-	/// Ifi the sound is unknown, then it will be classified as UNKNOW.
-	public enum HearingAttribute
+
+package br.usp.ontSenseJavaAPI;
+
+/**
+ * A machine that resembles a living creature in being capable of moving independently and performing complex actions.
+ */
+public class Robot extends Thing {
+
+
+	/**
+	 * Default constructor for the Robot class. 
+	 */
+
+	public Robot()
 	{
-	barkingSound,
+	}
 
-	bellSound,
 
-	birdsSound,
+	/**
+	 * Constructor for the Robot class. The objective is to create a instance of a robot. 
+	 * All  parameters together defines this robot.
+	 * 
+	 *  
+	 */
+	public Robot(long objId, String name, String tag, RGBValue colorObj, CartesianPos posObj, PhysicalState phyState, Material mat, String uri) {
+        	super(objId, name, tag, colorObj, posObj, phyState, mat, uri);
 
-	liquidFlowingSound,
+	}
 
-	motorSound,
 
-	musicSound,
-
-	tvSound,
-
-	humanVoiceSound,
-
-	robotVoiceSound,
-
-	unknownSound
-
-    }
 
 }
-

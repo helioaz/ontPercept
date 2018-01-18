@@ -12,33 +12,26 @@
 /// If not, see<http://www.gnu.org/licenses/>.
 /// 
 ///
-namespace OntSenseCSharpAPI
-{
-	/// Define a set of sounds knowed by the robot agent. 
-	/// Ifi the sound is unknown, then it will be classified as UNKNOW.
-	public enum HearingAttribute
-	{
-	barkingSound,
 
-	bellSound,
+package br.usp.ontSenseJavaAPI;
 
-	birdsSound,
+/**
+ * A emotional state associated with congnitve entities.
+ */
+public enum EmotionalState {
 
-	liquidFlowingSound,
+	angerEmotion,
 
-	motorSound,
+	disgustEmotion,
 
-	musicSound,
+	fearEmotion,
 
-	tvSound,
+	happinessEmotion,
 
-	humanVoiceSound,
+	neutralEmotion,
 
-	robotVoiceSound,
+	sadnessEmotion,
 
-	unknownSound
-
-    }
+	supriseEmotion;
 
 }
-

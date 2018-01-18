@@ -12,33 +12,37 @@
 /// If not, see<http://www.gnu.org/licenses/>.
 /// 
 ///
-namespace OntSenseCSharpAPI
-{
-	/// Define a set of sounds knowed by the robot agent. 
-	/// Ifi the sound is unknown, then it will be classified as UNKNOW.
-	public enum HearingAttribute
-	{
-	barkingSound,
 
-	bellSound,
 
-	birdsSound,
 
-	liquidFlowingSound,
 
-	motorSound,
 
-	musicSound,
 
-	tvSound,
+package br.usp.ontSenseJavaAPI;
 
-	humanVoiceSound,
+/**
+ * This enun just defines a set of materials present in our simulator. Naturally, the real world is little bit more complex.
+ */
+public enum Material {
 
-	robotVoiceSound,
+	clothMaterial,
 
-	unknownSound
+	glassMaterial,
 
-    }
+	metalMaterial,
+
+	organicMaterial,
+
+	plasticMaterial,
+
+	rockMaterial,
+
+	rubberMaterial,
+
+	woodMaterial,
+
+	paperMaterial,
+
+	unknownMaterial;
 
 }
-

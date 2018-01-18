@@ -12,33 +12,25 @@
 /// If not, see<http://www.gnu.org/licenses/>.
 /// 
 ///
-namespace OntSenseCSharpAPI
-{
-	/// Define a set of sounds knowed by the robot agent. 
-	/// Ifi the sound is unknown, then it will be classified as UNKNOW.
-	public enum HearingAttribute
-	{
-	barkingSound,
 
-	bellSound,
 
-	birdsSound,
 
-	liquidFlowingSound,
 
-	motorSound,
+package br.usp.ontSenseJavaAPI;
 
-	musicSound,
+/**
+ * Represents a set of states that a given object would assume. This is a concept that must evolve in the future versions.
+ */
+public enum PhysicalState {
 
-	tvSound,
+	openState,
 
-	humanVoiceSound,
+	closeState,
 
-	robotVoiceSound,
+	offState,
 
-	unknownSound
+	onState,
 
-    }
+	noneState;
 
 }
-

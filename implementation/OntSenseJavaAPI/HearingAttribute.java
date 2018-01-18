@@ -12,12 +12,15 @@
 /// If not, see<http://www.gnu.org/licenses/>.
 /// 
 ///
-namespace OntSenseCSharpAPI
-{
-	/// Define a set of sounds knowed by the robot agent. 
-	/// Ifi the sound is unknown, then it will be classified as UNKNOW.
-	public enum HearingAttribute
-	{
+
+package br.usp.ontSenseJavaAPI;
+
+/**
+ * Define a set of sounds knowed by the robot agent. 
+ * Ifi the sound is unknown, then it will be classified as UNKNOW.
+ */
+public enum HearingAttribute {
+
 	barkingSound,
 
 	bellSound,
@@ -36,9 +39,6 @@ namespace OntSenseCSharpAPI
 
 	robotVoiceSound,
 
-	unknownSound
-
-    }
+	unknownSound;
 
 }
-

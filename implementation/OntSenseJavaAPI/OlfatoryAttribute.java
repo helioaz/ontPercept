@@ -12,33 +12,34 @@
 /// If not, see<http://www.gnu.org/licenses/>.
 /// 
 ///
-namespace OntSenseCSharpAPI
-{
-	/// Define a set of sounds knowed by the robot agent. 
-	/// Ifi the sound is unknown, then it will be classified as UNKNOW.
-	public enum HearingAttribute
-	{
-	barkingSound,
 
-	bellSound,
+package br.usp.ontSenseJavaAPI;
 
-	birdsSound,
+/**
+ * The Class of properties that are detectable by smell.
+ */
+public enum OlfatoryAttribute {
 
-	liquidFlowingSound,
+	decayedSmell,
 
-	motorSound,
+	fragrantSmell,
 
-	musicSound,
+	fruitySmell,
 
-	tvSound,
+	lemonSmell,
 
-	humanVoiceSound,
+	mintySmell,
 
-	robotVoiceSound,
+	popcornSmell,
 
-	unknownSound
+	pungentSmell,
 
-    }
+	sweetSmell,
+
+	woodySmell,
+
+	chemicalSmell,
+
+	noSmell
 
 }
-

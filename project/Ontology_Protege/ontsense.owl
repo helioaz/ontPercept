@@ -286,6 +286,7 @@
     <!-- http://example.org/sense#name -->
 
     <owl:DatatypeProperty rdf:about="http://example.org/sense#name">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Object"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     </owl:DatatypeProperty>
@@ -857,913 +858,165 @@
     
 
 
-    <!-- http://example.org/sense#A1961080861 -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#A1961080861">
-        <rdf:type rdf:resource="http://example.org/sense#RobotTaste"/>
-<<<<<<< HEAD
-        <generateBy rdf:resource="http://example.org/sense#O0000000005"/>
-=======
-        <generateBy rdf:resource="http://example.org/sense#O1961080805"/>
->>>>>>> ae8be9760e845c5c9c8eaab7df7e78f072cce725
-        <bitterness rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.2</bitterness>
-        <occursAt rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-04-12T13:20:15.8</occursAt>
-        <saltiness rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.3</saltiness>
-        <sourness rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.9</sourness>
-        <sweetness rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.05</sweetness>
-        <umani rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.05</umani>
-    </owl:NamedIndividual>
     
 
 
-    <!-- http://example.org/sense#C1961080831 -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#C1961080831">
-        <rdf:type rdf:resource="http://example.org/sense#RGBColor"/>
-        <blue rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.1</blue>
-        <green rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.8</green>
-        <red rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.1</red>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://example.org/sense#C1961080832 -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#C1961080832">
-        <rdf:type rdf:resource="http://example.org/sense#RGBColor"/>
-        <blue rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.1</blue>
-        <green rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.1</green>
-        <red rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.8</red>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://example.org/sense#C1961080833 -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#C1961080833">
-        <rdf:type rdf:resource="http://example.org/sense#RGBColor"/>
-        <blue rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.9</blue>
-        <green rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.1</green>
-        <red rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.1</red>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://example.org/sense#H1961080851 -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#H1961080851">
-        <rdf:type rdf:resource="http://example.org/sense#RobotHear"/>
-<<<<<<< HEAD
-        <generateBy rdf:resource="http://example.org/sense#O0000000007"/>
-=======
-        <generateBy rdf:resource="http://example.org/sense#O1961080807"/>
->>>>>>> ae8be9760e845c5c9c8eaab7df7e78f072cce725
-        <hasSoundType rdf:resource="http://example.org/sense#liquidFlowingSound"/>
-        <detail rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></detail>
-        <occursAt rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-04-12T13:20:15.7</occursAt>
-        <volume rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.3</volume>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://example.org/sense#H1961080852 -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#H1961080852">
-<<<<<<< HEAD
-        <rdf:type rdf:resource="http://example.org/sense#RobotHear"/>
-        <generateBy rdf:resource="http://example.org/sense#O0000000006"/>
-        <hasSoundType rdf:resource="http://example.org/sense#voiceSound"/>
-        <detail rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bring a packet of biscuits please.</detail>
-        <occursAt rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-04-12T13:19:00.7</occursAt>
-        <volume rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.7</volume>
-=======
-        <generateBy rdf:resource="http://example.org/sense#O1961080806"/>
-        <hasSoundType rdf:resource="http://example.org/sense#voiceSound"/>
-        <detail rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bring a packet of biscuits please.</detail>
-        <occursAt rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-04-12T13:19:00.7</occursAt>
-        <volume rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.3</volume>
->>>>>>> ae8be9760e845c5c9c8eaab7df7e78f072cce725
-    </owl:NamedIndividual>
-    
-
-
-<<<<<<< HEAD
-    <!-- http://example.org/sense#H1961080853 -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#H1961080853">
-        <rdf:type rdf:resource="http://example.org/sense#RobotHear"/>
-        <hasSoundType rdf:resource="http://example.org/sense#tvSound"/>
-        <isPositionedAt rdf:resource="http://example.org/sense#P1961080821"/>
-        <detail rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Country Music</detail>
-        <occursAt rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-04-12T13:13:13.3</occursAt>
-        <volume rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.9</volume>
-=======
-    <!-- http://example.org/sense#O1961080801 -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#O1961080801">
-        <rdf:type rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Object"/>
-        <hasColor rdf:resource="http://example.org/sense#C1961080832"/>
-        <isMadeOf rdf:resource="http://example.org/sense#organicMaterial"/>
-        <isPositionedAt rdf:resource="http://example.org/sense#P1961080821"/>
-        <objectId rdf:datatype="http://www.w3.org/2001/XMLSchema#long">0000001</objectId>
-        <tag rdf:datatype="http://www.w3.org/2001/XMLSchema#string">applePie</tag>
->>>>>>> ae8be9760e845c5c9c8eaab7df7e78f072cce725
-    </owl:NamedIndividual>
-    
-
-
-<<<<<<< HEAD
-    <!-- http://example.org/sense#O0000000001 -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#O0000000001">
-        <rdf:type rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Object"/>
-        <hasColor rdf:resource="http://example.org/sense#C1961080832"/>
-        <isMadeOf rdf:resource="http://example.org/sense#organicMaterial"/>
-        <isPositionedAt rdf:resource="http://example.org/sense#P1961080821"/>
-        <objectId rdf:datatype="http://www.w3.org/2001/XMLSchema#long">0000001</objectId>
-        <tag rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pie</tag>
-=======
-    <!-- http://example.org/sense#O1961080802 -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#O1961080802">
-        <rdf:type rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Object"/>
-        <hasColor rdf:resource="http://example.org/sense#C1961080831"/>
-        <isMadeOf rdf:resource="http://example.org/sense#organicMaterial"/>
-        <isPositionedAt rdf:resource="http://example.org/sense#P1961080823"/>
-        <objectId rdf:datatype="http://www.w3.org/2001/XMLSchema#long">0000002</objectId>
-        <tag rdf:datatype="http://www.w3.org/2001/XMLSchema#string">cracker</tag>
->>>>>>> ae8be9760e845c5c9c8eaab7df7e78f072cce725
-    </owl:NamedIndividual>
-    
-
-
-<<<<<<< HEAD
-    <!-- http://example.org/sense#O0000000002 -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#O0000000002">
-        <rdf:type rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Object"/>
-        <hasColor rdf:resource="http://example.org/sense#C1961080831"/>
-        <isMadeOf rdf:resource="http://example.org/sense#organicMaterial"/>
-        <isPositionedAt rdf:resource="http://example.org/sense#P1961080823"/>
-        <objectId rdf:datatype="http://www.w3.org/2001/XMLSchema#long">0000002</objectId>
-        <tag rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cracker</tag>
-=======
-    <!-- http://example.org/sense#O1961080803 -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#O1961080803">
-        <rdf:type rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Object"/>
-        <hasColor rdf:resource="http://example.org/sense#C1961080832"/>
-        <hasInternalState rdf:resource="http://example.org/sense#closedState"/>
-        <isMadeOf rdf:resource="http://example.org/sense#woodMaterial"/>
-        <isPositionedAt rdf:resource="http://example.org/sense#P1961080821"/>
-        <objectId rdf:datatype="http://www.w3.org/2001/XMLSchema#long">0000003</objectId>
-        <tag rdf:datatype="http://www.w3.org/2001/XMLSchema#string">door</tag>
->>>>>>> ae8be9760e845c5c9c8eaab7df7e78f072cce725
-    </owl:NamedIndividual>
-    
-
-
-<<<<<<< HEAD
-    <!-- http://example.org/sense#O0000000003 -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#O0000000003">
-        <rdf:type rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Object"/>
-        <hasColor rdf:resource="http://example.org/sense#C1961080832"/>
-        <hasInternalState rdf:resource="http://example.org/sense#closeState"/>
-        <isMadeOf rdf:resource="http://example.org/sense#woodMaterial"/>
-        <isPositionedAt rdf:resource="http://example.org/sense#P1961080821"/>
-        <objectId rdf:datatype="http://www.w3.org/2001/XMLSchema#long">0000003</objectId>
-        <tag rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Door</tag>
-=======
-    <!-- http://example.org/sense#O1961080804 -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#O1961080804">
-        <rdf:type rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Object"/>
-        <hasColor rdf:resource="http://example.org/sense#C1961080831"/>
-        <isMadeOf rdf:resource="http://example.org/sense#rockMaterial"/>
-        <isPositionedAt rdf:resource="http://example.org/sense#P1961080823"/>
-        <objectId rdf:datatype="http://www.w3.org/2001/XMLSchema#long">0000004</objectId>
-        <tag rdf:datatype="http://www.w3.org/2001/XMLSchema#string">kitchenFloor</tag>
->>>>>>> ae8be9760e845c5c9c8eaab7df7e78f072cce725
-    </owl:NamedIndividual>
-    
-
-
-<<<<<<< HEAD
-    <!-- http://example.org/sense#O0000000004 -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#O0000000004">
-        <rdf:type rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Object"/>
-        <hasColor rdf:resource="http://example.org/sense#C1961080831"/>
-        <isMadeOf rdf:resource="http://example.org/sense#rockMaterial"/>
-        <isPositionedAt rdf:resource="http://example.org/sense#P1961080823"/>
-        <objectId rdf:datatype="http://www.w3.org/2001/XMLSchema#long">0000004</objectId>
-        <tag rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Floor</tag>
-=======
-    <!-- http://example.org/sense#O1961080805 -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#O1961080805">
-        <rdf:type rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Object"/>
-        <hasColor rdf:resource="http://example.org/sense#C1961080832"/>
-        <isMadeOf rdf:resource="http://example.org/sense#organicMaterial"/>
-        <isPositionedAt rdf:resource="http://example.org/sense#P1961080822"/>
-        <associateURI rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://dbpedia.org/resource/Salmon</associateURI>
-        <objectId rdf:datatype="http://www.w3.org/2001/XMLSchema#long">0000005</objectId>
-        <tag rdf:datatype="http://www.w3.org/2001/XMLSchema#string">salmon</tag>
->>>>>>> ae8be9760e845c5c9c8eaab7df7e78f072cce725
-    </owl:NamedIndividual>
-    
-
-
-<<<<<<< HEAD
-    <!-- http://example.org/sense#O0000000005 -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#O0000000005">
-        <rdf:type rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Object"/>
-        <hasColor rdf:resource="http://example.org/sense#C1961080832"/>
-        <isMadeOf rdf:resource="http://example.org/sense#organicMaterial"/>
-        <isPositionedAt rdf:resource="http://example.org/sense#P1961080822"/>
-        <associateURI rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://dbpedia.org/resource/Salmon</associateURI>
-        <objectId rdf:datatype="http://www.w3.org/2001/XMLSchema#long">0000005</objectId>
-        <tag rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Salmon_Pack</tag>
-=======
-    <!-- http://example.org/sense#O1961080806 -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#O1961080806">
-        <rdf:type rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Object"/>
-        <hasColor rdf:resource="http://example.org/sense#C1961080832"/>
-        <hasEmotionalState rdf:resource="http://example.org/sense#happinessEmotion"/>
-        <isMadeOf rdf:resource="http://example.org/sense#organicMaterial"/>
-        <isPositionedAt rdf:resource="http://example.org/sense#P1961080821"/>
-        <objectId rdf:datatype="http://www.w3.org/2001/XMLSchema#long">0000006</objectId>
-        <tag rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mariana</tag>
->>>>>>> ae8be9760e845c5c9c8eaab7df7e78f072cce725
-    </owl:NamedIndividual>
-    
-
-
-<<<<<<< HEAD
-    <!-- http://example.org/sense#O0000000006 -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#O0000000006">
-        <rdf:type rdf:resource="http://example.org/sense#Human"/>
-        <hasColor rdf:resource="http://example.org/sense#C1961080832"/>
-        <hasEmotionalState rdf:resource="http://example.org/sense#happinessEmotion"/>
-        <isMadeOf rdf:resource="http://example.org/sense#organicMaterial"/>
-        <isPositionedAt rdf:resource="http://example.org/sense#P1961080821"/>
-        <associateURI rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.wikidata.org/wiki/Q3238275</associateURI>
-        <name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mariana</name>
-        <objectId rdf:datatype="http://www.w3.org/2001/XMLSchema#long">0000006</objectId>
-        <tag rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Human</tag>
-=======
-    <!-- http://example.org/sense#O1961080807 -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#O1961080807">
-        <rdf:type rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Object"/>
-        <hasColor rdf:resource="http://example.org/sense#C1961080833"/>
-        <hasInternalState rdf:resource="http://example.org/sense#openState"/>
-        <isMadeOf rdf:resource="http://example.org/sense#metalMaterial"/>
-        <isPositionedAt rdf:resource="http://example.org/sense#P1961080822"/>
-        <objectId rdf:datatype="http://www.w3.org/2001/XMLSchema#long">0000007</objectId>
-        <tag rdf:datatype="http://www.w3.org/2001/XMLSchema#string">tap</tag>
->>>>>>> ae8be9760e845c5c9c8eaab7df7e78f072cce725
-    </owl:NamedIndividual>
-    
-
-
-<<<<<<< HEAD
-    <!-- http://example.org/sense#O0000000007 -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#O0000000007">
-        <rdf:type rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Object"/>
-        <hasColor rdf:resource="http://example.org/sense#C1961080833"/>
-        <hasInternalState rdf:resource="http://example.org/sense#openState"/>
-        <isMadeOf rdf:resource="http://example.org/sense#metalMaterial"/>
-        <isPositionedAt rdf:resource="http://example.org/sense#P1961080822"/>
-        <objectId rdf:datatype="http://www.w3.org/2001/XMLSchema#long">0000007</objectId>
-        <tag rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Tap</tag>
-=======
-    <!-- http://example.org/sense#O1961080808 -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#O1961080808">
-        <rdf:type rdf:resource="http://example.org/sense#Human"/>
-        <hasColor rdf:resource="http://example.org/sense#C1961080833"/>
-        <isMadeOf rdf:resource="http://example.org/sense#organicMaterial"/>
-        <isPositionedAt rdf:resource="http://example.org/sense#P1961080822"/>
-        <objectId rdf:datatype="http://www.w3.org/2001/XMLSchema#long">000027</objectId>
-        <tag>Mariana</tag>
->>>>>>> ae8be9760e845c5c9c8eaab7df7e78f072cce725
-    </owl:NamedIndividual>
-    
-
-
-<<<<<<< HEAD
-    <!-- http://example.org/sense#O0000000008 -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#O0000000008">
-        <rdf:type rdf:resource="http://example.org/sense#Human"/>
-        <hasColor rdf:resource="http://example.org/sense#C1961080833"/>
-        <hasEmotionalState rdf:resource="http://example.org/sense#disgustEmotion"/>
-        <isMadeOf rdf:resource="http://example.org/sense#organicMaterial"/>
-        <isPositionedAt rdf:resource="http://example.org/sense#P1961080823"/>
-        <associateURI rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.wikidata.org/wiki/Q3238275</associateURI>
-        <name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pedro</name>
-        <objectId rdf:datatype="http://www.w3.org/2001/XMLSchema#long">000008</objectId>
-        <tag rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Human</tag>
-=======
-    <!-- http://example.org/sense#O1961080809 -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#O1961080809">
-        <rdf:type rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#Robot"/>
-        <isMadeOf rdf:resource="http://example.org/sense#metalMaterial"/>
-        <isPositionedAt rdf:resource="http://example.org/sense#P1961080822"/>
-        <objectId rdf:datatype="http://www.w3.org/2001/XMLSchema#long">0000003</objectId>
-        <tag rdf:datatype="http://www.w3.org/2001/XMLSchema#string">disprosio</tag>
-        <rdfs:comment xml:lang="en">Represents the humanoid robot used to interact with the environment.</rdfs:comment>
->>>>>>> ae8be9760e845c5c9c8eaab7df7e78f072cce725
-    </owl:NamedIndividual>
-    
-
-
-<<<<<<< HEAD
-    <!-- http://example.org/sense#O0000000009 -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#O0000000009">
-        <rdf:type rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#Robot"/>
-        <isMadeOf rdf:resource="http://example.org/sense#metalMaterial"/>
-        <isPositionedAt rdf:resource="http://example.org/sense#P1961080822"/>
-        <associateURI rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.wikidata.org/wiki/Q11012</associateURI>
-        <name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Kyle</name>
-        <objectId rdf:datatype="http://www.w3.org/2001/XMLSchema#long">0000009</objectId>
-        <tag rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Robot</tag>
-        <rdfs:comment xml:lang="en">Represents the humanoid robot used to interact with the environment.</rdfs:comment>
-=======
-    <!-- http://example.org/sense#P1961080821 -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#P1961080821">
-        <rdf:type rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/basicPos.owl#CartesianPositionPoint"/>
-        <basicPos:cartesianX rdf:datatype="http://www.w3.org/2001/XMLSchema#double">10.0</basicPos:cartesianX>
-        <basicPos:cartesianY rdf:datatype="http://www.w3.org/2001/XMLSchema#double">80.0</basicPos:cartesianY>
-        <basicPos:cartesianZ rdf:datatype="http://www.w3.org/2001/XMLSchema#double">90.0</basicPos:cartesianZ>
->>>>>>> ae8be9760e845c5c9c8eaab7df7e78f072cce725
-    </owl:NamedIndividual>
-    
-
-
-<<<<<<< HEAD
-    <!-- http://example.org/sense#P1961080821 -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#P1961080821">
-        <rdf:type rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/basicPos.owl#CartesianPositionPoint"/>
-        <basicPos:cartesianX rdf:datatype="http://www.w3.org/2001/XMLSchema#double">10.0</basicPos:cartesianX>
-        <basicPos:cartesianY rdf:datatype="http://www.w3.org/2001/XMLSchema#double">80.0</basicPos:cartesianY>
-        <basicPos:cartesianZ rdf:datatype="http://www.w3.org/2001/XMLSchema#double">90.0</basicPos:cartesianZ>
-=======
-    <!-- http://example.org/sense#P1961080822 -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#P1961080822">
-        <rdf:type rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/basicPos.owl#CartesianPositionPoint"/>
-        <basicPos:cartesianX rdf:datatype="http://www.w3.org/2001/XMLSchema#double">10.0</basicPos:cartesianX>
-        <basicPos:cartesianY rdf:datatype="http://www.w3.org/2001/XMLSchema#double">20.0</basicPos:cartesianY>
-        <basicPos:cartesianZ rdf:datatype="http://www.w3.org/2001/XMLSchema#double">33.0</basicPos:cartesianZ>
->>>>>>> ae8be9760e845c5c9c8eaab7df7e78f072cce725
-    </owl:NamedIndividual>
-    
-
-
-<<<<<<< HEAD
-    <!-- http://example.org/sense#P1961080822 -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#P1961080822">
-        <rdf:type rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/basicPos.owl#CartesianPositionPoint"/>
-        <basicPos:cartesianX rdf:datatype="http://www.w3.org/2001/XMLSchema#double">10.0</basicPos:cartesianX>
-        <basicPos:cartesianY rdf:datatype="http://www.w3.org/2001/XMLSchema#double">20.0</basicPos:cartesianY>
-        <basicPos:cartesianZ rdf:datatype="http://www.w3.org/2001/XMLSchema#double">33.0</basicPos:cartesianZ>
-=======
-    <!-- http://example.org/sense#P1961080823 -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#P1961080823">
-        <rdf:type rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/basicPos.owl#CartesianPositionPoint"/>
-        <basicPos:cartesianX rdf:datatype="http://www.w3.org/2001/XMLSchema#double">10.0</basicPos:cartesianX>
-        <basicPos:cartesianY rdf:datatype="http://www.w3.org/2001/XMLSchema#double">20.0</basicPos:cartesianY>
-        <basicPos:cartesianZ rdf:datatype="http://www.w3.org/2001/XMLSchema#double">44.0</basicPos:cartesianZ>
->>>>>>> ae8be9760e845c5c9c8eaab7df7e78f072cce725
-    </owl:NamedIndividual>
-    
-
-
-<<<<<<< HEAD
-    <!-- http://example.org/sense#P1961080823 -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#P1961080823">
-        <rdf:type rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/basicPos.owl#CartesianPositionPoint"/>
-        <basicPos:cartesianX rdf:datatype="http://www.w3.org/2001/XMLSchema#double">10.0</basicPos:cartesianX>
-        <basicPos:cartesianY rdf:datatype="http://www.w3.org/2001/XMLSchema#double">20.0</basicPos:cartesianY>
-        <basicPos:cartesianZ rdf:datatype="http://www.w3.org/2001/XMLSchema#double">44.0</basicPos:cartesianZ>
-=======
-    <!-- http://example.org/sense#S1961080841 -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#S1961080841">
-        <rdf:type rdf:resource="http://example.org/sense#RobotSmell"/>
-        <generateBy rdf:resource="http://example.org/sense#O1961080801"/>
-        <hasSmellType rdf:resource="http://example.org/sense#sweetSmell"/>
-        <occursAt rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-04-12T13:25:00.8</occursAt>
->>>>>>> ae8be9760e845c5c9c8eaab7df7e78f072cce725
-    </owl:NamedIndividual>
-    
-
-
-<<<<<<< HEAD
-    <!-- http://example.org/sense#S1961080841 -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#S1961080841">
-        <rdf:type rdf:resource="http://example.org/sense#RobotSmell"/>
-        <generateBy rdf:resource="http://example.org/sense#O0000000001"/>
-        <hasSmellType rdf:resource="http://example.org/sense#sweetSmell"/>
-        <occursAt rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-04-12T13:25:00.8</occursAt>
-=======
-    <!-- http://example.org/sense#S1961080842 -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#S1961080842">
-        <rdf:type rdf:resource="http://example.org/sense#RobotSmell"/>
-        <generateBy rdf:resource="http://example.org/sense#O1961080805"/>
-        <hasSmellType rdf:resource="http://example.org/sense#decayedSmell"/>
-        <occursAt rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-04-12T13:20:15.8</occursAt>
->>>>>>> ae8be9760e845c5c9c8eaab7df7e78f072cce725
-    </owl:NamedIndividual>
-    
-
-
-<<<<<<< HEAD
-    <!-- http://example.org/sense#S1961080842 -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#S1961080842">
-        <rdf:type rdf:resource="http://example.org/sense#RobotSmell"/>
-        <generateBy rdf:resource="http://example.org/sense#O0000000005"/>
-        <hasSmellType rdf:resource="http://example.org/sense#decayedSmell"/>
-        <occursAt rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-04-12T13:20:15.8</occursAt>
-=======
-    <!-- http://example.org/sense#T1961080871 -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#T1961080871">
-        <rdf:type rdf:resource="http://example.org/sense#RobotTouch"/>
-        <generateBy rdf:resource="http://example.org/sense#O1961080804"/>
-        <hardness rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.8</hardness>
-        <moisture rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.1</moisture>
-        <occursAt rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-04-12T13:20:15.6</occursAt>
-        <pressure rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.0</pressure>
-        <roughness rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.1</roughness>
-        <temperature rdf:datatype="http://www.w3.org/2001/XMLSchema#double">23.0</temperature>
->>>>>>> ae8be9760e845c5c9c8eaab7df7e78f072cce725
-    </owl:NamedIndividual>
-    
-
-
-<<<<<<< HEAD
-    <!-- http://example.org/sense#T1961080871 -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#T1961080871">
-        <rdf:type rdf:resource="http://example.org/sense#RobotTouch"/>
-        <generateBy rdf:resource="http://example.org/sense#O0000000004"/>
-        <hardness rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.8</hardness>
-        <moisture rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.1</moisture>
-        <occursAt rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-04-12T13:20:15.6</occursAt>
-        <pressure rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.0</pressure>
-        <roughness rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.1</roughness>
-        <temperature rdf:datatype="http://www.w3.org/2001/XMLSchema#double">23.0</temperature>
-=======
-    <!-- http://example.org/sense#V1961080881 -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#V1961080881">
-        <rdf:type rdf:resource="http://example.org/sense#RobotVision"/>
-        <generateBy rdf:resource="http://example.org/sense#O1961080806"/>
-        <occursAt rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-04-12T13:20:15.8</occursAt>
->>>>>>> ae8be9760e845c5c9c8eaab7df7e78f072cce725
-    </owl:NamedIndividual>
-    
-
-
-<<<<<<< HEAD
-    <!-- http://example.org/sense#V1961080881 -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#V1961080881">
-        <rdf:type rdf:resource="http://example.org/sense#RobotVision"/>
-        <generateBy rdf:resource="http://example.org/sense#O0000000006"/>
-        <occursAt rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-04-12T13:20:15.8</occursAt>
-=======
-    <!-- http://example.org/sense#V1961080882 -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#V1961080882">
-        <rdf:type rdf:resource="http://example.org/sense#RobotVision"/>
-        <generateBy rdf:resource="http://example.org/sense#O1961080803"/>
-        <occursAt rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-04-12T13:22:19.9</occursAt>
->>>>>>> ae8be9760e845c5c9c8eaab7df7e78f072cce725
-    </owl:NamedIndividual>
-    
-
-
-<<<<<<< HEAD
-    <!-- http://example.org/sense#V1961080882 -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#V1961080882">
-        <rdf:type rdf:resource="http://example.org/sense#RobotVision"/>
-        <generateBy rdf:resource="http://example.org/sense#O0000000003"/>
-        <occursAt rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-04-12T13:22:19.9</occursAt>
-=======
-    <!-- http://example.org/sense#V1961080883 -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#V1961080883">
-        <rdf:type rdf:resource="http://example.org/sense#RobotVision"/>
-        <generateBy rdf:resource="http://example.org/sense#O1961080804"/>
-        <occursAt rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-04-12T13:23:20.1</occursAt>
->>>>>>> ae8be9760e845c5c9c8eaab7df7e78f072cce725
-    </owl:NamedIndividual>
-    
-
-
-<<<<<<< HEAD
-    <!-- http://example.org/sense#V1961080883 -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#V1961080883">
-        <rdf:type rdf:resource="http://example.org/sense#RobotVision"/>
-        <generateBy rdf:resource="http://example.org/sense#O0000000004"/>
-        <occursAt rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-04-12T13:23:20.1</occursAt>
-=======
-    <!-- http://example.org/sense#V1961080884 -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#V1961080884">
-        <rdf:type rdf:resource="http://example.org/sense#RobotVision"/>
-        <generateBy rdf:resource="http://example.org/sense#O1961080805"/>
-        <occursAt rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-04-12T13:24:00.0</occursAt>
->>>>>>> ae8be9760e845c5c9c8eaab7df7e78f072cce725
-    </owl:NamedIndividual>
-    
-
-
-<<<<<<< HEAD
-    <!-- http://example.org/sense#V1961080884 -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#V1961080884">
-        <rdf:type rdf:resource="http://example.org/sense#RobotVision"/>
-        <generateBy rdf:resource="http://example.org/sense#O0000000005"/>
-        <occursAt rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-04-12T13:24:00.0</occursAt>
-=======
-    <!-- http://example.org/sense#V1961080885 -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#V1961080885">
-        <rdf:type rdf:resource="http://example.org/sense#RobotVision"/>
-        <generateBy rdf:resource="http://example.org/sense#O1961080807"/>
-        <occursAt rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-04-12T13:23:45.0</occursAt>
->>>>>>> ae8be9760e845c5c9c8eaab7df7e78f072cce725
-    </owl:NamedIndividual>
-    
-
-
-<<<<<<< HEAD
-    <!-- http://example.org/sense#V1961080885 -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#V1961080885">
-        <rdf:type rdf:resource="http://example.org/sense#RobotVision"/>
-        <generateBy rdf:resource="http://example.org/sense#O0000000007"/>
-        <occursAt rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-04-12T13:23:45.0</occursAt>
-=======
-    <!-- http://example.org/sense#V1961080886 -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#V1961080886">
-        <rdf:type rdf:resource="http://example.org/sense#RobotVision"/>
-        <generateBy rdf:resource="http://example.org/sense#O1961080802"/>
-        <occursAt rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-04-12T13:24:00.0</occursAt>
->>>>>>> ae8be9760e845c5c9c8eaab7df7e78f072cce725
-    </owl:NamedIndividual>
-    
-
-
-<<<<<<< HEAD
-    <!-- http://example.org/sense#V1961080886 -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#V1961080886">
-        <rdf:type rdf:resource="http://example.org/sense#RobotVision"/>
-        <generateBy rdf:resource="http://example.org/sense#O0000000002"/>
-        <occursAt rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-04-12T13:24:00.0</occursAt>
-=======
-    <!-- http://example.org/sense#V1961080887 -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#V1961080887">
-        <rdf:type rdf:resource="http://example.org/sense#RobotVision"/>
-        <generateBy rdf:resource="http://example.org/sense#O1961080801"/>
-        <occursAt rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-04-12T13:25:13.6</occursAt>
->>>>>>> ae8be9760e845c5c9c8eaab7df7e78f072cce725
-    </owl:NamedIndividual>
-    
-
-
-<<<<<<< HEAD
-    <!-- http://example.org/sense#V1961080887 -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#V1961080887">
-        <rdf:type rdf:resource="http://example.org/sense#RobotVision"/>
-        <generateBy rdf:resource="http://example.org/sense#O0000000001"/>
-        <occursAt rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-04-12T13:25:13.6</occursAt>
-=======
     <!-- http://example.org/sense#angerEmotion -->
 
     <owl:NamedIndividual rdf:about="http://example.org/sense#angerEmotion">
         <rdf:type rdf:resource="http://example.org/sense#EmotionalState"/>
         <rdfs:comment xml:lang="en">Anger is a negative emotion, characterised by feelings of unpleasantness and high arousal, in the form of antagonistic feelings and action tendencies. [Source: OCEAS]</rdfs:comment>
->>>>>>> ae8be9760e845c5c9c8eaab7df7e78f072cce725
     </owl:NamedIndividual>
     
 
 
-<<<<<<< HEAD
-    <!-- http://example.org/sense#angerEmotion -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#angerEmotion">
-        <rdf:type rdf:resource="http://example.org/sense#EmotionalState"/>
-        <rdfs:comment xml:lang="en">Anger is a negative emotion, characterised by feelings of unpleasantness and high arousal, in the form of antagonistic feelings and action tendencies. [Source: OCEAS]</rdfs:comment>
-=======
     <!-- http://example.org/sense#barkingSound -->
 
     <owl:NamedIndividual rdf:about="http://example.org/sense#barkingSound">
         <rdf:type rdf:resource="http://example.org/sense#HearingAttribute"/>
->>>>>>> ae8be9760e845c5c9c8eaab7df7e78f072cce725
     </owl:NamedIndividual>
     
 
 
-<<<<<<< HEAD
-    <!-- http://example.org/sense#barkingSound -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#barkingSound">
-=======
     <!-- http://example.org/sense#bellSound -->
 
     <owl:NamedIndividual rdf:about="http://example.org/sense#bellSound">
->>>>>>> ae8be9760e845c5c9c8eaab7df7e78f072cce725
         <rdf:type rdf:resource="http://example.org/sense#HearingAttribute"/>
     </owl:NamedIndividual>
     
 
 
-<<<<<<< HEAD
-    <!-- http://example.org/sense#bellSound -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#bellSound">
-=======
-    <!-- http://example.org/sense#birdsSound -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#birdsSound">
->>>>>>> ae8be9760e845c5c9c8eaab7df7e78f072cce725
-        <rdf:type rdf:resource="http://example.org/sense#HearingAttribute"/>
-    </owl:NamedIndividual>
-    
-
-
-<<<<<<< HEAD
     <!-- http://example.org/sense#birdsSound -->
 
     <owl:NamedIndividual rdf:about="http://example.org/sense#birdsSound">
         <rdf:type rdf:resource="http://example.org/sense#HearingAttribute"/>
-=======
-    <!-- http://example.org/sense#chemicalSmell -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#chemicalSmell">
-        <rdf:type rdf:resource="http://example.org/sense#OlfactoryAttribute"/>
->>>>>>> ae8be9760e845c5c9c8eaab7df7e78f072cce725
     </owl:NamedIndividual>
     
 
 
-<<<<<<< HEAD
     <!-- http://example.org/sense#chemicalSmell -->
 
     <owl:NamedIndividual rdf:about="http://example.org/sense#chemicalSmell">
         <rdf:type rdf:resource="http://example.org/sense#OlfactoryAttribute"/>
-=======
-    <!-- http://example.org/sense#closedState -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#closedState">
-        <rdf:type rdf:resource="http://example.org/sense#PhysicalState"/>
->>>>>>> ae8be9760e845c5c9c8eaab7df7e78f072cce725
     </owl:NamedIndividual>
     
 
 
-<<<<<<< HEAD
     <!-- http://example.org/sense#closeState -->
 
     <owl:NamedIndividual rdf:about="http://example.org/sense#closeState">
         <rdf:type rdf:resource="http://example.org/sense#PhysicalState"/>
-=======
-    <!-- http://example.org/sense#clothMaterial -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#clothMaterial">
-        <rdf:type rdf:resource="http://example.org/sense#Material"/>
->>>>>>> ae8be9760e845c5c9c8eaab7df7e78f072cce725
     </owl:NamedIndividual>
     
 
 
-<<<<<<< HEAD
     <!-- http://example.org/sense#clothMaterial -->
 
     <owl:NamedIndividual rdf:about="http://example.org/sense#clothMaterial">
         <rdf:type rdf:resource="http://example.org/sense#Material"/>
-=======
-    <!-- http://example.org/sense#decayedSmell -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#decayedSmell">
-        <rdf:type rdf:resource="http://example.org/sense#OlfactoryAttribute"/>
->>>>>>> ae8be9760e845c5c9c8eaab7df7e78f072cce725
     </owl:NamedIndividual>
     
 
 
-<<<<<<< HEAD
     <!-- http://example.org/sense#decayedSmell -->
 
     <owl:NamedIndividual rdf:about="http://example.org/sense#decayedSmell">
         <rdf:type rdf:resource="http://example.org/sense#OlfactoryAttribute"/>
-=======
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://example.org/sense#disgustEmotion -->
 
     <owl:NamedIndividual rdf:about="http://example.org/sense#disgustEmotion">
         <rdf:type rdf:resource="http://example.org/sense#EmotionalState"/>
         <rdfs:comment xml:lang="en">A negative emotion which guards the body against dangerous foods and microbial infections. The basic physiological disgust has also culturally evolved to incorporate moral disgust which protects the self from nonphysical threats such as moral violations. [Source: OCEAS]</rdfs:comment>
->>>>>>> ae8be9760e845c5c9c8eaab7df7e78f072cce725
     </owl:NamedIndividual>
     
 
 
-<<<<<<< HEAD
-    <!-- http://example.org/sense#disgustEmotion -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#disgustEmotion">
-        <rdf:type rdf:resource="http://example.org/sense#EmotionalState"/>
-        <rdfs:comment xml:lang="en">A negative emotion which guards the body against dangerous foods and microbial infections. The basic physiological disgust has also culturally evolved to incorporate moral disgust which protects the self from nonphysical threats such as moral violations. [Source: OCEAS]</rdfs:comment>
-=======
     <!-- http://example.org/sense#fearEmotion -->
 
     <owl:NamedIndividual rdf:about="http://example.org/sense#fearEmotion">
         <rdf:type rdf:resource="http://example.org/sense#EmotionalState"/>
         <rdfs:comment xml:lang="en">An activated, aversive emotion that motivates attempts to cope with events that provide threats to the survival or well-being of organisms. Characterised by feelings of threat and impending doom, and by an urge to get out of the situation. [Source: OCEAS]</rdfs:comment>
->>>>>>> ae8be9760e845c5c9c8eaab7df7e78f072cce725
     </owl:NamedIndividual>
     
 
 
-<<<<<<< HEAD
-    <!-- http://example.org/sense#fearEmotion -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#fearEmotion">
-        <rdf:type rdf:resource="http://example.org/sense#EmotionalState"/>
-        <rdfs:comment xml:lang="en">An activated, aversive emotion that motivates attempts to cope with events that provide threats to the survival or well-being of organisms. Characterised by feelings of threat and impending doom, and by an urge to get out of the situation. [Source: OCEAS]</rdfs:comment>
-=======
     <!-- http://example.org/sense#fragrantSmell -->
 
     <owl:NamedIndividual rdf:about="http://example.org/sense#fragrantSmell">
         <rdf:type rdf:resource="http://example.org/sense#OlfactoryAttribute"/>
->>>>>>> ae8be9760e845c5c9c8eaab7df7e78f072cce725
     </owl:NamedIndividual>
     
 
 
-<<<<<<< HEAD
-    <!-- http://example.org/sense#fragrantSmell -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#fragrantSmell">
-=======
-    <!-- http://example.org/sense#fruitySmell -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#fruitySmell">
->>>>>>> ae8be9760e845c5c9c8eaab7df7e78f072cce725
-        <rdf:type rdf:resource="http://example.org/sense#OlfactoryAttribute"/>
-    </owl:NamedIndividual>
-    
-
-
-<<<<<<< HEAD
     <!-- http://example.org/sense#fruitySmell -->
 
     <owl:NamedIndividual rdf:about="http://example.org/sense#fruitySmell">
         <rdf:type rdf:resource="http://example.org/sense#OlfactoryAttribute"/>
-=======
-    <!-- http://example.org/sense#glassMaterial -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#glassMaterial">
-        <rdf:type rdf:resource="http://example.org/sense#Material"/>
->>>>>>> ae8be9760e845c5c9c8eaab7df7e78f072cce725
     </owl:NamedIndividual>
     
 
 
-<<<<<<< HEAD
     <!-- http://example.org/sense#glassMaterial -->
 
     <owl:NamedIndividual rdf:about="http://example.org/sense#glassMaterial">
         <rdf:type rdf:resource="http://example.org/sense#Material"/>
-=======
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://example.org/sense#happinessEmotion -->
 
     <owl:NamedIndividual rdf:about="http://example.org/sense#happinessEmotion">
         <rdf:type rdf:resource="http://example.org/sense#EmotionalState"/>
         <rdfs:comment xml:lang="en">A positive emotion which is experienced in reaction to a positive experience or event. [Source: OCEAS]</rdfs:comment>
->>>>>>> ae8be9760e845c5c9c8eaab7df7e78f072cce725
     </owl:NamedIndividual>
     
 
 
-<<<<<<< HEAD
-    <!-- http://example.org/sense#happinessEmotion -->
+    <!-- http://example.org/sense#humanVoiceSound -->
 
-    <owl:NamedIndividual rdf:about="http://example.org/sense#happinessEmotion">
-        <rdf:type rdf:resource="http://example.org/sense#EmotionalState"/>
-        <rdfs:comment xml:lang="en">A positive emotion which is experienced in reaction to a positive experience or event. [Source: OCEAS]</rdfs:comment>
-=======
+    <owl:NamedIndividual rdf:about="http://example.org/sense#humanVoiceSound">
+        <rdf:type rdf:resource="http://example.org/sense#HearingAttribute"/>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://example.org/sense#lemonSmell -->
 
     <owl:NamedIndividual rdf:about="http://example.org/sense#lemonSmell">
         <rdf:type rdf:resource="http://example.org/sense#OlfactoryAttribute"/>
->>>>>>> ae8be9760e845c5c9c8eaab7df7e78f072cce725
     </owl:NamedIndividual>
     
 
 
-<<<<<<< HEAD
-    <!-- http://example.org/sense#lemonSmell -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#lemonSmell">
-        <rdf:type rdf:resource="http://example.org/sense#OlfactoryAttribute"/>
-=======
     <!-- http://example.org/sense#liquidFlowingSound -->
 
     <owl:NamedIndividual rdf:about="http://example.org/sense#liquidFlowingSound">
         <rdf:type rdf:resource="http://example.org/sense#HearingAttribute"/>
->>>>>>> ae8be9760e845c5c9c8eaab7df7e78f072cce725
     </owl:NamedIndividual>
     
 
 
-<<<<<<< HEAD
-    <!-- http://example.org/sense#liquidFlowingSound -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#liquidFlowingSound">
-=======
-    <!-- http://example.org/sense#mariana_voiceSound -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#mariana_voiceSound">
->>>>>>> ae8be9760e845c5c9c8eaab7df7e78f072cce725
-        <rdf:type rdf:resource="http://example.org/sense#HearingAttribute"/>
-    </owl:NamedIndividual>
-    
-
-
-<<<<<<< HEAD
-    <!-- http://example.org/sense#mariana_voiceSound -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#mariana_voiceSound">
-        <rdf:type rdf:resource="http://example.org/sense#HearingAttribute"/>
-=======
     <!-- http://example.org/sense#metalMaterial -->
 
     <owl:NamedIndividual rdf:about="http://example.org/sense#metalMaterial">
         <rdf:type rdf:resource="http://example.org/sense#Material"/>
->>>>>>> ae8be9760e845c5c9c8eaab7df7e78f072cce725
     </owl:NamedIndividual>
     
 
 
-<<<<<<< HEAD
-    <!-- http://example.org/sense#metalMaterial -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#metalMaterial">
-        <rdf:type rdf:resource="http://example.org/sense#Material"/>
-=======
     <!-- http://example.org/sense#mintySmell -->
 
     <owl:NamedIndividual rdf:about="http://example.org/sense#mintySmell">
         <rdf:type rdf:resource="http://example.org/sense#OlfactoryAttribute"/>
->>>>>>> ae8be9760e845c5c9c8eaab7df7e78f072cce725
     </owl:NamedIndividual>
     
 
 
-<<<<<<< HEAD
-    <!-- http://example.org/sense#mintySmell -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#mintySmell">
-        <rdf:type rdf:resource="http://example.org/sense#OlfactoryAttribute"/>
-=======
-    <!-- http://example.org/sense#motorSound -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#motorSound">
-        <rdf:type rdf:resource="http://example.org/sense#HearingAttribute"/>
->>>>>>> ae8be9760e845c5c9c8eaab7df7e78f072cce725
-    </owl:NamedIndividual>
-    
-
-
-<<<<<<< HEAD
     <!-- http://example.org/sense#motorSound -->
 
     <owl:NamedIndividual rdf:about="http://example.org/sense#motorSound">
@@ -1772,8 +1025,6 @@
     
 
 
-=======
->>>>>>> ae8be9760e845c5c9c8eaab7df7e78f072cce725
     <!-- http://example.org/sense#musicSound -->
 
     <owl:NamedIndividual rdf:about="http://example.org/sense#musicSound">
@@ -1790,259 +1041,144 @@
     
 
 
-<<<<<<< HEAD
     <!-- http://example.org/sense#noSmell -->
 
     <owl:NamedIndividual rdf:about="http://example.org/sense#noSmell">
         <rdf:type rdf:resource="http://example.org/sense#OlfactoryAttribute"/>
-=======
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://example.org/sense#noneState -->
 
     <owl:NamedIndividual rdf:about="http://example.org/sense#noneState">
         <rdf:type rdf:resource="http://example.org/sense#PhysicalState"/>
->>>>>>> ae8be9760e845c5c9c8eaab7df7e78f072cce725
     </owl:NamedIndividual>
     
 
 
-<<<<<<< HEAD
-    <!-- http://example.org/sense#noneState -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#noneState">
-=======
     <!-- http://example.org/sense#offState -->
 
     <owl:NamedIndividual rdf:about="http://example.org/sense#offState">
->>>>>>> ae8be9760e845c5c9c8eaab7df7e78f072cce725
         <rdf:type rdf:resource="http://example.org/sense#PhysicalState"/>
     </owl:NamedIndividual>
     
 
 
-<<<<<<< HEAD
-    <!-- http://example.org/sense#offState -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#offState">
-=======
     <!-- http://example.org/sense#onState -->
 
     <owl:NamedIndividual rdf:about="http://example.org/sense#onState">
->>>>>>> ae8be9760e845c5c9c8eaab7df7e78f072cce725
         <rdf:type rdf:resource="http://example.org/sense#PhysicalState"/>
     </owl:NamedIndividual>
     
 
 
-<<<<<<< HEAD
-    <!-- http://example.org/sense#onState -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#onState">
-=======
-    <!-- http://example.org/sense#openState -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#openState">
->>>>>>> ae8be9760e845c5c9c8eaab7df7e78f072cce725
-        <rdf:type rdf:resource="http://example.org/sense#PhysicalState"/>
-    </owl:NamedIndividual>
-    
-
-
-<<<<<<< HEAD
     <!-- http://example.org/sense#openState -->
 
     <owl:NamedIndividual rdf:about="http://example.org/sense#openState">
         <rdf:type rdf:resource="http://example.org/sense#PhysicalState"/>
-=======
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://example.org/sense#organicMaterial -->
 
     <owl:NamedIndividual rdf:about="http://example.org/sense#organicMaterial">
         <rdf:type rdf:resource="http://example.org/sense#Material"/>
->>>>>>> ae8be9760e845c5c9c8eaab7df7e78f072cce725
     </owl:NamedIndividual>
     
 
 
-<<<<<<< HEAD
-    <!-- http://example.org/sense#organicMaterial -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#organicMaterial">
-=======
     <!-- http://example.org/sense#paperMaterial -->
 
     <owl:NamedIndividual rdf:about="http://example.org/sense#paperMaterial">
->>>>>>> ae8be9760e845c5c9c8eaab7df7e78f072cce725
         <rdf:type rdf:resource="http://example.org/sense#Material"/>
     </owl:NamedIndividual>
     
 
 
-<<<<<<< HEAD
-    <!-- http://example.org/sense#paperMaterial -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#paperMaterial">
-=======
-    <!-- http://example.org/sense#plasticMaterial -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#plasticMaterial">
->>>>>>> ae8be9760e845c5c9c8eaab7df7e78f072cce725
-        <rdf:type rdf:resource="http://example.org/sense#Material"/>
-    </owl:NamedIndividual>
-    
-
-
-<<<<<<< HEAD
     <!-- http://example.org/sense#plasticMaterial -->
 
     <owl:NamedIndividual rdf:about="http://example.org/sense#plasticMaterial">
         <rdf:type rdf:resource="http://example.org/sense#Material"/>
-=======
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://example.org/sense#popcornSmell -->
 
     <owl:NamedIndividual rdf:about="http://example.org/sense#popcornSmell">
         <rdf:type rdf:resource="http://example.org/sense#OlfactoryAttribute"/>
->>>>>>> ae8be9760e845c5c9c8eaab7df7e78f072cce725
     </owl:NamedIndividual>
     
 
 
-<<<<<<< HEAD
-    <!-- http://example.org/sense#popcornSmell -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#popcornSmell">
-=======
-    <!-- http://example.org/sense#pungentSmell -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#pungentSmell">
->>>>>>> ae8be9760e845c5c9c8eaab7df7e78f072cce725
-        <rdf:type rdf:resource="http://example.org/sense#OlfactoryAttribute"/>
-    </owl:NamedIndividual>
-    
-
-
-<<<<<<< HEAD
     <!-- http://example.org/sense#pungentSmell -->
 
     <owl:NamedIndividual rdf:about="http://example.org/sense#pungentSmell">
         <rdf:type rdf:resource="http://example.org/sense#OlfactoryAttribute"/>
-=======
-    <!-- http://example.org/sense#robot01_voiceSound -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#robot01_voiceSound">
-        <rdf:type rdf:resource="http://example.org/sense#HearingAttribute"/>
->>>>>>> ae8be9760e845c5c9c8eaab7df7e78f072cce725
     </owl:NamedIndividual>
     
 
 
-<<<<<<< HEAD
-    <!-- http://example.org/sense#robot01_voiceSound -->
+    <!-- http://example.org/sense#robotVoiceSound -->
 
-    <owl:NamedIndividual rdf:about="http://example.org/sense#robot01_voiceSound">
+    <owl:NamedIndividual rdf:about="http://example.org/sense#robotVoiceSound">
         <rdf:type rdf:resource="http://example.org/sense#HearingAttribute"/>
-=======
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://example.org/sense#rockMaterial -->
 
     <owl:NamedIndividual rdf:about="http://example.org/sense#rockMaterial">
         <rdf:type rdf:resource="http://example.org/sense#Material"/>
->>>>>>> ae8be9760e845c5c9c8eaab7df7e78f072cce725
     </owl:NamedIndividual>
     
 
 
-<<<<<<< HEAD
-    <!-- http://example.org/sense#rockMaterial -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#rockMaterial">
-=======
     <!-- http://example.org/sense#rubberMaterial -->
 
     <owl:NamedIndividual rdf:about="http://example.org/sense#rubberMaterial">
->>>>>>> ae8be9760e845c5c9c8eaab7df7e78f072cce725
         <rdf:type rdf:resource="http://example.org/sense#Material"/>
     </owl:NamedIndividual>
     
 
 
-<<<<<<< HEAD
-    <!-- http://example.org/sense#rubberMaterial -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#rubberMaterial">
-        <rdf:type rdf:resource="http://example.org/sense#Material"/>
-=======
     <!-- http://example.org/sense#sadnessEmotion -->
 
     <owl:NamedIndividual rdf:about="http://example.org/sense#sadnessEmotion">
         <rdf:type rdf:resource="http://example.org/sense#EmotionalState"/>
         <rdfs:comment xml:lang="en">A negative emotion felt when an event is appraised as unpleasant, obstructive to one&apos;s goals and concerns, and one feels unable to cope with it or modify it. [Source: OCEAS]</rdfs:comment>
->>>>>>> ae8be9760e845c5c9c8eaab7df7e78f072cce725
     </owl:NamedIndividual>
     
 
 
-<<<<<<< HEAD
-    <!-- http://example.org/sense#sadnessEmotion -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#sadnessEmotion">
-        <rdf:type rdf:resource="http://example.org/sense#EmotionalState"/>
-        <rdfs:comment xml:lang="en">A negative emotion felt when an event is appraised as unpleasant, obstructive to one&apos;s goals and concerns, and one feels unable to cope with it or modify it. [Source: OCEAS]</rdfs:comment>
-=======
     <!-- http://example.org/sense#surpriseEmotion -->
 
     <owl:NamedIndividual rdf:about="http://example.org/sense#surpriseEmotion">
         <rdf:type rdf:resource="http://example.org/sense#EmotionalState"/>
         <rdfs:comment xml:lang="en">Surprise is a neutral emotion caused by encountering unexpected events of all kinds. May be experienced as negative if the surprising event is evaluated as negative, or positive if the surprising event is evaluated as positive. [Source: OCEAS]</rdfs:comment>
->>>>>>> ae8be9760e845c5c9c8eaab7df7e78f072cce725
     </owl:NamedIndividual>
     
 
 
-<<<<<<< HEAD
-    <!-- http://example.org/sense#surpriseEmotion -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#surpriseEmotion">
-        <rdf:type rdf:resource="http://example.org/sense#EmotionalState"/>
-        <rdfs:comment xml:lang="en">Surprise is a neutral emotion caused by encountering unexpected events of all kinds. May be experienced as negative if the surprising event is evaluated as negative, or positive if the surprising event is evaluated as positive. [Source: OCEAS]</rdfs:comment>
-=======
     <!-- http://example.org/sense#sweetSmell -->
 
     <owl:NamedIndividual rdf:about="http://example.org/sense#sweetSmell">
         <rdf:type rdf:resource="http://example.org/sense#OlfactoryAttribute"/>
->>>>>>> ae8be9760e845c5c9c8eaab7df7e78f072cce725
     </owl:NamedIndividual>
     
 
 
-<<<<<<< HEAD
-    <!-- http://example.org/sense#sweetSmell -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#sweetSmell">
-        <rdf:type rdf:resource="http://example.org/sense#OlfactoryAttribute"/>
-=======
-    <!-- http://example.org/sense#tVSound -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#tVSound">
-        <rdf:type rdf:resource="http://example.org/sense#HearingAttribute"/>
->>>>>>> ae8be9760e845c5c9c8eaab7df7e78f072cce725
-    </owl:NamedIndividual>
-    
-
-
-<<<<<<< HEAD
     <!-- http://example.org/sense#tvSound -->
 
     <owl:NamedIndividual rdf:about="http://example.org/sense#tvSound">
         <rdf:type rdf:resource="http://example.org/sense#HearingAttribute"/>
-=======
-    <!-- http://example.org/sense#unknownMaterial -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#unknownMaterial">
-        <rdf:type rdf:resource="http://example.org/sense#Material"/>
->>>>>>> ae8be9760e845c5c9c8eaab7df7e78f072cce725
     </owl:NamedIndividual>
     
 
 
-<<<<<<< HEAD
     <!-- http://example.org/sense#unknownMaterial -->
 
     <owl:NamedIndividual rdf:about="http://example.org/sense#unknownMaterial">
@@ -2053,19 +1189,7 @@
 
     <!-- http://example.org/sense#unknownSound -->
 
-=======
-    <!-- http://example.org/sense#unknownSound -->
-
->>>>>>> ae8be9760e845c5c9c8eaab7df7e78f072cce725
     <owl:NamedIndividual rdf:about="http://example.org/sense#unknownSound">
-        <rdf:type rdf:resource="http://example.org/sense#HearingAttribute"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://example.org/sense#voiceSound -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#voiceSound">
         <rdf:type rdf:resource="http://example.org/sense#HearingAttribute"/>
     </owl:NamedIndividual>
     
@@ -2104,12 +1228,6 @@
             <rdf:Description rdf:about="http://example.org/sense#RobotTouch"/>
             <rdf:Description rdf:about="http://example.org/sense#RobotVision"/>
         </owl:members>
-    </rdf:Description>
-    <rdf:Description>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDifferent"/>
-        <owl:distinctMembers rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://example.org/sense#P1961080822"/>
-        </owl:distinctMembers>
     </rdf:Description>
 </rdf:RDF>
 

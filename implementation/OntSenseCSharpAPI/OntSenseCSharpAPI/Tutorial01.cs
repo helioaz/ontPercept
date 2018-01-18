@@ -37,16 +37,6 @@ namespace OntSenseCSharpAPITest
 
         public static void Main(String[] args)
         {
-<<<<<<< HEAD
-=======
-
-	    // Start access to Sparql End Point
-            SparqlEndPoint instanceSparql = SparqlEndPoint.getInstance();       // gets the instance for the  singleton object : just one time at main method is enough
-	    instanceSparql.init (ONT_SENSE_URL);				// creates the endpoint access to triple store
-
-
-            CartesianPos cPos = new CartesianPos(0.90, 0.91, 0.92);     // creates a CartesianPos object with (x,y,z) = (0.90, 0.91, 0.92)
->>>>>>> ae8be9760e845c5c9c8eaab7df7e78f072cce725
 
             // Start access to Sparql End Point : just one time at main method is enough
             SparqlEndPoint instanceSparql = SparqlEndPoint.getInstance();       // gets the instance for the  singleton object
