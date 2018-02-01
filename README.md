@@ -25,7 +25,7 @@ The main characteristics of this ontology are:
   - to be adherence to the open source model with the availability of versions through the GitHub repository  This provision encourages open collaboration in the ontology evolution  and  APIs associated.	
   
   ## How to use onSense?
-  the best way is to access the wiki page of GitHub:  https://github.com/helioaz/ontSense/wiki
+ The best way is to access the wiki page of GitHub:  https://github.com/helioaz/ontSense/wiki
   
   ## Publications
   1. AZEVEDO, H.; BELO, J. P. R. ; ROMERO, R. A. F. . Reducing the gap between cognitive and robotic systems. In: 26th IEEE International Symposium on Robot and Human Interactive Communication - RO-MAN2017, 2017, Lisboa. 26th IEEE International Symposium on Robot and Human Interactive Communication - RO-MAN2017, 2017.
