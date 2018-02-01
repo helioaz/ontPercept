@@ -243,7 +243,7 @@ namespace OntSenseCSharpAPI
         "PREFIX owl: <http://www.w3.org/2002/07/owl#> " +
         "INSERT DATA" +
         "   {{" +
-        "       ontsense:T{0:D10} rdf:type ontsense:RobotHear;" +          // {0} defines the hear unique identifier  Ex:  T0000002122
+        "       ontsense:T{0:D10} rdf:type ontsense:RobotTouch;" +          // {0} defines the hear unique identifier  Ex:  T0000002122
         "       rdf:type owl:NamedIndividual;" +
         "       ontsense:occursAt 	\"{1}\"^^xsd:dateTime;" +              // {1} defines the instant of event ocurrence. It is adherent to XSD_DATETIME = @"yyyy-MM-ddThh:mm:ss.fff";
         "       ontsense:isPositionedAt ontsense:L{0:D10} ;" +             // {0} also defines the CartesianPosition  Ex:  P0000002122
