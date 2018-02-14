@@ -32,9 +32,9 @@ The main characteristics of this ontology are:
 
 2. AZEVEDO, H.; BELO, J. P. R. ; ROMERO, R. A. F. . Cognitive and Robotic Systems: Speeding up Integration and Results. In: 14rd Latin American Robotics Symposium - LARS?2017, 2017, Curitiba. 14rd Latin American Robotics Symposium - LARS?2017, 2017.
 
-3. BELO, J. P. R. ; AZEVEDO, H. ; ROMERO, R. A. F. . RHS Simulator for Robotic Cognitive Systems. In: 14rd Latin American Robotics Symposium - LARS?2017, 2017, Curitiba. 14rd Latin American Robotics Symposium - LARS?2017, 2017.
+3. BELO, J. P. R. ; AZEVEDO, H. ; ROMERO, R. A. F. . RHS Simulator for Robotic Cognitive Systems. In: 14rd Latin American Robotics Symposium - LARS-2017, 2017, Curitiba. 14rd Latin American Robotics Symposium - LARS?2017, 2017.
 
-4. ROMERO, R. A. F. ; RAMOS, J. J. G. ; AZEVEDO, H. . A Proposal of a Graduate Class for the Human Robot Interaction Area. In: 14rd Latin American Robotics Symposium - LARS?2017, 2017, Curitiba. 14rd Latin American Robotics Symposium - LARS?2017, 2017.
+4. ROMERO, R. A. F. ; RAMOS, J. J. G. ; AZEVEDO, H. . A Proposal of a Graduate Class for the Human Robot Interaction Area. In: 14rd Latin American Robotics Symposium - LARS-2017, 2017, Curitiba. 14rd Latin American Robotics Symposium - LARS?2017, 2017.
 
 5. BELO, J. P. R. ; ROMERO, R. A. F. ; AZEVEDO, H. . Simulador para sistemas cognitivos voltado para robótica social. In: XIII Simpósio Brasileiro de Automação Inteligente (SBAI) 2017, 2017, Porto Alegre. XIII Simpósio Brasileiro de Automação Inteligente (SBAI) 2017, 2017.
 
