@@ -29,7 +29,7 @@ namespace OntSenseCSharpAPI
 		private static long eventCount = 0;
 
 		/// Defines the object  responsable by the event generation. Note that, this knowledge is not always present. As an example, when an odor is present but the source is unknown.
-		protected Thing generateBy;
+		protected long generateBy;
 
 		/// abstract function that is responsibile in the subclasses for the information update.  
 		public abstract void insert();

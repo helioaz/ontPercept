@@ -16,8 +16,7 @@ namespace OntSenseCSharpAPI
 		/// The instant parameter represens the exact moment of the odor capture. 
 		/// The idObject parameter represents an unique identifier associated the object responsible to produce the the smell. 
 		/// The odor parameter identifies the odor.
-		/// 
-///  
+		///   
 		///  
 		public RobotSmell(DateTime instant, long idObject, OlfactoryAttribute odor)
 		{
