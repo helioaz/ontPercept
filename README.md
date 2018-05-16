@@ -25,16 +25,16 @@ The main characteristics of this ontology are:
   - to be adherence to the open source model with the availability of versions through the GitHub repository  This provision encourages open collaboration in the ontology evolution  and  APIs associated.	
   
   ## How to use onSense?
-  the best way is to access the wiki page of GitHub:  https://github.com/helioaz/ontSense/wiki
+ The best way is to access the wiki page of GitHub:  https://github.com/helioaz/ontSense/wiki
   
   ## Publications
   1. AZEVEDO, H.; BELO, J. P. R. ; ROMERO, R. A. F. . Reducing the gap between cognitive and robotic systems. In: 26th IEEE International Symposium on Robot and Human Interactive Communication - RO-MAN2017, 2017, Lisboa. 26th IEEE International Symposium on Robot and Human Interactive Communication - RO-MAN2017, 2017.
 
 2. AZEVEDO, H.; BELO, J. P. R. ; ROMERO, R. A. F. . Cognitive and Robotic Systems: Speeding up Integration and Results. In: 14rd Latin American Robotics Symposium - LARS?2017, 2017, Curitiba. 14rd Latin American Robotics Symposium - LARS?2017, 2017.
 
-3. BELO, J. P. R. ; AZEVEDO, H. ; ROMERO, R. A. F. . RHS Simulator for Robotic Cognitive Systems. In: 14rd Latin American Robotics Symposium - LARS?2017, 2017, Curitiba. 14rd Latin American Robotics Symposium - LARS?2017, 2017.
+3. BELO, J. P. R. ; AZEVEDO, H. ; ROMERO, R. A. F. . RHS Simulator for Robotic Cognitive Systems. In: 14rd Latin American Robotics Symposium - LARS-2017, 2017, Curitiba. 14rd Latin American Robotics Symposium - LARS?2017, 2017.
 
-4. ROMERO, R. A. F. ; RAMOS, J. J. G. ; AZEVEDO, H. . A Proposal of a Graduate Class for the Human Robot Interaction Area. In: 14rd Latin American Robotics Symposium - LARS?2017, 2017, Curitiba. 14rd Latin American Robotics Symposium - LARS?2017, 2017.
+4. ROMERO, R. A. F. ; RAMOS, J. J. G. ; AZEVEDO, H. . A Proposal of a Graduate Class for the Human Robot Interaction Area. In: 14rd Latin American Robotics Symposium - LARS-2017, 2017, Curitiba. 14rd Latin American Robotics Symposium - LARS?2017, 2017.
 
 5. BELO, J. P. R. ; ROMERO, R. A. F. ; AZEVEDO, H. . Simulador para sistemas cognitivos voltado para robótica social. In: XIII Simpósio Brasileiro de Automação Inteligente (SBAI) 2017, 2017, Porto Alegre. XIII Simpósio Brasileiro de Automação Inteligente (SBAI) 2017, 2017.
 
