@@ -26,9 +26,9 @@
     
 
 
-    <!-- http://example.org/sense#generateBy -->
+    <!-- http://example.org/sense#generateByObject -->
 
-    <owl:ObjectProperty rdf:about="http://example.org/sense#generateBy">
+    <owl:ObjectProperty rdf:about="http://example.org/sense#generateByObject">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:range rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Object"/>
@@ -79,7 +79,6 @@
     <owl:ObjectProperty rdf:about="http://example.org/sense#hasSmellType">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:range rdf:resource="http://example.org/sense#OlfactoryAttribute"/>
     </owl:ObjectProperty>
     
 
@@ -93,17 +92,10 @@
     
 
 
-    <!-- http://example.org/sense#hasTasteSense -->
+    <!-- http://example.org/sense#hasTasteType -->
 
-    <owl:ObjectProperty rdf:about="http://example.org/sense#hasTasteSense">
+    <owl:ObjectProperty rdf:about="http://example.org/sense#hasTasteType">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:range>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://example.org/sense#tasteSense"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.w3.org/2002/07/owl#rational"/>
-            </owl:Restriction>
-        </rdfs:range>
     </owl:ObjectProperty>
     
 
@@ -210,6 +202,26 @@
     
 
 
+    <!-- http://example.org/sense#chemicalLevel -->
+
+    <owl:DatatypeProperty rdf:about="http://example.org/sense#chemicalLevel">
+        <rdfs:subPropertyOf rdf:resource="http://example.org/sense#smellSense"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:comment xml:lang="en">represents the level of chemical odorant present in the environment. This level of odorant, along with nine others, completely identifies a specific odor. See DOI: 10.1371 / journal.pone.0073289</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://example.org/sense#decaynedLevel -->
+
+    <owl:DatatypeProperty rdf:about="http://example.org/sense#decaynedLevel">
+        <rdfs:subPropertyOf rdf:resource="http://example.org/sense#smellSense"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:comment xml:lang="en">represents the level of decayned odorant present in the environment. This level of odorant, along with nine others, completely identifies a specific odor. see DOI: 10.1371 / journal.pone.0073289</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
     <!-- http://example.org/sense#detail -->
 
     <owl:DatatypeProperty rdf:about="http://example.org/sense#detail">
@@ -217,6 +229,34 @@
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
         <rdfs:comment xml:lang="en">dependent on the identity of the sound, examples: for the case of the speech, it presents the sentence being pronounced; for the case of music, it presents the music being performed, for birds, it presents the type of bird; for barking, there is no detailed information.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://example.org/sense#fragrantLevel -->
+
+    <owl:DatatypeProperty rdf:about="http://example.org/sense#fragrantLevel">
+        <rdfs:subPropertyOf rdf:resource="http://example.org/sense#smellSense"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:comment xml:lang="en">represents the level of fragrante odorant present in the environment. This level of odorant, along with nine others, completely identifies a specific odor. see DOI: 10.1371 / journal.pone.0073289</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://example.org/sense#fruityLevel -->
+
+    <owl:DatatypeProperty rdf:about="http://example.org/sense#fruityLevel">
+        <rdfs:subPropertyOf rdf:resource="http://example.org/sense#smellSense"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:comment xml:lang="en">represents the level of fruity odorant present in the environment. This level of odorant, along with nine others, completely identifies a specific odor. see DOI: 10.1371 / journal.pone.0073289</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://example.org/sense#generateBy -->
+
+    <owl:DatatypeProperty rdf:about="http://example.org/sense#generateBy">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#long"/>
     </owl:DatatypeProperty>
     
 
@@ -257,6 +297,26 @@
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
         <rdfs:domain rdf:resource="http://example.org/sense#RobotHear"/>
         <rdfs:comment xml:lang="en">The sense of hearing processes sound information captured by microphones present in the robot.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://example.org/sense#lemonLevel -->
+
+    <owl:DatatypeProperty rdf:about="http://example.org/sense#lemonLevel">
+        <rdfs:subPropertyOf rdf:resource="http://example.org/sense#smellSense"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:comment xml:lang="en">represents the level of lemmon odorant present in the environment. This level of odorant, along with nine others, completely identifies a specific odor. see DOI: 10.1371 / journal.pone.0073289</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://example.org/sense#mintyLevel -->
+
+    <owl:DatatypeProperty rdf:about="http://example.org/sense#mintyLevel">
+        <rdfs:subPropertyOf rdf:resource="http://example.org/sense#smellSense"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:comment xml:lang="en">represents the level of minty odorant present in the environment. This level of odorant, along with nine others, completely identifies a specific odor. see DOI: 10.1371 / journal.pone.0073289</rdfs:comment>
     </owl:DatatypeProperty>
     
 
@@ -316,6 +376,16 @@
     
 
 
+    <!-- http://example.org/sense#popcornLevel -->
+
+    <owl:DatatypeProperty rdf:about="http://example.org/sense#popcornLevel">
+        <rdfs:subPropertyOf rdf:resource="http://example.org/sense#smellSense"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:comment xml:lang="en">represents the level of popcorn odorant present in the environment. This level of odorant, along with nine others, completely identifies a specific odor. see DOI: 10.1371 / journal.pone.0073289</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
     <!-- http://example.org/sense#pressure -->
 
     <owl:DatatypeProperty rdf:about="http://example.org/sense#pressure">
@@ -334,6 +404,16 @@
             </rdfs:Datatype>
         </rdfs:range>
         <rdfs:comment xml:lang="en">pressure exerted by the object, parameterized from 0 to 1</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://example.org/sense#pungentLevel -->
+
+    <owl:DatatypeProperty rdf:about="http://example.org/sense#pungentLevel">
+        <rdfs:subPropertyOf rdf:resource="http://example.org/sense#smellSense"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:comment xml:lang="en">represents the level of pungent odorant present in the environment. This level of odorant, along with nine others, completely identifies a specific odor. see DOI: 10.1371 / journal.pone.0073289</rdfs:comment>
     </owl:DatatypeProperty>
     
 
@@ -378,12 +458,44 @@
     
 
 
+    <!-- http://example.org/sense#smellSense -->
+
+    <owl:DatatypeProperty rdf:about="http://example.org/sense#smellSense">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://example.org/sense#RobotSmell"/>
+        <rdfs:range>
+            <rdfs:Datatype>
+                <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+                <owl:withRestrictions rdf:parseType="Collection">
+                    <rdf:Description>
+                        <xsd:minInclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.0</xsd:minInclusive>
+                    </rdf:Description>
+                    <rdf:Description>
+                        <xsd:maxInclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#double">1.0</xsd:maxInclusive>
+                    </rdf:Description>
+                </owl:withRestrictions>
+            </rdfs:Datatype>
+        </rdfs:range>
+    </owl:DatatypeProperty>
+    
+
+
     <!-- http://example.org/sense#sourness -->
 
     <owl:DatatypeProperty rdf:about="http://example.org/sense#sourness">
         <rdfs:subPropertyOf rdf:resource="http://example.org/sense#tasteSense"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:comment xml:lang="en">One of the four basic taste sensations that is typically induced  chiefly by acids and is mediated especially by receptors in taste buds at the lateral of the tongue.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://example.org/sense#sweetLevel -->
+
+    <owl:DatatypeProperty rdf:about="http://example.org/sense#sweetLevel">
+        <rdfs:subPropertyOf rdf:resource="http://example.org/sense#smellSense"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:comment xml:lang="en">represents the level of sweet odorant present in the environment. This level of odorant, along with nine others, completely identifies a specific odor. see DOI: 10.1371 / journal.pone.0073289</rdfs:comment>
     </owl:DatatypeProperty>
     
 
@@ -516,6 +628,15 @@
     
 
 
+    <!-- http://example.org/sense#woodyLevel -->
+
+    <owl:DatatypeProperty rdf:about="http://example.org/sense#woodyLevel">
+        <rdfs:subPropertyOf rdf:resource="http://example.org/sense#smellSense"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    </owl:DatatypeProperty>
+    
+
+
     <!-- http://www.inf.ufrgs.br/phi-group/ontologies/basicPos.owl#cartesianX -->
 
     <rdf:Description rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/basicPos.owl#cartesianX">
@@ -626,15 +747,6 @@
     
 
 
-    <!-- http://example.org/sense#OlfactoryAttribute -->
-
-    <owl:Class rdf:about="http://example.org/sense#OlfactoryAttribute">
-        <rdfs:subClassOf rdf:resource="http://example.org/sense#PerceptualAttribute"/>
-        <rdfs:comment>The Class of properties that are detectable by smell.</rdfs:comment>
-    </owl:Class>
-    
-
-
     <!-- http://example.org/sense#PerceptualAttribute -->
 
     <owl:Class rdf:about="http://example.org/sense#PerceptualAttribute">
@@ -703,6 +815,7 @@
                 </owl:intersectionOf>
             </owl:Class>
         </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://example.org/sense#RobotPerceptionEvent"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://example.org/sense#isPositionedAt"/>
@@ -720,16 +833,16 @@
         <rdfs:subClassOf rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Abstract"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://example.org/sense#generateBy"/>
+                <owl:onProperty rdf:resource="http://example.org/sense#hasCaptureTime"/>
                 <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onClass rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#Object"/>
+                <owl:onClass rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#TimePoint"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://example.org/sense#hasCaptureTime"/>
+                <owl:onProperty rdf:resource="http://example.org/sense#generateBy"/>
                 <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onClass rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#TimePoint"/>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#long"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment>Represents the robot&apos;s perception about the environment.</rdfs:comment>
@@ -740,18 +853,7 @@
     <!-- http://example.org/sense#RobotSmell -->
 
     <owl:Class rdf:about="http://example.org/sense#RobotSmell">
-        <owl:equivalentClass>
-            <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="http://example.org/sense#RobotPerceptionEvent"/>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://example.org/sense#hasSmellType"/>
-                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                        <owl:onClass rdf:resource="http://example.org/sense#OlfactoryAttribute"/>
-                    </owl:Restriction>
-                </owl:intersectionOf>
-            </owl:Class>
-        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://example.org/sense#RobotPerceptionEvent"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://example.org/sense#isPositionedAt"/>
@@ -858,9 +960,6 @@
     
 
 
-    
-
-
     <!-- http://example.org/sense#angerEmotion -->
 
     <owl:NamedIndividual rdf:about="http://example.org/sense#angerEmotion">
@@ -894,14 +993,6 @@
     
 
 
-    <!-- http://example.org/sense#chemicalSmell -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#chemicalSmell">
-        <rdf:type rdf:resource="http://example.org/sense#OlfactoryAttribute"/>
-    </owl:NamedIndividual>
-    
-
-
     <!-- http://example.org/sense#closeState -->
 
     <owl:NamedIndividual rdf:about="http://example.org/sense#closeState">
@@ -914,14 +1005,6 @@
 
     <owl:NamedIndividual rdf:about="http://example.org/sense#clothMaterial">
         <rdf:type rdf:resource="http://example.org/sense#Material"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://example.org/sense#decayedSmell -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#decayedSmell">
-        <rdf:type rdf:resource="http://example.org/sense#OlfactoryAttribute"/>
     </owl:NamedIndividual>
     
 
@@ -940,22 +1023,6 @@
     <owl:NamedIndividual rdf:about="http://example.org/sense#fearEmotion">
         <rdf:type rdf:resource="http://example.org/sense#EmotionalState"/>
         <rdfs:comment xml:lang="en">An activated, aversive emotion that motivates attempts to cope with events that provide threats to the survival or well-being of organisms. Characterised by feelings of threat and impending doom, and by an urge to get out of the situation. [Source: OCEAS]</rdfs:comment>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://example.org/sense#fragrantSmell -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#fragrantSmell">
-        <rdf:type rdf:resource="http://example.org/sense#OlfactoryAttribute"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://example.org/sense#fruitySmell -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#fruitySmell">
-        <rdf:type rdf:resource="http://example.org/sense#OlfactoryAttribute"/>
     </owl:NamedIndividual>
     
 
@@ -985,14 +1052,6 @@
     
 
 
-    <!-- http://example.org/sense#lemonSmell -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#lemonSmell">
-        <rdf:type rdf:resource="http://example.org/sense#OlfactoryAttribute"/>
-    </owl:NamedIndividual>
-    
-
-
     <!-- http://example.org/sense#liquidFlowingSound -->
 
     <owl:NamedIndividual rdf:about="http://example.org/sense#liquidFlowingSound">
@@ -1005,14 +1064,6 @@
 
     <owl:NamedIndividual rdf:about="http://example.org/sense#metalMaterial">
         <rdf:type rdf:resource="http://example.org/sense#Material"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://example.org/sense#mintySmell -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#mintySmell">
-        <rdf:type rdf:resource="http://example.org/sense#OlfactoryAttribute"/>
     </owl:NamedIndividual>
     
 
@@ -1037,14 +1088,6 @@
 
     <owl:NamedIndividual rdf:about="http://example.org/sense#neutralEmotion">
         <rdf:type rdf:resource="http://example.org/sense#EmotionalState"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://example.org/sense#noSmell -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#noSmell">
-        <rdf:type rdf:resource="http://example.org/sense#OlfactoryAttribute"/>
     </owl:NamedIndividual>
     
 
@@ -1105,22 +1148,6 @@
     
 
 
-    <!-- http://example.org/sense#popcornSmell -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#popcornSmell">
-        <rdf:type rdf:resource="http://example.org/sense#OlfactoryAttribute"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://example.org/sense#pungentSmell -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#pungentSmell">
-        <rdf:type rdf:resource="http://example.org/sense#OlfactoryAttribute"/>
-    </owl:NamedIndividual>
-    
-
-
     <!-- http://example.org/sense#robotVoiceSound -->
 
     <owl:NamedIndividual rdf:about="http://example.org/sense#robotVoiceSound">
@@ -1163,14 +1190,6 @@
     
 
 
-    <!-- http://example.org/sense#sweetSmell -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#sweetSmell">
-        <rdf:type rdf:resource="http://example.org/sense#OlfactoryAttribute"/>
-    </owl:NamedIndividual>
-    
-
-
     <!-- http://example.org/sense#tvSound -->
 
     <owl:NamedIndividual rdf:about="http://example.org/sense#tvSound">
@@ -1199,14 +1218,6 @@
 
     <owl:NamedIndividual rdf:about="http://example.org/sense#woodMaterial">
         <rdf:type rdf:resource="http://example.org/sense#Material"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://example.org/sense#woodySmell -->
-
-    <owl:NamedIndividual rdf:about="http://example.org/sense#woodySmell">
-        <rdf:type rdf:resource="http://example.org/sense#OlfactoryAttribute"/>
     </owl:NamedIndividual>
     
 

@@ -18,20 +18,21 @@ namespace OntSenseCSharpAPI
 		/// The odor parameter identifies the odor.
 		///   
 		///  
-		public RobotSmell(DateTime instant, long idObject, OlfactoryAttribute odor)
+		public RobotSmell(DateTime instant, long idObject, OdorComposition odor)
 		{
             long countEv = getEventCount();          // get a unique identifier for position and color
 
             // to create a Sparql command for generate the olfatory information
-            sSmell = string.Format(SparqlAccess.INSERT_SMELL, countEv, instant.ToString(SparqlAccess.XSD_DATETIME), idObject, odor);
-
+            sSmell = string.Format(SparqlAccess.INSERT_SMELL, countEv, instant.ToString(SparqlAccess.XSD_DATETIME), idObject,
+                                   odor.chemicalLevel, odor.decayedLevel, odor.fragrantLevel, odor.fruityLevel, odor.lemonLevel,
+                                   odor.mintyLevel, odor.popocornLevel, odor.pungentLevel, odor.sweetLevel, odor.woodyLevel);
         }
 
 		/// Constructor of the RobotSmell class. The objective is to create a instance for a odor perception. 
 		/// The instant parameter represens the exact moment of the odor capture.
 		///  The pos parameter represents the position of an unknow object responsible to produce the the smell. 
 		/// The odor parameter identifies the odor.
-		public RobotSmell(DateTime instant, CartesianPos pos, OlfactoryAttribute odor)
+		public RobotSmell(DateTime instant, CartesianPos pos, OdorComposition odor)
 		{
             long countEv = getEventCount();          // get a unique identifier for position and color
 
@@ -42,8 +43,10 @@ namespace OntSenseCSharpAPI
 
 
             // to create a Sparql command for generate the olfatory information
-            sSmell = string.Format(SparqlAccess.INSERT_SMELL_POS, countEv, instant.ToString(SparqlAccess.XSD_DATETIME), odor);
-
+            sSmell = string.Format(SparqlAccess.INSERT_SMELL_POS, countEv, instant.ToString(SparqlAccess.XSD_DATETIME), 
+                                   odor.chemicalLevel, odor.decayedLevel, odor.fragrantLevel, odor.fruityLevel, odor.lemonLevel, 
+                                   odor.mintyLevel, odor.popocornLevel, odor.pungentLevel, odor.sweetLevel, odor.woodyLevel);
+           
 
         }
 

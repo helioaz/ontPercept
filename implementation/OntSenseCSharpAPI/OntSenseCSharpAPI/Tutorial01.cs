@@ -194,11 +194,12 @@ namespace OntSenseCSharpAPITest
 
             //
             // creates a RobotSmell object with Smell	
-            //		
+            //
+            OdorComposition odor = new OdorComposition(0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.7, 0.8, 0.0, 0.0);
             RobotSmell rs1 = new RobotSmell(
                 DateTime.Now,                           // the event occurs now
-                1000100000,                             // object  identifier
-                OlfactoryAttribute.woodySmell);           // it is a forest odor
+                1000102018,                             // object  identifier
+                odor);                                   // it is an odor with 0.8 of pungent and 0.7 of popocorn
 
 
             try                                         // Try to access a resource.
@@ -221,7 +222,7 @@ namespace OntSenseCSharpAPITest
             RobotSmell rs2 = new RobotSmell(
                 DateTime.Now,                           // the event occurs now
                 cPos,                                   // source position
-                OlfactoryAttribute.decayedSmell);           // it is a putrid odor
+                odor);                                  // it is an odor with 0.8 of pungent and 0.7 of popocorn
 
 
             try                                         // Try to access a resource.
@@ -234,9 +235,6 @@ namespace OntSenseCSharpAPITest
                 Console.WriteLine(e);                   // change for your: LogError(e);     // Call a custom error logging procedure.
                 throw;                                  // Re-throw the error. Probaly will borken the simulator
             }
-
-
-
 
 
             //

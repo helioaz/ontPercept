@@ -27,6 +27,7 @@ namespace OntSenseCSharpAPI
     /// This class implements the acess for Spaqrl endPoint. It try a conection with the endPoint located in http://localhost:3030/ontsense
     /// In this version whe are using the Fuseki triple store, but using Sparql endpint concept any other triple store could be used.
     /// This class is implemented using the Singleton pattern.
+    ///  WARNING: In the Unity software this module was changed.
     public class SparqlEndPoint
     {
         private static SparqlEndPoint instance;

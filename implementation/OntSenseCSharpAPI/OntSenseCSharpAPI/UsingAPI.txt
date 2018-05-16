@@ -20,4 +20,5 @@
 To use this API you must access the page:
 https://github.com/helioaz/ontSense/wiki
 
+Sorry !!!
 No duplication efforts must have to exist in the world !!!

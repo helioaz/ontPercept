@@ -232,7 +232,16 @@ namespace OntSenseCSharpAPI
         "       rdf:type owl:NamedIndividual;" +
         "       ontsense:occursAt 	\"{1}\"^^xsd:dateTime;" +            // {1} defines the instant of event ocurrence. It is adherent to XSD_DATETIME = @"yyyy-MM-ddThh:mm:ss.fff";
         "       ontsense:isPositionedAt ontsense:L{0:D10} ;" +           // {0} also defines the CartesianPosition  Ex:  L0000002111
-        "       ontsense:hasSmellType ontsense:{2} ." +                  // {2} defines the kind of smell
+        "       ontsense:chemicalLevel \"{2:G}\"^^xsd:double ;" +        // {2} defines the chemicalLevel odorant 	
+        "       ontsense:decayedLevel  \"{3:G}\"^^xsd:double ;" +        // {3} defines the decayedLevel odorant 	
+        "       ontsense:fragrantLevel \"{4:G}\"^^xsd:double ;" +        // {4} defines the fragrantLevel odorant 	
+        "       ontsense:fruityLevel   \"{5:G}\"^^xsd:double ;" +        // {5} defines the fruityLevel odorant 	
+        "       ontsense:lemonLevel    \"{6:G}\"^^xsd:double ;" +        // {6} defines the lemonLevel odorant 
+        "       ontsense:mintyLevel    \"{7:G}\"^^xsd:double ;" +        // {7} defines the mintyLevel odorant  	
+        "       ontsense:popocornLevel \"{8:G}\"^^xsd:double ;" +        // {8} defines the popocornLevel odorant 	
+        "       ontsense:pungentLevel  \"{9:G}\"^^xsd:double ;" +        // {9} defines the pungentLevel odorant 	
+        "       ontsense:sweetLevel    \"{10:G}\"^^xsd:double ;" +       // {10} defines the sweetLevel odorant 	
+        "       ontsense:sweetLevel    \"{11:G}\"^^xsd:double ." +       // {11} defines the sweetLevel odorant 
         "}}";
 
 
@@ -287,14 +296,21 @@ namespace OntSenseCSharpAPI
         "PREFIX owl: <http://www.w3.org/2002/07/owl#> " +
         "INSERT DATA" +
         "   {{" +
-        "       ontsense:S{0:D10} rdf:type ontsense:RobotSmell;" +       // {0} defines the Smell unique identifier  Ex:  S0000002222
+        "       ontsense:S{0:D10} rdf:type ontsense:RobotSmell;" +        // {0} defines the Smell unique identifier  Ex:  S0000002222
         "       rdf:type owl:NamedIndividual;" +
-        "       ontsense:occursAt 	\"{1}\"^^xsd:dateTime;" +            // {1} defines the instant of event ocurrence. It is adherent to XSD_DATETIME = @"yyyy-MM-ddThh:mm:ss.fff";
-        "       ontsense:generateBy \"{2}\"^^xsd:long ;" +               // {2} defines the unique objectId  received from Unity Ex:  1234567892
-        "       ontsense:hasSmellType ontsense:{3} ." +                  // {3} defines the kind of smell
+        "       ontsense:occursAt 	\"{1}\"^^xsd:dateTime;" +             // {1} defines the instant of event ocurrence. It is adherent to XSD_DATETIME = @"yyyy-MM-ddThh:mm:ss.fff";
+        "       ontsense:generateBy \"{2}\"^^xsd:long ;" +                // {2} defines the unique objectId  received from Unity Ex:  1234567892
+        "       ontsense:chemicalLevel \"{3:G}\"^^xsd:double ;" +         // {3} defines the chemicalLevel odorant 	
+        "       ontsense:decayedLevel  \"{4:G}\"^^xsd:double ;" +         // {4} defines the decayedLevel odorant 	
+        "       ontsense:fragrantLevel \"{5:G}\"^^xsd:double ;" +         // {5} defines the fragrantLevel odorant 	
+        "       ontsense:fruityLevel   \"{6:G}\"^^xsd:double ;" +         // {6} defines the fruityLevel odorant 	
+        "       ontsense:lemonLevel    \"{7:G}\"^^xsd:double ;" +         // {7} defines the lemonLevel odorant 
+        "       ontsense:mintyLevel    \"{8:G}\"^^xsd:double ;" +         // {8} defines the mintyLevel odorant  	
+        "       ontsense:popocornLevel \"{9:G}\"^^xsd:double ;" +         // {9} defines the popocornLevel odorant 	
+        "       ontsense:pungentLevel  \"{10:G}\"^^xsd:double ;" +        // {10} defines the pungentLevel odorant 	
+        "       ontsense:sweetLevel    \"{11:G}\"^^xsd:double ;" +        // {11} defines the sweetLevel odorant 	
+        "       ontsense:sweetLevel    \"{12:G}\"^^xsd:double ." +        // {12} defines the sweetLevel odorant 
         "}}";
-
-
 
 
         /// script for a sparql insert operation with touch sense  information
