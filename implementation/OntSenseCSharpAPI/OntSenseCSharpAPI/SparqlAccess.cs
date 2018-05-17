@@ -241,7 +241,7 @@ namespace OntSenseCSharpAPI
         "       ontsense:popocornLevel \"{8:G}\"^^xsd:double ;" +        // {8} defines the popocornLevel odorant 	
         "       ontsense:pungentLevel  \"{9:G}\"^^xsd:double ;" +        // {9} defines the pungentLevel odorant 	
         "       ontsense:sweetLevel    \"{10:G}\"^^xsd:double ;" +       // {10} defines the sweetLevel odorant 	
-        "       ontsense:sweetLevel    \"{11:G}\"^^xsd:double ." +       // {11} defines the sweetLevel odorant 
+        "       ontsense:woodyLevel    \"{11:G}\"^^xsd:double ." +       // {11} defines the woodyLevel odorant 
         "}}";
 
 
@@ -309,7 +309,7 @@ namespace OntSenseCSharpAPI
         "       ontsense:popocornLevel \"{9:G}\"^^xsd:double ;" +         // {9} defines the popocornLevel odorant 	
         "       ontsense:pungentLevel  \"{10:G}\"^^xsd:double ;" +        // {10} defines the pungentLevel odorant 	
         "       ontsense:sweetLevel    \"{11:G}\"^^xsd:double ;" +        // {11} defines the sweetLevel odorant 	
-        "       ontsense:sweetLevel    \"{12:G}\"^^xsd:double ." +        // {12} defines the sweetLevel odorant 
+        "       ontsense:woodyLevel    \"{12:G}\"^^xsd:double ." +        // {12} defines the woodyLevel odorant 
         "}}";
 
 
