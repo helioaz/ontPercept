@@ -22,6 +22,7 @@ import java.util.Date;
  * 
  */
 public class RobotTaste extends RobotPerceptionEvent {
+	private long objectId;		// this number represents the unique identifier of the object 
 
 	private double bitterness;
 
@@ -40,9 +41,9 @@ public class RobotTaste extends RobotPerceptionEvent {
 	 * The idObject parameter represents an unique identifier associated with the object responsible to produce  the taste perception. 
 	 * The bitterness, saltness, sourness, sweetness and  umani represent specific  caractheristics of the taste perception.
 	 */
-	public RobotTaste(Date instant, Thing thingObj, double bitter, double salt, double sour, double sweet, double umani) {
+	public RobotTaste(Date instant, long objectId, double bitter, double salt, double sour, double sweet, double umani) {
 		occurs = instant;
-		generateBy = thingObj;				// Great. There is a Thing object
+		this.objectId = objectId;			
 		bitterness = bitter;
 		saltness = salt;
 		sourness = sour;

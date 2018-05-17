@@ -20,18 +20,36 @@ package br.usp.ontSenseJavaAPI;
  */
 public enum EmotionalState {
 
-	angerEmotion,
+	angerEmotion ("anger"),
 
-	disgustEmotion,
+	disgustEmotion ("disgust"),
 
-	fearEmotion,
+	fearEmotion ("fear"),
 
-	happinessEmotion,
+	happinessEmotion ("happiness"),
 
-	neutralEmotion,
+	neutralEmotion ("neutral"),
 
-	sadnessEmotion,
+	sadnessEmotion ("sadness"),
 
-	supriseEmotion;
+	supriseEmotion ("suprise");
+
+
+
+    private final String textRepresentation;
+
+    private EmotionalState(String textRepresentation) {
+        this.textRepresentation = textRepresentation;
+    }
+
+    @Override public String toString() {
+         return textRepresentation;
+    }
+
+
+
+
+
+
 
 }

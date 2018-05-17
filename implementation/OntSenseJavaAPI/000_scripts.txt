@@ -1,0 +1,77 @@
+PREFIX ontsense: <http://example.org/sense#> 
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> 
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+PREFIX sumo: <http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#> 		
+SELECT DISTINCT * 
+WHERE { 
+  ?subject 	rdf:type 		sumo:Object ;
+  		ontsense:objectId	?objectId ;					
+		ontsense:isPositionedAt	?isPositionedAt .
+  OPTIONAL {   	?subject ontsense:hasColor		?hasColor . }
+  OPTIONAL {   	?subject ontsense:isMadeOf		?isMadeOf . }
+  OPTIONAL {   	?subject ontsense:tag			?tag . }		
+  OPTIONAL {   	?subject ontsense:associateURI		?associateURI . }		
+  OPTIONAL {   	?subject ontsense:hasInternalState	?hasInternalState . }  
+}
+ORDERBY ?subject
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+PREFIX ontsense: <http://example.org/sense#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX sumo: <http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#>
+PREFIX ont: <http://purl.org/net/ns/ontology-annot#>
+PREFIX basicPos: <http://www.inf.ufrgs.br/phi-group/ontologies/basicPos.owl#>
+PREFIX cora: <http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#>
+
+SELECT DISTINCT ?subject ?property	?object
+WHERE 
+{ 
+#       ?subject rdf:type 	basicPos:CartesianPositionPoint .
+#		?subject 		rdf:type 		cora:Robot .
+#		ontsense:H1961080851 ?property   ?object .  
+
+#       	?subject  ?property    ?object    .
+ 
+}
+
+
+
+
+
+PREFIX ontsense: <http://example.org/sense#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+SELECT DISTINCT *
+WHERE {
+  ?subject 	rdf:type 			ontsense:RobotHear ;
+    		ontsense:occursAt 		?time ;  						 
+    		ontsense:hasSoundType		?soundType ;
+    		ontsense:volume 		?volume .						
+  OPTIONAL {   	?subject ontsense:generateBy 		?object . }
+  OPTIONAL {   	?subject ontsense:isPositionedAt 	?valuePos . } 
+  OPTIONAL {   	?subject ontsense:detail 		?detail . } 				
+}
+    ORDERBY ?time 
+
+
+
+
+

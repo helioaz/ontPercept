@@ -19,18 +19,10 @@
 ///      the logging for java package log4j: log4j.properties
 ///      Only errors are presented. If desire a more verbose information remove this configuration file.
 ///
-///   2. Execute this tutorial and see the individuals present in the triple store.
-///      The file ontsensePlusData.owl (used to feed the triple store) contains the ontology and a set
-///      of individuals.
+///   2. Execute this tutorial: ./exec.sh Tutorial03.sh.
+///      The file ontsense.owl (used to feed the triple store) contains the ontology and a set of individuals
 ///      Remember: after read the data, all RDF triple will be erased by the API.
 ///
-///   3. If you desire: inserte additional individuals or query the dataset using your browser 
-///      - use the URL : localhost:3030
-///      - access the dataset \ontsense
-///      - to update localhost:3030/ontsense use =>     use: http://localhost:3030/ontsense/update
-///      - to query  localhost:3030/ontsense use =>     use: http://localhost:3030/ontsense/sparql
-///
-///   4. Ctl. C to finish the execution.
 /// 
 
 
@@ -41,10 +33,10 @@ import java.util.Scanner;
 
 import br.usp.ontSenseJavaAPI.*;
 
-public class Tutorial01 {
+public class Tutorial03{
 
 
-        private static final String ONT_SENSE_URL = "http://localhost:3030/ontsense";	// URL address of the triple store
+    private static final String ONT_SENSE_URL = "http://localhost:3030/ontsense";	// URL address of the triple store
 	private static  SparqlEndPoint instanceSparql;					// mantain the instance of Sparql end point access	
 
 
@@ -54,17 +46,28 @@ public class Tutorial01 {
 	    Scanner sc = new Scanner(System.in);
 
 	    try {		
-	    	//
-	    	// define the sparql endpoint  used to access the triple store and load OWL file with ontSense ontology
-	    	//
-            	instanceSparql = SparqlEndPoint.getInstance();   		// gets the instance for the  singleton object  
-										// just one time at main method is enough
-	    	instanceSparql.init ("../../Projeto/Protege/ontsensePlusData.owl", ONT_SENSE_URL );
+	    //
+	    // define the sparql endpoint  used to access the triple store and load OWL file with ontSense ontology
+	    //
+        instanceSparql = SparqlEndPoint.getInstance();   		// gets the instance for the  singleton object  
+																// just one time at main method is enough
+	    instanceSparql.init ("../../Projeto/Protege/ontsense.owl", ONT_SENSE_URL );
+		System.out.println("\n\nReading ontoSense ontology and a group of individuals (You must supply !!!...");
 
-	    	//
-	    	// gets all perception information
-	    	//
+	   	//
+	   	// We now that are data there. Now let us remove the individuals
+	   	//
+		System.out.println("\n\nNow that are data there, let us remove all the individuals ...");
+	    instanceSparql.cleanUpAllInfo();
+
+	    //
+	    // gets all perception information again. Just checking !
+	    //
+		System.out.println("\n\nOk. Getting the individuals to check if they were removed...");
 	    	instanceSparql.executeSparqlQuery();
+	   	printIndividuals();			// let us see the result...
+
+
 	    }
 	    catch (Exception e) {
 		System.out.println(e);
@@ -73,6 +76,20 @@ public class Tutorial01 {
 		System.exit(1); 		// Hello Houston. We have a problem!
 	    }
 
+
+	    System.out.println("\n\nTo stop this Tutorial enter any string ...");
+	    sc.nextLine();		// read a line
+	    System.exit(0); 		// All right. That's one small step for a man, one giant leap for mankind...
+
+
+	}
+
+
+	/// #
+	///   printIndividuals()
+	///   Print all objects read from the triple store
+	/// #
+	public static void printIndividuals() {
 
 	    // go through Map structure recovering the position information
 	    System.out.println("\n******  position information  ****** ");
@@ -130,44 +147,7 @@ public class Tutorial01 {
     		System.out.println(e.getKey() + ": " + e.getValue());
 
 
-
-
-	   //
-	   // Finally, Just playing to recognize hierarchy between classes in Java
-	   //
-	   System.out.println("\n\nJust playing to recognize hierarchy between classes in Java ...");
-	   Human objHuman = new Human (1961080812, "Mariana", "Human", null, null, PhysicalState.noneState, 
-				       Material.organicMaterial, "http://localhost", EmotionalState.happinessEmotion);
-
-	   Thing objThing = objHuman;					// saves the reference in a Thing object
-
-	   if (Human.class == objThing.getClass()) {			// is the runtime class of objThing equal to Human?
-	   		Human mariana = (Human) objThing;
-			System.out.println("Mariana = " + mariana);
-	   }
-	   else 
-			System.out.println("It was not able to recognize the obvius relationship");
-
-
-
-	    System.out.println("\n\nTo stop this Tutorial enter any string ...");
-	    sc.nextLine();		// read a line
-	    System.exit(0); 		// All right. That's one small step for a man, one giant leap for mankind...
-
-
-	}
-
-
-
-
-
-
-
-
-
-
-
-
+	}   // end   printIndividuals()
 
 
 

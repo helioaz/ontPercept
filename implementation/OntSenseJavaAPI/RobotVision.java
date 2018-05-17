@@ -29,7 +29,7 @@ public class RobotVision extends RobotPerceptionEvent {
 	 * 
 	 * 
 	 */
-	public RobotVision(Date instant, Thing obj) {
+	public RobotVision(Date instant, long obj) {
 		occurs = instant;
 		generateBy = obj;				// Great. There is a Thing object
 	}

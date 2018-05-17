@@ -70,7 +70,7 @@ public class Thing {
 
 	/**
 	 * Constructor for the Thing class. The objective is to create a instance of an inanimate object. 
-	 * All  parameters together defines this object.
+	 * All  parameters together defines this object. This constructor is used as super method in classes Human and Robot
 	 * 
 	 *  
 	 */

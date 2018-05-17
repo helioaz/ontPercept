@@ -1,7 +1,7 @@
 #! /bin/bash
 
 #
-#  compila arquivo Java fornecido como parametro na linha de comandos $1
+#  compila todos os arquivos Java presentes no diretório
 #  
 #  Tanto a compilação quanto a execução devem tratar com carinho dos pacotes associados ao seu executável.
 #  Ao contrario do pensamento comum, a forma de identificar o caminho depende se voce tem archives (zip, jar),
@@ -32,5 +32,10 @@
 #javac -d ./ -classpath "./:/home/hazevedo/Dropbox/02_Tese_Doutorado/DesenvolvimentoTese/Implementacao/OntSenseJavaAPI/*:/home/hazevedo/localbin/apache-jena-3.2.0/lib/*"  *.java
 
 #javac -d ./ -classpath "/home/hazevedo/Dropbox/02_Tese_Doutorado/DesenvolvimentoTese/Implementacao/OntSenseJavaAPI/*:/home/hazevedo/localbin/apache-jena-3.2.0/lib/*"  *.java
-
+echo  "   "
+echo  "**************Compilando todos os arquivos presentes no diretório"
 javac -g -d ./ -classpath "/home/hazevedo/localbin/apache-jena-3.2.0/lib/*"  *.java
+
+echo  "   "
+echo  "**************Criando o arquivo ontSenseJavaAPI.jar que deve ser utilizado na utilização desta biblioteca"
+jar -cvf ontSenseJavaAPI.jar br/usp/ontSenseJavaAPI/ 

@@ -238,7 +238,7 @@ namespace OntSenseCSharpAPI
         "       ontsense:fruityLevel   \"{5:G}\"^^xsd:double ;" +        // {5} defines the fruityLevel odorant 	
         "       ontsense:lemonLevel    \"{6:G}\"^^xsd:double ;" +        // {6} defines the lemonLevel odorant 
         "       ontsense:mintyLevel    \"{7:G}\"^^xsd:double ;" +        // {7} defines the mintyLevel odorant  	
-        "       ontsense:popocornLevel \"{8:G}\"^^xsd:double ;" +        // {8} defines the popocornLevel odorant 	
+        "       ontsense:popcornLevel  \"{8:G}\"^^xsd:double ;" +        // {8} defines the popcornLevel odorant 	
         "       ontsense:pungentLevel  \"{9:G}\"^^xsd:double ;" +        // {9} defines the pungentLevel odorant 	
         "       ontsense:sweetLevel    \"{10:G}\"^^xsd:double ;" +       // {10} defines the sweetLevel odorant 	
         "       ontsense:woodyLevel    \"{11:G}\"^^xsd:double ." +       // {11} defines the woodyLevel odorant 
@@ -306,7 +306,7 @@ namespace OntSenseCSharpAPI
         "       ontsense:fruityLevel   \"{6:G}\"^^xsd:double ;" +         // {6} defines the fruityLevel odorant 	
         "       ontsense:lemonLevel    \"{7:G}\"^^xsd:double ;" +         // {7} defines the lemonLevel odorant 
         "       ontsense:mintyLevel    \"{8:G}\"^^xsd:double ;" +         // {8} defines the mintyLevel odorant  	
-        "       ontsense:popocornLevel \"{9:G}\"^^xsd:double ;" +         // {9} defines the popocornLevel odorant 	
+        "       ontsense:popcornLevel \"{9:G}\"^^xsd:double ;" +         // {9} defines the popcornLevel odorant 	
         "       ontsense:pungentLevel  \"{10:G}\"^^xsd:double ;" +        // {10} defines the pungentLevel odorant 	
         "       ontsense:sweetLevel    \"{11:G}\"^^xsd:double ;" +        // {11} defines the sweetLevel odorant 	
         "       ontsense:woodyLevel    \"{12:G}\"^^xsd:double ." +        // {12} defines the woodyLevel odorant 

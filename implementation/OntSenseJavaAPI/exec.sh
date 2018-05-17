@@ -30,13 +30,15 @@
 #    - Jena package path: /home/hazevedo/localbin/apache-jena-3.2.0/lib/*
 #
 # ATENÇÃO 4:
-# Para executar com debugger Java basta trocar java por jdb. O arquivo jdb.cmd contem alguns comandos que voce pode usar
+# Para executar com debugger Java basta trocar java por jdb. O arquivo jdb.cmd, presente neste diretório, 
+# contem alguns comandos que voce pode usar
+
 
 #jdb -classpath "./:/home/hazevedo/Dropbox/02_Tese_Doutorado/DesenvolvimentoTese/Implementacao/OntSenseJavaAPI/:/home/hazevedo/localbin/apache-jena-3.2.0/lib/*" -Dlog4j.configuration=file:///home/hazevedo/localbin/apache-jena-3.2.0/jena-log4j.properties $1
 
 
 
 
- java -classpath "./:/home/hazevedo/Dropbox/02_Tese_Doutorado/DesenvolvimentoTese/Implementacao/OntSenseJavaAPI/:/home/hazevedo/localbin/apache-jena-3.2.0/lib/*" -Dlog4j.configuration=file:///home/hazevedo/localbin/apache-jena-3.2.0/jena-log4j.properties $1
+java -classpath "./:/home/hazevedo/Dropbox/02_Tese_Doutorado/DesenvolvimentoTese/Implementacao/OntSenseJavaAPI/:/home/hazevedo/localbin/apache-jena-3.2.0/lib/*" -Dlog4j.configuration=file:///home/hazevedo/localbin/apache-jena-3.2.0/jena-log4j.properties $1
 
 

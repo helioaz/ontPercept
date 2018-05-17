@@ -1,0 +1,570 @@
+
+
+
+//
+//	  QUERY BLOCK
+//
+
+PREFIX sumo: <http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#>  
+PREFIX ontsense: <http://example.org/sense#> 
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> 
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#> 
+PREFIX basicPos: <http://www.inf.ufrgs.br/phi-group/ontologies/basicPos.owl#> 
+PREFIX cora: <http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#> 
+SELECT *
+WHERE{
+#	 ?subject 	rdf:type 		ontsense:RGBColor ;
+#    ?subject 	rdf:type 		basicPos:CartesianPositionPoint ;
+#    ?subject 	rdf:type 		ontsense:Human ;              
+#    ?subject 	rdf:type 		sumo:Object ;
+#    ?subject 	rdf:type 		cora:Robot ;
+#    ?subject 	rdf:type 		ontsense:RobotHear ;
+#    ?subject 	rdf:type 		ontsense:RobotSmell ;
+    ?subject 	rdf:type 		ontsense:RobotTouch ;
+#    ?subject 	rdf:type 		ontsense:RobotHear ;
+#    ?subject 	rdf:type 		ontsense:RobotTaste ;
+#    ?subject 	rdf:type 		ontsense:RobotVision ;              
+				?predicate 	?value 	.
+}
+
+
+
+
+
+PREFIX ontsense: <http://example.org/sense#> 
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> 
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+SELECT DISTINCT * 
+WHERE { 
+	?subject rdf:type 			ontsense:RobotSmell ; 
+		ontsense:occursAt 		?time ;
+              	ontsense:chemicalLevel	?chemicalLevel ;	
+              	ontsense:decayedLevel	?decayedLevel ; 	
+              	ontsense:fragrantLevel	?fragrantLevel ; 	
+              	ontsense:fruityLevel	?fruityLevel ; 	
+              	ontsense:lemonLevel		?lemonLevel ; 
+              	ontsense:mintyLevel		?mintyLevel ;  	
+              	ontsense:popcornLevel	?popcornLevel ;	
+              	ontsense:pungentLevel	?pungentLevel; 	
+              	ontsense:sweetLevel		?sweetLevel ; 	
+              	ontsense:woodyLevel		?woodyLevel .
+	OPTIONAL {   ?subject ontsense:generateBy 		?generateBy . }
+	OPTIONAL {   ?subject ontsense:isPositionedAt 	?valuePos . }       		  
+}
+ORDERBY ?time
+
+
+
+
+
+
+
+
+
+
+# This block in SPARQL recovers the basicPos:CartesianPositionPoint instance with id 1.
+PREFIX ontsense: <http://example.org/sense#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX sumo: <http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#>
+PREFIX basicPos: <http://www.inf.ufrgs.br/phi-group/ontologies/basicPos.owl#> 
+SELECT  * WHERE {
+#  ?subject  ?pred 	ontsense:object001 .
+   ontsense:pos1  ?pred ?object . 
+#   ?subject rdf:type	sumo:Object .
+
+#   ?subject  ontsense:objectId 	"0000001"^^xsd:long .
+#     ?subject  ontsense:objectId 	?object .
+#     ?subject rdf:type	ontsense:RobotVision .
+} 
+
+
+
+# This block in SPARQL recovers the Object instance with id 001.
+PREFIX ontsense: <http://example.org/sense#>
+PREFIX sumo: <http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT  * WHERE {
+#  ?subject  ?pred 	ontsense:object001 .
+#    ontsense:object001  ?pred ?object . 
+   ?subject rdf:type	sumo:Object .
+#   ?subject  ontsense:objectId 	"0000001"^^xsd:long .
+     ?subject  ontsense:objectId 	?object .
+#     ?subject rdf:type	ontsense:RobotVision .
+} 
+
+
+
+# This block in SPARQL recovers all triples generated after a given time.
+
+PREFIX os: <http://example.org/sense/>
+PREFIX ontsense: <http://example.org/sense#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT ?subject  ?object
+WHERE {
+  ?subject ontsense:occursAt ?object . FILTER ( ?object > "2018-04-12T13:23:19.9"^^xsd:dateTime)
+}
+
+
+
+
+# This block in SPARQL recovers all RobotPerceptionEvent subclasses.
+
+PREFIX os: <http://example.org/sense/>
+PREFIX ontsense: <http://example.org/sense#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT ?subject  ?object
+WHERE {
+  ?subject rdfs:subClassOf ontosense:RobotPerceptionEvent .
+}
+
+
+
+# This block in SPARQL recovers all triples associated with Vision and that ocurrs  after a given time.
+
+PREFIX ontsense: <http://example.org/sense#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT ?subject  ?time ?object  ?predicate ?value
+WHERE {
+  ?subject rdf:type ontsense:RobotVision .
+  ?subject ontsense:occursAt ?time . 
+  ?subject ontsense:generateBy ?object .
+  ?object ?predicate ?value .
+FILTER ( ?time > "2018-04-12T13:23:19.9"^^xsd:dateTime)
+}
+
+
+
+
+# This block in SPARQL recovers all triples associated with Touch and that ocurrs  after a given time.
+
+PREFIX ontsense: <http://example.org/sense#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT DISTINCT ?subject   ?object  ?predicate ?value ?time ?temp ?moist  ?rough ?press
+WHERE {
+  ?subject rdf:type 			ontsense:RobotTouch .?temp ?moist  ?rough ?press
+  ?subject ontsense:occursAt 		?time . 
+  ?subject ontsense:generateBy 	?object .
+  ?subject ontsense:temperature		?temp .
+  ?subject ontsense:moisture		?moist .
+  ?subject ontsense:roughness		?rough .
+  ?subject ontsense:pressure		?press .
+  ?object ?predicate 			?value .  
+  FILTER ( ?time > "2018-04-12T13:00:19.9"^^xsd:dateTime)
+} 
+
+
+
+
+# This block in SPARQL recovers all triples associated with Taste and that ocurrs  after a given time.
+
+PREFIX ontsense: <http://example.org/sense#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT DISTINCT ?subject    ?predicate  ?value ?sour ?salt ?sweet ?bitter ?uma
+WHERE {
+    ?subject rdf:type 				ontsense:RobotTaste .
+    ?subject ontsense:occursAt 		?time . 
+ 	?subject ontsense:generateBy ?object .
+    ?subject ontsense:sourness		?sour .
+    ?subject ontsense:saltiness		?salt .
+    ?subject ontsense:sweetness		?sweet .
+    ?subject ontsense:bitterness	?bitter .
+    ?subject ontsense:umani			?uma .
+    ?object ?predicate 				?value . 
+    FILTER ( ?time > "2018-04-12T13:00:19.9"^^xsd:dateTime)
+} 
+
+
+# This block in SPARQL recovers all triples associated with Smell and that ocurrs  after a given time.
+
+PREFIX ontsense: <http://example.org/sense#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT DISTINCT ?subject ?object ?time  ?smellAtt ?valueMat ?valueColor ?valueId ?valuePos ?valueDes
+WHERE {
+    ?subject rdf:type 				ontsense:RobotSmell .
+    ?subject ontsense:occursAt 		?time . 
+    ?subject ontsense:generateBy 	?object .
+    ?subject ontsense:hasSmellType	?smellAtt .
+    ?object ontsense:hasMaterial 		?valueMat .
+    ?object ontsense:hasColor 		?valueColor .
+    ?object ontsense:objectId 		?valueId . 
+    ?object ontsense:isPositionedAt 		?valuePos .
+    ?object ontsense:description 		?valueDes .
+    FILTER ( ?time > "2018-04-12T13:00:19.9"^^xsd:dateTime)
+} 
+
+
+
+# This block in SPARQL recovers all triples associated with Hear and that ocurrs  after a given time.
+
+PREFIX ontsense: <http://example.org/sense#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT DISTINCT ?subject ?object ?time  ?soundAtt  ?valueMat  ?valueColor ?valueId ?valuePos ?valueDes
+WHERE {
+    ?subject rdf:type 				ontsense:RobotHear .
+    ?subject ontsense:occursAt 		?time . 
+    ?subject ontsense:generateBy 	?object .
+    ?subject ontsense:hasSoundType	?soundAtt .
+    ?object ontsense:hasMaterial 		?valueMat .
+    ?object ontsense:hasColor 		?valueColor .
+    ?object ontsense:objectId 		?valueId . 
+    ?object ontsense:isPositionedAt 		?valuePos .
+    ?object ontsense:description 		?valueDes .
+    FILTER ( ?time > "2018-04-12T13:00:19.9"^^xsd:dateTime)
+} 
+
+
+//
+//	  INSERTION A HUGE /BIG BLOCK ALL TOGETHER
+//
+PREFIX ontsense: <http://example.org/sense#>
+PREFIX sumo: <http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#>  
+PREFIX ontsense: <http://example.org/sense#> 
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> 
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#> 
+PREFIX basicPos: <http://www.inf.ufrgs.br/phi-group/ontologies/basicPos.owl#> 
+INSERT DATA {
+	ontsense:C1957080801 	rdf:type 		ontsense:RGBColor ; 
+						rdf:type 			owl:NamedIndividual ;
+						ontsense:blue 		"0.3"^^xsd:double ; 
+						ontsense:green 		"0.4"^^xsd:double ;
+						ontsense:red 		"0.5"^^xsd:double . 	
+  
+
+	ontsense:P1957080801 	rdf:type 			basicPos:CartesianPositionPoint ; 
+						rdf:type 				owl:NamedIndividual ;
+						basicPos:cartesianX 	"10.0"^^xsd:double ; 
+						basicPos:cartesianY 	"11.0"^^xsd:double ;
+						basicPos:cartesianZ 	"12.0"^^xsd:double .
+
+
+
+	ontsense:O1957080801	rdf:type 			ontsense:Human ; 
+   				ontsense:objectId 		"0000008"^^xsd:long ;
+ 		 		ontsense:tag	 		"Human"^^xsd:string ;
+   				ontsense:hasColor 		ontsense:C1957080801 ; 
+		   		ontsense:hasEmotionalState	ontsense:disgustEmotion ;
+   				ontsense:isMadeOf 		ontsense:organicMaterial ;
+				ontsense:associateURI 		"https://www.wikidata.org/wiki/Q3238275"^^xsd:anyURI ;
+				ontsense:name			"Mariana"^^xsd:string ; 		
+   				ontsense:isPositionedAt 	ontsense:P1957080801 .
+
+	ontsense:V1957080801 	rdf:type 			ontsense:RobotVision ; 
+				rdf:type 			owl:NamedIndividual ;
+				ontsense:occursAt 		"2018-04-12T13:01:00.0"^^xsd:dateTime ; 
+				ontsense:generateBy 		"0000008"^^xsd:long . 	
+  
+
+	ontsense:H1957080802 	rdf:type 			ontsense:RobotHear ; 
+				rdf:type 			owl:NamedIndividual ;
+				ontsense:occursAt 		"2018-04-12T13:00:00.0"^^xsd:dateTime ; 
+				ontsense:generateBy 		"0000008"^^xsd:long ;
+ 				ontsense:hasSoundType 		ontsense:humanVoiceSound ;
+ 				ontsense:detail 		"Get a packet of cracker please."^^xsd:string ;
+ 				ontsense:volume 		"0.7"^^xsd:double .
+
+
+
+        ontsense:S1234567890 	rdf:type ontsense:RobotSmell;
+        			rdf:type owl:NamedIndividual;
+        			ontsense:occursAt 	"2018-05-12T13:24:00.0"^^xsd:dateTime ;
+        			ontsense:generateBy 	"0000008"^^xsd:long ;                
+        			ontsense:chemicalLevel "0.1"^^xsd:double ;         	
+        			ontsense:decayedLevel  "0.2"^^xsd:double ;         	
+        			ontsense:fragrantLevel "0.3"^^xsd:double ;         	
+        			ontsense:fruityLevel   "0.4"^^xsd:double ;        	
+        			ontsense:lemonLevel    "0.5"^^xsd:double ;        
+        			ontsense:mintyLevel    "0.6"^^xsd:double ;         	
+        			ontsense:popcornLevel "0.7"^^xsd:double ;        	
+        			ontsense:pungentLevel  "0.8"^^xsd:double ;       	
+        			ontsense:sweetLevel    "0.9"^^xsd:double ;      	
+        			ontsense:woodyLevel    "0.0"^^xsd:double .      
+
+
+
+        ontsense:S1234567891 	rdf:type ontsense:RobotSmell;
+        			rdf:type owl:NamedIndividual;
+        			ontsense:occursAt 	"2018-05-12T13:24:00.0"^^xsd:dateTime ;
+				ontsense:isPositionedAt ontsense:P1957080801 ;                 
+       				ontsense:chemicalLevel "0.0"^^xsd:double ;         	
+        			ontsense:decayedLevel  "0.9"^^xsd:double ;         	
+        			ontsense:fragrantLevel "0.8"^^xsd:double ;         	
+        			ontsense:fruityLevel   "0.7"^^xsd:double ;        	
+        			ontsense:lemonLevel    "0.6"^^xsd:double ;        
+        			ontsense:mintyLevel    "0.5"^^xsd:double ;         	
+        			ontsense:popcornLevel  "0.4"^^xsd:double ;        	
+        			ontsense:pungentLevel  "0.3"^^xsd:double ;       	
+        			ontsense:sweetLevel    "0.2"^^xsd:double ;      	
+        			ontsense:woodyLevel    "0.1"^^xsd:double . 
+
+};
+
+
+
+
+
+
+
+
+//
+//	  INSERTION BLOCK
+//
+
+
+# insert a COLOR =  C1961080801                
+# to insert in localhost:3030 use =>     use: http://localhost:3030/ontsense/update
+
+PREFIX ontsense: <http://example.org/sense#>
+PREFIX sumo: <http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#>  
+PREFIX ontsense: <http://example.org/sense#> 
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> 
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#> 
+PREFIX basicPos: <http://www.inf.ufrgs.br/phi-group/ontologies/basicPos.owl#> 
+INSERT DATA {
+	ontsense:C1961080801 	rdf:type 		ontsense:RGBColor ; 
+						rdf:type 			owl:NamedIndividual ;
+						ontsense:blue 		"0.3"^^xsd:double ; 
+						ontsense:green 		"0.4"^^xsd:double ;
+						ontsense:red 		"0.5"^^xsd:double .
+}
+
+
+
+
+# insert a POSITION =  P1961080801
+# to insert in localhost:3030 use =>     use: http://localhost:3030/ontsense/update
+# script for a sparql insert operation with a cartesian point information.
+
+PREFIX ontsense: <http://example.org/sense#> 
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> 
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+PREFIX owl: <http://www.w3.org/2002/07/owl#> 
+PREFIX basicPos: <http://www.inf.ufrgs.br/phi-group/ontologies/basicPos.owl#>    
+INSERT DATA { 
+	   ontsense:P1961080801 rdf:type 		basicPos:CartesianPositionPoint ; 
+				rdf:type 		owl:NamedIndividual ;
+				basicPos:cartesianX 	"90.0"^^xsd:double ; 
+				basicPos:cartesianY 	"91.0"^^xsd:double ;
+				basicPos:cartesianZ 	"92.0"^^xsd:double .
+ 
+}
+
+
+
+# insert a OBJECT =  O1961080801        //  THIS OBJECT USES THE P1961080801 and C1961080801
+# to insert in localhost:3030 use =>     use: http://localhost:3030/ontsense/update
+
+PREFIX sumo: <http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#>  
+PREFIX ontsense: <http://example.org/sense#> 
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> 
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+ INSERT DATA {
+  ontsense:O1961080801 	rdf:type 	sumo:Object ; 
+   			ontsense:objectId 			"0000025"^^xsd:long ; 		
+   			ontsense:hasColor 			ontsense:C1961080801 ; 		
+   			ontsense:isMadeOf 			ontsense:organicMaterial ; 		
+   			ontsense:isPositionedAt 		ontsense:P1961080801  .	
+ }   
+  
+
+
+# insert a VISION=  V1961080801
+# to insert in localhost:3030 use =>     use: http://localhost:3030/ontsense/update
+#This block in SPARQL  Inserts a Vision
+PREFIX ontsense: <http://example.org/sense#> 
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> 
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+PREFIX owl: <http://www.w3.org/2002/07/owl#> 
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>   
+INSERT DATA { 
+	ontsense:V1961080801 	rdf:type 		ontsense:RobotVision ; 
+				rdf:type 		owl:NamedIndividual ;
+				ontsense:occursAt 	"2018-04-12T13:24:00.0"^^xsd:dateTime ; 
+				ontsense:generateBy 	ontsense:O1961080801 ; 
+}
+
+
+
+
+
+# INSERT A SMELL = S1234567890   generated by the object = 0000025
+# to insert in localhost:3030 use =>     use: http://localhost:3030/ontsense/update
+# script for a sparql insert operation with a cartesian point information
+
+PREFIX ontsense: <http://example.org/sense#>
+ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> 
+ PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+ PREFIX owl: <http://www.w3.org/2002/07/owl#> 
+ INSERT DATA
+    {
+        ontsense:S1234567890 rdf:type ontsense:RobotSmell;
+        rdf:type owl:NamedIndividual;
+        ontsense:occursAt 	"2018-05-12T13:24:00.0"^^xsd:dateTime ;
+        ontsense:generateBy 	"0000025"^^xsd:long ;                
+        ontsense:chemicalLevel "0.1"^^xsd:double ;         	
+        ontsense:decayedLevel  "0.2"^^xsd:double ;         	
+        ontsense:fragrantLevel "0.3"^^xsd:double ;         	
+        ontsense:fruityLevel   "0.4"^^xsd:double ;        	
+        ontsense:lemonLevel    "0.5"^^xsd:double ;        
+        ontsense:mintyLevel    "0.6"^^xsd:double ;         	
+        ontsense:popcornLevel "0.7"^^xsd:double ;        	
+        ontsense:pungentLevel  "0.8"^^xsd:double ;       	
+        ontsense:sweetLevel    "0.9"^^xsd:double ;      	
+        ontsense:woodyLevel    "0.0"^^xsd:double .      
+ }
+
+
+
+
+# INSERT A SMELL = S1234567890   generated by the object at position = P1961080801
+# to insert in localhost:3030 use =>     use: http://localhost:3030/ontsense/update
+# script for a sparql insert operation with a cartesian point information
+
+PREFIX ontsense: <http://example.org/sense#>
+ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> 
+ PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+ PREFIX owl: <http://www.w3.org/2002/07/owl#> 
+ INSERT DATA
+    {
+        ontsense:S1234567890 rdf:type ontsense:RobotSmell;
+        rdf:type owl:NamedIndividual;
+        ontsense:occursAt 	"2018-05-12T13:24:00.0"^^xsd:dateTime ;
+	ontsense:isPositionedAt ontsense:P1961080801 ;                 
+        ontsense:chemicalLevel "0.1"^^xsd:double ;         	
+        ontsense:decayedLevel  "0.2"^^xsd:double ;         	
+        ontsense:fragrantLevel "0.3"^^xsd:double ;         	
+        ontsense:fruityLevel   "0.4"^^xsd:double ;        	
+        ontsense:lemonLevel    "0.5"^^xsd:double ;        
+        ontsense:mintyLevel    "0.6"^^xsd:double ;         	
+        ontsense:popcornLevel "0.7"^^xsd:double ;        	
+        ontsense:pungentLevel  "0.8"^^xsd:double ;       	
+        ontsense:sweetLevel    "0.9"^^xsd:double ;      	
+        ontsense:woodyLevel    "0.0"^^xsd:double .      
+ }
+
+
+
+
+
+
+# EXAMPLE OF GENERIC ERT COMMAND WITH VARIABLE PARTS
+# This block in SPARQL insert data in the triple store
+INSERT {
+  ?ind a ?cls .
+} WHERE { 
+   ?cls a <http://www.w3.org/2002/07/owl#Class>
+    BIND(iri(concat(str(?cls), "1")) AS ?ind)
+}
+
+
+
+
+
+
+
+//
+//	  DELETE BLOCK
+//
+
+# to DELETE in localhost:3030 use =>     use: http://localhost:3030/ontsense/update
+# this sequence never ends. There are many variables. Use one by one...
+PREFIX ontsense: <http://example.org/sense#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
+PREFIX cora: <http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#> 
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX basicPos: <http://www.inf.ufrgs.br/phi-group/ontologies/basicPos.owl#>
+PREFIX sumo: <http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#>
+DELETE WHERE {
+  ?subject5 	rdf:type 		ontsense:RobotHear  ;
+      			?property5      ?value5 .      
+  ?subject6 	rdf:type 		ontsense:RobotTaste  ;
+      			?property6      ?value6 .       
+  ?subject7 	rdf:type 		ontsense:RobotTouch  ;
+      			?property7      ?value7 .      
+  ?subject8 	rdf:type 		ontsense:RobotSmell  ;
+      			?property8      ?value8 .      
+  ?subject9 	rdf:type 		ontsense:RobotVision  ;
+      			?property9      ?value9 .       
+  ?subject0 	rdf:type 		ontsense:RGBColor ;
+  			?property0      ?value0 .  
+  ?subject1 	rdf:type 		basicPos:CartesianPositionPoint ;
+      			?property1      ?value1 .  
+  ?subject2 	rdf:type 		sumo:Object ;
+      			?property2      ?value2 .     
+  ?subject3 	rdf:type 		ontsense:Human ;
+      			?property3      ?value3 .     
+  ?subject4 	rdf:type 		cora:Robot  ;
+      			?property4      ?value4 .     
+}
+
+
+
+
+
+
+
+//
+//Comandos DBPEDIA
+//
+?subject rdfs:label	"Apple pie"@en
+:Apple_pie ?property ?object . 
+
+<http://dbpedia.org/resource/Apple_pie> ?property ?object .
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

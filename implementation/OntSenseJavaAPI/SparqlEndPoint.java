@@ -136,10 +136,11 @@ public class SparqlEndPoint {
 	public static Map<Long, RobotSmell> smellMap = new LinkedHashMap<Long, RobotSmell>(SENSE_INITIAL_CAPACITY);
 
 	/**
-	 * This Set maintain the fragment identifier to information associated with the sense perception: position, color, object and human.
+	 * This Set maintain the "fragment identifier" to information associated with the sense perception: position, color, object and human.
+	 * It also mantain info about all senses: Hear, Taste, ...
 	 * All these registers must be removed from the data store at end of executeSparqlQuery() operation. 
 	 */
-	private HashSet<String> cleanUpSet;
+	private HashSet<String> cleanUpSet = new HashSet<String>(500);
 
 	private String serviceURI;			// maintain the sparql endpoint URL address 
 
@@ -202,7 +203,7 @@ public class SparqlEndPoint {
 	 * This operation recovers all perception information present in the triple store. This include: CartesianPos, RGBValue, Thing, Human, Robot, 
    	 * RobotHear, RobotSmell, RobotTaste, RobotTouch, RobotVision. 
 	 * Each class of recovered information is stored in the apropriated map object. 
-	 * Before fill up the new information the associate map object is cleaned. After query execution, all registers recovered   are deleted from the data store.
+	 * Before fill up the new information the associate map object is cleaned. After query execution, all registers recovered   are also deleted from the data store.
 	 *
 	 * Note: Removing the records from the triple store requires special care. 
 	 *       Because update and query are asynchronous, it is possible for a record to be retrieved before it has been used in a given sense of perception. 
@@ -211,23 +212,40 @@ public class SparqlEndPoint {
 	 *       These records can not be removed from the triple store, otherwise it will generate invalid links. The strategy used to overcome this problem is to retrieve all the 
          *       available records, and then to perform a hierarchical removal, that is, first the senses and then the objects, positions and colors associated with each perceived sense. 
 	 */
-	public void executeSparqlQuery() throws IOException, URIReferenceException, KeySelectorException {
+	public int executeSparqlQuery() throws IOException, URIReferenceException, KeySelectorException {
 
-		cleanUpSet = new HashSet<String>(500);	// store identification ofreferences  that will be removed later by cleanUpSupportInfo()
-			
+		
+		//System.out.println("antes positionSparqlQuery");	
 		positionSparqlQuery();  	// query all CartesianPos register presents on the data store
+		//System.out.println("antes colorSparqlQuery");
 		colorSparqlQuery();  		// query all RGBValue register presents on the data store
+		//System.out.println("antes objectSparqlQuery");
 		objectSparqlQuery();  		// query all Thing register presents on the data store
+		//System.out.println("antes humanSparqlQuery");
 		humanSparqlQuery();  		// query all Human register presents on the data store
+		//System.out.println("antes robotSparqlQuery");
 		robotSparqlQuery();  		// query and clean up all Robot register presents on the data store
+		//System.out.println("antes hearSparqlProcess");
 		hearSparqlProcess();  		// query and clean up all RobotHear register presents on the data store
+		//System.out.println("antes smellSparqlProcess");
 		smellSparqlProcess();  		// query and clean up all RobotSmell register presents on the data store
+		//System.out.println("antes tasteSparqlProcess");
 		tasteSparqlProcess();  		// query and clean up all RobotTaste register presents on the data store
+		//System.out.println("antes touchSparqlProcess");
 		touchSparqlProcess();  		// query and clean up all RobotTouch register presents on the data store
+		//System.out.println("antes visionSparqlProcess");
 		visionSparqlProcess();  	// query and clean up all RobotVision register presents on the data store
 
+		//System.out.println("antes cleanUpSupportInfo");
 		cleanUpSupportInfo();		// remove from the triple store information used to build the senses
-		cleanUpSet.clear();		// remove all of the elements from this set
+
+		//System.out.println("antes cleanUpSet");
+		cleanUpSet.clear();		// remove all of the elements from this set collection
+
+
+		int perceptionCount = hearMap.size() + tasteMap.size() + touchMap.size() + visionMap.size() + smellMap.size();
+		//System.out.println("Number of perception senses= " + Integer.toString(perceptionCount));
+		return perceptionCount;		// return a statistic of all perception senses captured from the environment 
 		
 
 
@@ -360,6 +378,7 @@ public class SparqlEndPoint {
 			hasColor = hasColor.substring(hasColor.lastIndexOf('#') + 1);   // extract fragment identifier present in URL reference
 			index = Long.parseLong(hasColor.substring(1));			// remove char 'C' to get the map key element
 			colorObj = colorMap.get(index);
+
 			if (colorObj == null)						// The object does not exist in the Map => Problem					
 				throw new KeySelectorException(objectName + ": Object color does not exist in the colorMap");
 		}
@@ -387,8 +406,12 @@ public class SparqlEndPoint {
 		isPositionedAt = isPositionedAt.substring(isPositionedAt.lastIndexOf('#') + 1); // extract fragment identifier present in URL reference
 		index = Long.parseLong(isPositionedAt.substring(1));		// remove char 'P' to get the map key element
 		posObj = posMap.get(index);
-		if (posObj == null)						// The object does not exist in the Map => Problem					
+
+		if (posObj == null) {						// The object does not exist in the Map => Problem					
 			throw new KeySelectorException(objectName + ": Object position does not exist in the posMap");
+			//System.out.println("object name= " + objectName);
+			//System.exit(0);
+		}
 
 		literal = soln.getLiteral("name");
 		if (literal == null) name = null;				// not present => assume empty String
@@ -409,7 +432,7 @@ public class SparqlEndPoint {
 
 		thingObj.updateThing(objectId, name, tag, colorObj, posObj, hasStateEnum, isMadeOfEnum, associateURI, objectName);
 
-		return objectId;				
+		return objectId;						// returns the 	unique identification present in the simulator or robotic agent.			
 
 	}		// close getCommonAttrib
 
@@ -463,7 +486,9 @@ public class SparqlEndPoint {
 		EmotionalState hasEmotionEnum;				// represents the emotion in an Enum
 		Resource	resource;				// An RDF Resource.		
 
+		//System.out.println(" HumanMap size before clear= " + Integer.toString(humanMap.size()));
 		humanMap.clear();					// first of all => clear up the associate Map
+		//System.out.println(" HumanMap size after clear= " +  Integer.toString(humanMap.size()));
 
 		Query query = QueryFactory.create(SparqlAccess.QUERY_HUMAN) ;
 
@@ -537,16 +562,16 @@ public class SparqlEndPoint {
 	*/
 	private void hearSparqlProcess() throws IOException, URIReferenceException, KeySelectorException {
 
-		long 		index;					//  index to calculate the Map access key
-		long		indAux;					// auxiliary index 
+		long 		index,indAux;					// index to calculate the Map access key
 		Literal		literal;				// An RDF Literal.
 		Resource	resource;				// An RDF Resource.
 		Calendar	cal;					// defines the instant of event occurence
 
 
-		String 		generatedBy, isPositionedAt, objectName;// String nodes associated with the object 
+		String 		isPositionedAt, objectName;		// String nodes associated with the object 
 		Date 		instant;				// to maintain the instant of occurrence of the event
-		Thing 		thingObj;				// defines the object responsable for the event generation
+		long 		generateBy;				// defines the id of the object responsable for the event generation
+		Thing		thingObj;				// defines the object responsable for the event generation
 		CartesianPos 	posObj; 				// defines the object position
 
 
@@ -575,31 +600,41 @@ public class SparqlEndPoint {
 				index = Long.parseLong(objectName.substring(1));		// remove char 'H' to get the map key element
 
 				literal = soln.getLiteral("time");				// The occursAt is always present, it is not in the Sparql OPTIONAL clause
-				Object object = literal.getValue();
+				//Object object = literal.getValue();
 				XSDDateTime xsd = (XSDDateTime)literal.getValue();
 				cal = xsd.asCalendar();				
 				instant = cal.getTime();
 
-				resource = soln.getResource("object");				// gets	 the object responsable for the event generation
-				if (resource == null) thingObj = null;				// if generateBy does not exist then isPositionedAt must exist
+				//System.out.println("hearSparqlProcess(): antes de generateBy");
+				//if 	(soln.contains("time")) System.out.println("time exists int RDF");
+				//if 	(soln.contains("generateBy")) System.out.println("generateBy exists int RDF");
+				//if 	(soln.contains("generateBy")) System.out.println("generateBy exists int RDF");
+				//literal = soln.getLiteral("generateBy");
+				//if 	(literal == null)  System.out.println("Literal de generateBy equal null");
+				if (soln.contains("generateBy"))
+					generateBy = soln.getLiteral("generateBy").getLong();	// gets	 the identification of the object responsable for the event generation
+				else 
+					generateBy = 0;	
+				
+				if (generateBy == 0) thingObj = null;				// if generateBy does not exist then isPositionedAt must exist
 				else {
-					generatedBy = resource.toString();			 
-					generatedBy = generatedBy.substring(generatedBy.lastIndexOf('#') + 1); // extract fragment identifier present in URL reference
-					indAux = Long.parseLong(generatedBy.substring(1));	// remove char 'O', ' H' or 'R' to get the map key element
-					thingObj = objectMap.get(indAux);
+					//System.out.println("generateBy = " + Long.toString(generateBy));
+					thingObj = objectMap.get(generateBy);
 					if (thingObj == null) {					// The object does not exist in the Object Map => there is still hope
-						thingObj = humanMap.get(indAux);
+						thingObj = humanMap.get(generateBy);
 						if (thingObj == null) {				// The object does not exist in the Human Map => there is still hope
-							thingObj = robotMap.get(indAux);
+							thingObj = robotMap.get(generateBy);
 							if (thingObj == null)			// The object also does not exist in the Robot Map => that is a problem		
-								throw new KeySelectorException(resource.toString() + ": Object generator of the event does not exist in the maps");
+								throw new KeySelectorException(Long.toString(generateBy) + ": Object generator of the Hear does not exist in the maps");
 						}
-					} 
+					}
+ 					//System.out.println("hearSparqlProcess(): antes de cleanUpSet");
 					cleanUpSet.add (thingObj.getFragIdent());		// prepare the tripe store cleanUp saving the the object reference
 					cleanUpSet.add (thingObj.getPos().getFragIdent());	// prepare the tripe store cleanUp saving the the position reference
 					cleanUpSet.add (thingObj.getColor().getFragIdent());	// prepare the tripe store cleanUp saving the the color reference	 
 				} // end else
 
+				//System.out.println("hearSparqlProcess(): antes de valuePos");
 				resource = soln.getResource("valuePos");			// get the position of the event  
 				if (resource == null) posObj = null;
 				else {
@@ -607,8 +642,11 @@ public class SparqlEndPoint {
 					isPositionedAt = isPositionedAt.substring(isPositionedAt.lastIndexOf('#') + 1); // extract fragment identifier present in URL reference
 					indAux = Long.parseLong(isPositionedAt.substring(1));	// remove char 'L' to get the map key element
 					posObj = posMap.get(indAux);
-					if (posObj == null)					// The object does not exist in the Map => Problem					
+					if (posObj == null) {					// The object does not exist in the Map => Problem					
 						throw new KeySelectorException(objectName + ": Object position does not exist in the posMap");
+						//System.out.println("object name= " + objectName);
+						//System.exit(0);
+					}
 					cleanUpSet.add (posObj.getFragIdent());			// prepare the tripe store cleanUp saving the the position reference
 				}
 
@@ -619,7 +657,7 @@ public class SparqlEndPoint {
 						throw new KeySelectorException(objectName + ": Two event generators were located. It must exist only one");
 
 
-
+				//System.out.println("hearSparqlProcess(): antes de soundType");
 				resource = soln.getResource("soundType");			// The hasSoundType is always present, it is not in the Sparql OPTIONAL clause
 				soundType = resource.toString();
 				soundType = soundType.substring(soundType.lastIndexOf('#') + 1);   	// extract fragment identifier present in URL reference
@@ -633,7 +671,7 @@ public class SparqlEndPoint {
 				else detail = literal.getString();				// get the information
 
 				if (thingObj != null) 
-					hearObj = new RobotHear(instant, thingObj, soundTypeEnum, volume, detail);
+					hearObj = new RobotHear(instant, generateBy, soundTypeEnum, volume, detail);
 				else
 					hearObj = new RobotHear(instant, posObj,   soundTypeEnum, volume, detail);
 
@@ -654,18 +692,22 @@ public class SparqlEndPoint {
 
 
 	/**
-	 * query and schedule a clean up of all RobotTaste register presents on the data store
+	 * Query and schedule a clean up of all RobotTaste register presents on the data store
+	 * Attention: Note that when there is an object generating the event only its identifier is saved in the class.
+	 * This behavior is different from the sense vision, where a reference to the object is saved.
+	 * This distinction is associated with our premise that only the sense of sight has conditions to generate 
+	 * new objects, so other senses must use only the reference to the object that must have been previously seen.
 	 */
 	private void tasteSparqlProcess() throws IOException, URIReferenceException, KeySelectorException {
 
 		long 		index;					// index to calculate the Map access key
-		long		indAux;					// auxiliary index 
+		long		generateBy;				// identify the object
 		Literal		literal;				// An RDF Literal.
 		Resource	resource;				// An RDF Resource.
 		Calendar	cal;					// defines the instant of event occurence
 
 
-		String 		generatedBy, objectName;		// String nodes associated with the object 
+		String 		objectName;				// String nodes associated with the object 
 		Date 		instant;				// to maintain the instant of occurrence of the event
 		Thing 		thingObj;				// defines the object responsable for the event generation
 
@@ -692,28 +734,20 @@ public class SparqlEndPoint {
 				index = Long.parseLong(objectName.substring(1));		// remove char 'A' to get the map key element
 
 				literal = soln.getLiteral("time");				// The occursAt is always present, it is not in the Sparql OPTIONAL clause
-				Object object = literal.getValue();
+				//Object object = literal.getValue();
 				XSDDateTime xsd = (XSDDateTime)literal.getValue();
 				cal = xsd.asCalendar();				
 				instant = cal.getTime();
 
-				resource = soln.getResource("object");				// The object is always present, it is not in the Sparql OPTIONAL clause
-				generatedBy = resource.toString();			 
-				generatedBy = generatedBy.substring(generatedBy.lastIndexOf('#') + 1); // extract fragment identifier present in URL reference
-				indAux = Long.parseLong(generatedBy.substring(1));		// remove char 'O', ' H' or 'R' to get the map key element
-				thingObj = objectMap.get(indAux);
-				if (thingObj == null) {						// The object does not exist in the Object Map => there is still hope
-					thingObj = humanMap.get(indAux);
-					if (thingObj == null) {					// The object does not exist in the Human Map => there is still hope
-						thingObj = robotMap.get(indAux);
-						if (thingObj == null)				// The object also does not exist in the Robot Map => that is a problem		
-								throw new KeySelectorException(resource.toString() + ": Object generator of the event does not exist in the maps");
-					}
-				} 
-				cleanUpSet.add (thingObj.getFragIdent());			// prepare the tripe store cleanUp saving the the object reference
-				cleanUpSet.add (thingObj.getPos().getFragIdent());		// prepare the tripe store cleanUp saving the the position reference
-				cleanUpSet.add (thingObj.getColor().getFragIdent());		// prepare the tripe store cleanUp saving the the color reference
+				if (soln.contains("generateBy"))
+					generateBy = soln.getLiteral("generateBy").getLong();	// gets	 the identification of the object responsable for the event generation
+				else 
+					generateBy = 0;	
 
+
+				if (generateBy == 0) {						// The object does not exist !!!
+					throw new KeySelectorException(Long.toString(generateBy) + ": Object generator of Taste does not exist in triple Store");
+				} 
 
 	 			sweetness = soln.getLiteral("sweetness").getDouble();		// The sweetness is always present, it is not in the Sparql OPTIONAL clause
 				umani = soln.getLiteral("umani").getDouble();			// The umani is always present, it is not in the Sparql OPTIONAL clause
@@ -722,7 +756,7 @@ public class SparqlEndPoint {
 				sourness = soln.getLiteral("sourness").getDouble();		// The sourness is always present, it is not in the Sparql OPTIONAL clause
 
 
-				tasteObj = new RobotTaste(instant, thingObj, bitterness, saltiness, sourness, sweetness, umani);
+				tasteObj = new RobotTaste(instant, generateBy, bitterness, saltiness, sourness, sweetness, umani);
 				tasteMap.put(index, tasteObj);					// insert pair<key, value> in the map
 
 
@@ -740,17 +774,21 @@ public class SparqlEndPoint {
 	}  			// close tasteSparqlProcess
 
 	/**
-	 * query and schedule a clean up of all RobotTouch register presents on the data store
+	 * Query and schedule a clean up of all RobotTouch register presents on the data store
+	 * Attention: Note that when there is an object generating the event only its identifier is saved in the class.
+	 * This behavior is different from the sense vision, where a reference to the object is saved.
+	 * This distinction is associated with our premise that only the sense of sight has conditions to generate 
+	 * new objects, so other senses must use only the reference to the object that must have been previously seen.
 	 */
 	private void touchSparqlProcess() throws IOException, URIReferenceException, KeySelectorException {
-		long 		index;					//  index to calculate the Map access key
-		long		indAux;					// auxiliary index 
+		long 		index, indAux;				//  index to calculate the Map access key
 		Literal		literal;				// An RDF Literal.
 		Resource	resource;				// An RDF Resource.
 		Calendar	cal;					// defines the instant of event occurence
 
 
-		String 		generatedBy, isPositionedAt, objectName;// String nodes associated with the object 
+		long		generateBy;				// identify the object
+		String 		isPositionedAt, objectName;		// String nodes associated with the object 
 		Date 		instant;				// to maintain the instant of occurrence of the event
 		Thing 		thingObj;				// defines the object responsable for the event generation
 		CartesianPos 	posObj; 				// defines the object position
@@ -781,30 +819,16 @@ public class SparqlEndPoint {
 				index = Long.parseLong(objectName.substring(1));		// remove char 'T' to get the map key element
 
 				literal = soln.getLiteral("time");				// The occursAt is always present, it is not in the Sparql OPTIONAL clause
-				Object object = literal.getValue();
+				//Object object = literal.getValue();
 				XSDDateTime xsd = (XSDDateTime)literal.getValue();
 				cal = xsd.asCalendar();				
 				instant = cal.getTime();
 
-				resource = soln.getResource("object");				// gets	 the object responsable for the event generation
-				if (resource == null) thingObj = null;				// if generateBy does not exist then isPositionedAt must exist
-				else {
-					generatedBy = resource.toString();			 
-					generatedBy = generatedBy.substring(generatedBy.lastIndexOf('#') + 1); // extract fragment identifier present in URL reference
-					indAux = Long.parseLong(generatedBy.substring(1));	// remove char 'O', ' H' or 'R' to get the map key element
-					thingObj = objectMap.get(indAux);
-					if (thingObj == null) {					// The object does not exist in the Object Map => there is still hope
-						thingObj = humanMap.get(indAux);
-						if (thingObj == null) {				// The object does not exist in the Human Map => there is still hope
-							thingObj = robotMap.get(indAux);
-							if (thingObj == null)			// The object also does not exist in the Robot Map => that is a problem		
-								throw new KeySelectorException(resource.toString() + ": Object generator of the event does not exist in the maps");
-						}
-					} 
-					cleanUpSet.add (thingObj.getFragIdent());		// prepare the tripe store cleanUp saving the the object reference
-					cleanUpSet.add (thingObj.getPos().getFragIdent());	// prepare the tripe store cleanUp saving the the position reference
-					cleanUpSet.add (thingObj.getColor().getFragIdent());	// prepare the tripe store cleanUp saving the the color reference	 
-				} // end else
+				if (soln.contains("generateBy"))
+					generateBy = soln.getLiteral("generateBy").getLong();	// gets	 the identification of the object responsable for the event generation
+				else 
+					generateBy = 0;	
+	
 
 				resource = soln.getResource("valuePos");			// get the position of the event  
 				if (resource == null) posObj = null;
@@ -818,10 +842,10 @@ public class SparqlEndPoint {
 					cleanUpSet.add (posObj.getFragIdent());			// prepare the tripe store cleanUp saving the the position reference
 				}
 
-				if (posObj == null && thingObj == null) 
+				if (posObj == null && generateBy == 0) 
 						throw new KeySelectorException(objectName + ": No event generator was located");
 
-				if (posObj != null && thingObj != null) 
+				if (posObj != null && generateBy != 0) 
 						throw new KeySelectorException(objectName + ": Two event generators were located. It must exist only one");
 
 
@@ -834,8 +858,9 @@ public class SparqlEndPoint {
 
 
 
-				if (thingObj != null) 
-					touchObj = new RobotTouch(instant, thingObj, hardness, moisture, pressure, roughness, temperature);
+
+				if (generateBy != 0)  
+					touchObj = new RobotTouch(instant, generateBy, hardness, moisture, pressure, roughness, temperature);
                                                                  
 				else
 					touchObj = new RobotTouch(instant, posObj, hardness, moisture, pressure, roughness, temperature);
@@ -866,25 +891,34 @@ public class SparqlEndPoint {
 
 
 	/**
-	 * query and schedule a clean up of all RobotSmell register presents on the data store
+	 * Query and schedule a clean up of all RobotSmell register presents on the data store.
+	 * Note that, when there is an object generating the event, there are not a register of the object reference
+	 * in the CleanUpSet. This behavior is different from the sense vision, where a reference to the object is saved.
+	 * This distinction is associated with our premise that only the sense of sight has conditions to generate 
+	 * new objects, so other senses must use only the reference to the object that must have been previously seen.
+	 * The position information just offers a likely position of the smell source.
 	 */
 	private void smellSparqlProcess() throws IOException, URIReferenceException, KeySelectorException {
-		long 		index;					//  index to calculate the Map access key
-		long		indAux;					// auxiliary index 
+		long 		index,indAux;				//  index to calculate the Map access key
 		Literal		literal;				// An RDF Literal.
 		Resource	resource;				// An RDF Resource.
 		Calendar	cal;					// defines the instant of event occurence
 
-
-		String 		generatedBy, isPositionedAt, objectName;// String nodes associated with the object 
+		long		generateBy;				// identify the object
+		String 		isPositionedAt, objectName;		// String nodes associated with the object 
 		Date 		instant;				// to maintain the instant of occurrence of the event
 		Thing 		thingObj;				// defines the object responsable for the event generation
 		CartesianPos 	posObj; 				// defines the object position
 
-		String 		smellType;				// property type of smelll
-		OlfatoryAttribute smellTypeEnum;			// defines the kind of smell
-		RobotSmell	smellObj;				// defines the taste event being processed
 
+		RobotSmell	smellObj;				// defines the taste event being processed
+		OdorComposition odor;				// defines ten chemical odorant levels that completely identifies a specific odor in the environment. 
+	
+	    // declare the ten levels of chemical odorant that completely identifies a specific odor present in the environment. 
+	    // See DOI: 10.1371 / journal.pone.0073289
+        double chemical, decayed, fragrant, fruity;
+        double lemon, minty, popcorn, pungent;
+        double sweet, woody;
 
 		smellMap.clear();					// first of all => clear up the associate Map
 
@@ -893,7 +927,6 @@ public class SparqlEndPoint {
 	  	try (QueryExecution q = QueryExecutionFactory.sparqlService(serviceURI,query)) {  // TRY: ensure that QueryExecution object will be closed at end of operation
 
 			ResultSet results = q.execSelect();
-
 			while (results.hasNext()) {
 				QuerySolution soln = results.nextSolution();
 
@@ -903,30 +936,18 @@ public class SparqlEndPoint {
 				index = Long.parseLong(objectName.substring(1));		// remove char 'T' to get the map key element
 
 				literal = soln.getLiteral("time");				// The occursAt is always present, it is not in the Sparql OPTIONAL clause
-				Object object = literal.getValue();
+				//Object object = literal.getValue();
 				XSDDateTime xsd = (XSDDateTime)literal.getValue();
 				cal = xsd.asCalendar();				
 				instant = cal.getTime();
 
-				resource = soln.getResource("object");				// gets	 the object responsable for the event generation
-				if (resource == null) thingObj = null;				// if generateBy does not exist then isPositionedAt must exist
-				else {
-					generatedBy = resource.toString();			 
-					generatedBy = generatedBy.substring(generatedBy.lastIndexOf('#') + 1); // extract fragment identifier present in URL reference
-					indAux = Long.parseLong(generatedBy.substring(1));	// remove char 'O', ' H' or 'R' to get the map key element
-					thingObj = objectMap.get(indAux);
-					if (thingObj == null) {					// The object does not exist in the Object Map => there is still hope
-						thingObj = humanMap.get(indAux);
-						if (thingObj == null) {				// The object does not exist in the Human Map => there is still hope
-							thingObj = robotMap.get(indAux);
-							if (thingObj == null)			// The object also does not exist in the Robot Map => that is a problem		
-								throw new KeySelectorException(resource.toString() + ": Object generator of the event does not exist in the maps");
-						}
-					} 
-					cleanUpSet.add (thingObj.getFragIdent());		// prepare the tripe store cleanUp saving the the object reference
-					cleanUpSet.add (thingObj.getPos().getFragIdent());	// prepare the tripe store cleanUp saving the the position reference
-					cleanUpSet.add (thingObj.getColor().getFragIdent());	// prepare the tripe store cleanUp saving the the color reference	 
-				} // end else
+
+				if (soln.contains("generateBy"))
+					generateBy = soln.getLiteral("generateBy").getLong();	// gets	 the identification of the object responsable for the event generation
+				else 
+					generateBy = 0;	
+
+
 
 				resource = soln.getResource("valuePos");			// get the position of the event  
 				if (resource == null) posObj = null;
@@ -935,31 +956,40 @@ public class SparqlEndPoint {
 					isPositionedAt = isPositionedAt.substring(isPositionedAt.lastIndexOf('#') + 1); // extract fragment identifier present in URL reference
 					indAux = Long.parseLong(isPositionedAt.substring(1));	// remove char 'L' to get the map key element
 					posObj = posMap.get(indAux);
-					if (posObj == null)					// The object does not exist in the Map => Problem					
+					if (posObj == null) {					// The object does not exist in the Map => Problem					
 						throw new KeySelectorException(objectName + ": Object position does not exist in the posMap");
+						//System.out.println("object name= " + objectName);
+						//System.exit(0);
+					}
 					cleanUpSet.add (posObj.getFragIdent());			// prepare the tripe store cleanUp saving the the position reference
 				}
 
-				if (posObj == null && thingObj == null) 
+				if (posObj == null && generateBy == 0) 
 						throw new KeySelectorException(objectName + ": No event generator was located");
 
-				if (posObj != null && thingObj != null) 
+				if (posObj != null && generateBy != 0) 
 						throw new KeySelectorException(objectName + ": Two event generators were located. It must exist only one");
 
 
 
-				resource = soln.getResource("smellType");			// The hasSmellType is always present, it is not in the Sparql OPTIONAL clause
-				smellType = resource.toString();
-				smellType = smellType.substring(smellType.lastIndexOf('#') + 1);   	// extract fragment identifier present in URL reference
-				smellTypeEnum = OlfatoryAttribute.valueOf(smellType);
+	 			chemical = soln.getLiteral("chemicalLevel").getDouble();	// The chemicalLevel is always present, it is not in the Sparql OPTIONAL clause
+				decayed = soln.getLiteral("decayedLevel").getDouble();		// The decayedLevel is always present, it is not in the Sparql OPTIONAL clause
+				fragrant = soln.getLiteral("fragrantLevel").getDouble();	// The fragrantLevel is always present, it is not in the Sparql OPTIONAL clause
+				fruity = soln.getLiteral("fruityLevel").getDouble();		// The fruityLevel is always present, it is not in the Sparql OPTIONAL clause
+				lemon = soln.getLiteral("lemonLevel").getDouble();			// The lemonLevel is always present, it is not in the Sparql OPTIONAL clause
+				minty = soln.getLiteral("mintyLevel").getDouble();			// The mintyLevel is always present, it is not in the Sparql OPTIONAL clause
+				popcorn = soln.getLiteral("popcornLevel").getDouble();		// The popcornLevel is always present, it is not in the Sparql OPTIONAL clause
+				pungent = soln.getLiteral("pungentLevel").getDouble();		// The pungentLevel is always present, it is not in the Sparql OPTIONAL clause
+				sweet = soln.getLiteral("sweetLevel").getDouble();			// The sweetLevel is always present, it is not in the Sparql OPTIONAL clause
+				woody = soln.getLiteral("woodyLevel").getDouble();			// The woodyLevel is always present, it is not in the Sparql OPTIONAL clause
 
+				odor = new OdorComposition(chemical, decayed, fragrant, fruity, lemon, minty, popcorn, pungent, sweet, woody);
 
-
-				if (thingObj != null) 
-					smellObj = new RobotSmell(instant, thingObj, smellTypeEnum);
+				if (generateBy != 0) 
+					smellObj = new RobotSmell(instant, generateBy, odor);
                                                                  
 				else
-					smellObj = new RobotSmell(instant, posObj, smellTypeEnum);
+					smellObj = new RobotSmell(instant, posObj, odor);
 
 				smellMap.put(index, smellObj);					// insert pair<key, value> in the map
 
@@ -968,7 +998,7 @@ public class SparqlEndPoint {
 				//
 				//	Now is the time to prepare the cleanup of the perception event
 				//
-				cleanUpSet.add(objectName);					// prepare the tripe store cleanUp saving the perception event reference 	
+				cleanUpSet.add(objectName);					// prepare the triple store cleanUp saving the perception event reference 	
 
 			}    	// close while
 
@@ -982,18 +1012,17 @@ public class SparqlEndPoint {
 
 
 	/**
-	 * query and schedule a clean up all RobotVision register presents on the data store
+	 * Query and schedule a clean up all RobotVision register presents on the data store
 	 */
 	private void visionSparqlProcess() throws IOException, URIReferenceException, KeySelectorException {
 
 		long 		index;					// index to calculate the Map access key
-		long		indAux;					// auxiliary index 
 		Literal		literal;				// An RDF Literal.
 		Resource	resource;				// An RDF Resource.
 		Calendar	cal;					// defines the instant of event occurence
 
-
-		String 		generatedBy, objectName;		// String nodes associated with the object 
+		long		generateBy;				// identify the object
+		String 		objectName;				// String nodes associated with the object 
 		Date 		instant;				// to maintain the instant of occurrence of the event
 		Thing 		thingObj;				// defines the object responsable for the event generation
 
@@ -1019,22 +1048,26 @@ public class SparqlEndPoint {
 				index = Long.parseLong(objectName.substring(1));		// remove char 'A' to get the map key element
 
 				literal = soln.getLiteral("time");				// The occursAt is always present, it is not in the Sparql OPTIONAL clause
-				Object object = literal.getValue();
+				//Object object = literal.getValue();
 				XSDDateTime xsd = (XSDDateTime)literal.getValue();
 				cal = xsd.asCalendar();				
 				instant = cal.getTime();
 
-				resource = soln.getResource("object");				// The object is always present, it is not in the Sparql OPTIONAL clause
-				generatedBy = resource.toString();			 
-				generatedBy = generatedBy.substring(generatedBy.lastIndexOf('#') + 1); // extract fragment identifier present in URL reference
-				indAux = Long.parseLong(generatedBy.substring(1));		// remove char 'O', ' H' or 'R' to get the map key element
-				thingObj = objectMap.get(indAux);
+
+
+				if (soln.contains("generateBy"))
+					generateBy = soln.getLiteral("generateBy").getLong();	// gets	 the identification of the object responsable for the event generation
+				else 
+					generateBy = 0;	
+
+
+				thingObj = objectMap.get(generateBy);
 				if (thingObj == null) {						// The object does not exist in the Object Map => there is still hope
-					thingObj = humanMap.get(indAux);
+					thingObj = humanMap.get(generateBy);
 					if (thingObj == null) {					// The object does not exist in the Human Map => there is still hope
-						thingObj = robotMap.get(indAux);
+						thingObj = robotMap.get(generateBy);
 						if (thingObj == null)				// The object also does not exist in the Robot Map => that is a problem		
-								throw new KeySelectorException(resource.toString() + ": Object generator of the event does not exist in the maps");
+								throw new KeySelectorException(Long.toString(generateBy) + ": Object generator of the Vision does not exist in the maps");
 					}
 				} 
 				cleanUpSet.add (thingObj.getFragIdent());			// prepare the tripe store cleanUp saving the the object reference
@@ -1043,7 +1076,7 @@ public class SparqlEndPoint {
 
 
 
-				visionObj = new RobotVision(instant, thingObj);
+				visionObj = new RobotVision(instant, generateBy);
 				visionMap.put(index, visionObj);					// insert pair<key, value> in the map
 
 
@@ -1083,6 +1116,27 @@ public class SparqlEndPoint {
 	}
 		
 
+	/**
+	 * remove from the triple store all info
+	 * The idea is remove all individuals proving a clean base to start up the operation
+         * Remember that th robotic agent is generating data all the time so, it could be interesting clean up the base at beginning. 
+	 */
+	public void cleanUpAllInfo() {
+		UpdateProcessor upp;
+
+	      	upp = UpdateExecutionFactory.createRemote(UpdateFactory.create(SparqlAccess.DELETE_ALL_VISION),serviceURI);    upp.execute();
+	      	upp = UpdateExecutionFactory.createRemote(UpdateFactory.create(SparqlAccess.DELETE_ALL_SMELL),serviceURI);    upp.execute();
+	      	upp = UpdateExecutionFactory.createRemote(UpdateFactory.create(SparqlAccess.DELETE_ALL_TOUCH),serviceURI);    upp.execute();
+	      	upp = UpdateExecutionFactory.createRemote(UpdateFactory.create(SparqlAccess.DELETE_ALL_TASTE),serviceURI);    upp.execute();
+	      	upp = UpdateExecutionFactory.createRemote(UpdateFactory.create(SparqlAccess.DELETE_ALL_HEAR),serviceURI);    upp.execute();
+	      	upp = UpdateExecutionFactory.createRemote(UpdateFactory.create(SparqlAccess.DELETE_ALL_ROBOT),serviceURI);    upp.execute();
+	      	upp = UpdateExecutionFactory.createRemote(UpdateFactory.create(SparqlAccess.DELETE_ALL_HUMAN),serviceURI);    upp.execute();
+	      	upp = UpdateExecutionFactory.createRemote(UpdateFactory.create(SparqlAccess.DELETE_ALL_OBJECT),serviceURI);    upp.execute();
+	      	upp = UpdateExecutionFactory.createRemote(UpdateFactory.create(SparqlAccess.DELETE_ALL_CARTESIAN),serviceURI);    upp.execute();
+	      	upp = UpdateExecutionFactory.createRemote(UpdateFactory.create(SparqlAccess.DELETE_ALL_COLOR),serviceURI);    upp.execute();
+  
+	}
+		
 
 
 

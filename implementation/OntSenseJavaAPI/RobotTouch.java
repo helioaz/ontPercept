@@ -23,6 +23,8 @@ import java.util.Date;
  */
 public class RobotTouch extends RobotPerceptionEvent {
 
+	private long objectId;		// this number represents the unique identifier of the object 
+
 	private double hardness;
 
 	private double moisture;
@@ -43,9 +45,9 @@ public class RobotTouch extends RobotPerceptionEvent {
 	 * 
 	 *  
 	 */
-	public RobotTouch(Date instant, Thing thingObj, double hard, double mois, double press, double rough, double temp) {
+	public RobotTouch(Date instant, long objectId, double hard, double mois, double press, double rough, double temp) {
 		occurs = instant;
-		generateBy = thingObj;				// Great. There is a Thing object
+		this.objectId = objectId;
 		this.pos = null;				// there is no position object: set a value; just in case!
 
 		hardness = hard;
@@ -63,7 +65,7 @@ public class RobotTouch extends RobotPerceptionEvent {
 	 */
 	public RobotTouch(Date instant, CartesianPos pos, double hard, double mois, double press, double rough, double temp) {
 		this.occurs = instant;
-		this.generateBy = null;			// there is no Thing object: set a value; just in case!
+		this.objectId = 0;			// there is no Thing object: set a value equal zero
 		this.pos = pos;				// Great. There is a position object
 
 		hardness = hard;

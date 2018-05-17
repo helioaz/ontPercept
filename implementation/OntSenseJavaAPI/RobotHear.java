@@ -49,9 +49,9 @@ public class RobotHear extends RobotPerceptionEvent {
 	 * The detail parameter defines additional information associated with the sound, for example, if kind is MARIANA_VOICE then the detail represents the sentence said.
 	 * 
 	 */
-	public RobotHear(Date instant, Thing thingObj, HearingAttribute kind, double volume, String detail) {
+	public RobotHear(Date instant, long idObject, HearingAttribute kind, double volume, String detail) {
 		occurs = instant;
-		generateBy = thingObj;				// Great. There is a Thing object
+		generateBy = idObject;				// Great. There is a Thing object
 		this.pos = null;				// there is no position object: set a value; just in case!
 		this.volume = volume;
 		this.detail = detail;
@@ -71,7 +71,7 @@ public class RobotHear extends RobotPerceptionEvent {
 	 */
 	public RobotHear(Date instant, CartesianPos pos, HearingAttribute kind, double volume, String detail) {
 		this.occurs = instant;
-		this.generateBy = null;			// there is no Thing object: set a value; just in case!
+		this.generateBy = 0;			// there is no Thing object: set a value; just in case!
 		this.pos = pos;				// Great. There is a position object
 		this.volume = volume;
 		this.detail = detail;

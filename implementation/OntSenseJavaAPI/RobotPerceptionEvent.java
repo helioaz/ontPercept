@@ -27,16 +27,12 @@ public abstract class RobotPerceptionEvent {
 	 */
 	protected Date occurs;
 
-	/**
-	 * this attribute counts the occurence of events. 
-	 */
-	private static long eventCount = 0;
 
 
 	/**
 	 * Defines the object  responsable by the event generation. Note that, this knowledge is not always present. As an example, when an odor is present but the source is unknown.
 	 */
-	protected Thing generateBy;
+	protected long generateBy;
 
 
 
@@ -53,7 +49,7 @@ public abstract class RobotPerceptionEvent {
 	 *		Get protect information
 	 */
 	public Date getOccurs() { return occurs; }
-	public Thing getGenerateBy() { return generateBy; }
+	public long getGenerateBy() { return generateBy; }
 
 
 
@@ -63,8 +59,7 @@ public abstract class RobotPerceptionEvent {
 
 	public String toString() {
 		String result = "\n \t occurs= " + occurs;
-		if (generateBy == null) result += "\n \t generateBy= null";
-		else result += "\n \t generateBy= " + generateBy.getFragIdent();
+		result += "\n \t generateBy= " + Long.toString(generateBy);
 		return 	result;
 	}  // toString
 

@@ -23,9 +23,11 @@ import java.util.Date;
  */
 public class RobotSmell extends RobotPerceptionEvent {
 
-	private OlfatoryAttribute smellType;
+	private OdorComposition smellType;
 
 	private CartesianPos pos;
+
+	private long objectId;		// this number represents the unique identifier of the object 
 
 	/**
 	 * Constructor of the RobotSmell class. The objective is to create a instance for a odor perception. 
@@ -36,9 +38,9 @@ public class RobotSmell extends RobotPerceptionEvent {
 	 *  
 	 *  
 	 */
-	public RobotSmell(Date instant, Thing thingObj, OlfatoryAttribute odor) {
+	public RobotSmell(Date instant, long objectId, OdorComposition odor) {
 		occurs = instant;
-		generateBy = thingObj;				// Great. There is a Thing object
+		this.objectId = objectId;
 		this.pos = null;				// there is no position object: set a value; just in case!
 		smellType = odor;
 
@@ -50,20 +52,20 @@ public class RobotSmell extends RobotPerceptionEvent {
 	 *  The pos parameter represents the position of an unknow object responsible to produce the the smell. 
 	 * The odor parameter identifies the odor.
 	 */
-	public RobotSmell(Date instant, CartesianPos pos, OlfatoryAttribute odor) {
+	public RobotSmell(Date instant, CartesianPos pos, OdorComposition odor) {
 		this.occurs = instant;
-		this.generateBy = null;			// there is no Thing object: set a value; just in case!
+		this.objectId = 0;			// there is no Thing object: set a value equal zero
 		this.pos = pos;				// Great. There is a position object
 		smellType = odor;
 	}
 
 
-	/**
+	/** 
 	 *		Get protect information
 	 */
 	public CartesianPos getPos() { return pos; }
-	public OlfatoryAttribute getSmellType() { return smellType; }
-
+	public OdorComposition getSmellType() { return smellType; }
+	public long getObjectId() { return objectId; }
 
 
 	/**
@@ -75,7 +77,7 @@ public class RobotSmell extends RobotPerceptionEvent {
 		if (pos == null) 
 			result += "\n \t pos= null";
 		else 
-			result += "\n \t pos= " + pos;
+			result += "position= [" + pos + "]";
 
 		result += "\n \t smellType= " + smellType ;
   

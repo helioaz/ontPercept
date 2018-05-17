@@ -114,14 +114,6 @@ public class SparqlAccess {
 
 
 
-	public static final String DELETE_SUBJECT = 								// USADO
- 		"PREFIX ontsense: <http://example.org/sense#> " +
-            	" DELETE WHERE {" +
-		"  ontsense:%s 	?property      ?value .  " +
-	    	" }   "; 
-
-
-
     	public static final String QUERY_HEAR =									// USADO
 		"PREFIX ontsense: <http://example.org/sense#> " + 
 		"PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> " + 
@@ -132,7 +124,7 @@ public class SparqlAccess {
 		"    		ontsense:occursAt 		?time ;  " +						// Literal Date  
 		"    		ontsense:hasSoundType		?soundType ; " + 
 		"    		ontsense:volume 		?volume . " + 						// Literal long 
-		"  OPTIONAL {   	?subject ontsense:generateBy 		?object . }" +
+		"  OPTIONAL {   	?subject ontsense:generateBy 		?generateBy . }" +			// Literal long
 		"  OPTIONAL {   	?subject ontsense:isPositionedAt 	?valuePos . }" + 
 		"  OPTIONAL {   	?subject ontsense:detail 		?detail . }" + 				// Literal String
 		"}" +
@@ -148,7 +140,7 @@ public class SparqlAccess {
 		"WHERE { " + 
 		"  ?subject 	rdf:type 			ontsense:RobotTaste ; " + 
 		"    		ontsense:occursAt 		?time ;  " +						// Literal Date
-		"  		ontsense:generateBy 		?object ;  " + 
+		"  		ontsense:generateBy 		?generateBy ;" +						// Literal long
 		"    		ontsense:sweetness 		?sweetness ;  " +					// Literal double  
 		"    		ontsense:umani			?umani ; " +						// Literal double 
 		"    		ontsense:saltiness 		?saltiness ; " +					// Literal double 
@@ -173,7 +165,7 @@ public class SparqlAccess {
 		"    		ontsense:moisture 		?moisture ; " +						// Literal double 
 		"    		ontsense:roughness 		?roughness ; " +					// Literal double 
 		"    		ontsense:pressure 		?pressure . " +						// Literal double
-		"  OPTIONAL {   	?subject ontsense:generateBy 		?object . }" +
+		"  OPTIONAL {   	?subject ontsense:generateBy 		?generateBy . }" +			// Literal long 
 		"  OPTIONAL {   	?subject ontsense:isPositionedAt 	?valuePos . }" + 
 		"}" +
 		"    ORDERBY ?time ";
@@ -181,16 +173,25 @@ public class SparqlAccess {
 
 
     	public static final String QUERY_SMELL =									// USADO
-
 		"PREFIX ontsense: <http://example.org/sense#> " + 
 		"PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> " + 
 		"PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> " + 
 		"SELECT DISTINCT * " + 
 		"WHERE { " + 
-		"  ?subject 	rdf:type 			ontsense:RobotSmell ; " + 
-		"    		ontsense:occursAt 		?time ;  " +						// Literal Date
-		"  		ontsense:generateBy 		?object ;  " + 
-		"    		ontsense:hasSmellType  		?smellType .  " +					// Literal double  
+		"  ?subject rdf:type 				ontsense:RobotSmell ; " + 
+		"    		ontsense:occursAt 		?time ;  " +					// Literal Date
+        "       	ontsense:chemicalLevel	?chemicalLevel ;" +        		// defines the chemicalLevel odorant 	
+        "       	ontsense:decayedLevel	?decayedLevel ;" +        		// defines the decayedLevel odorant 	
+        "       	ontsense:fragrantLevel	?fragrantLevel ;" +        		// defines the fragrantLevel odorant 	
+        "       	ontsense:fruityLevel	?fruityLevel ;" +        		// defines the fruityLevel odorant 	
+        "       	ontsense:lemonLevel		?lemonLevel ;" +        		// defines the lemonLevel odorant 
+        "       	ontsense:mintyLevel		?mintyLevel ;" +        		// defines the mintyLevel odorant  	
+        "       	ontsense:popcornLevel	?popcornLevel ;" +        		// defines the popcornLevel odorant 	
+        "       	ontsense:pungentLevel	?pungentLevel;" +        		// defines the pungentLevel odorant 	
+        "       	ontsense:sweetLevel		?sweetLevel ;" +       			// defines the sweetLevel odorant 	
+        "       	ontsense:woodyLevel		?woodyLevel ." +       			// defines the woodyLevel odorant
+		"  OPTIONAL {   ?subject ontsense:generateBy 		?generateBy . }" +			// Literal long 
+		"  OPTIONAL {   ?subject ontsense:isPositionedAt 	?valuePos . }" +        		  
 		"}" +
 		"    ORDERBY ?time ";
 
@@ -206,12 +207,113 @@ public class SparqlAccess {
 		"WHERE { " + 
 		"  ?subject 	rdf:type 			ontsense:RobotVision ; " +
  		"    		ontsense:occursAt 		?time ;  " +						// Literal Date
-		"  		ontsense:generateBy 		?object .  " + 
+		"  		ontsense:generateBy 		?generateBy . " +						// Literal long 
 		"}" +
 		"    ORDERBY ?time ";
 
 
 
+	public static final String DELETE_SUBJECT = 								// USADO
+		"PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" + 
+ 		"PREFIX ontsense: <http://example.org/sense#> " +
+            	" DELETE WHERE {" +
+		"  ontsense:%s 	?property      ?value .  " +
+	    	" }   "; 
+
+
+
+
+
+	// Delete all statements associated with Color subjet 
+    	public static final String DELETE_ALL_COLOR = 								// USADO
+		"PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" + 
+		"PREFIX ontsense: <http://example.org/sense#> " +
+            	" DELETE WHERE {" +
+		"  ?subject 	rdf:type 	ontsense:RGBColor ; " +
+		"  		?property      ?value . " +
+	    	" }   "; 
+
+	// Delete all statements associated with CartesianPositionPoint subjet
+    	public static final String DELETE_ALL_CARTESIAN = 							// USADO
+		"PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" + 
+		"PREFIX basicPos: <http://www.inf.ufrgs.br/phi-group/ontologies/basicPos.owl#>" +
+            	" DELETE WHERE {" +
+		"  ?subject 	rdf:type 	basicPos:CartesianPositionPoint ; " +
+		"  		?property      ?value . " +
+	    	" }   "; 
+
+	// Delete all statements associated with OBJECT subjet
+    	public static final String DELETE_ALL_OBJECT = 								// USADO
+		"PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" + 
+  		"PREFIX sumo: <http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#> " +
+            	" DELETE WHERE {" +
+		"  ?subject 	rdf:type 	sumo:Object ; " +
+		"  		?property      ?value . " +
+	    	" }   "; 
+
+	// Delete all statements associated with HUMAN subjet
+    	public static final String DELETE_ALL_HUMAN = 								// USADO
+		"PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" + 
+		"PREFIX ontsense: <http://example.org/sense#> " +
+            	" DELETE WHERE {" +
+		"  ?subject 	rdf:type 	ontsense:Human ; " +
+		"  		?property      ?value . " +
+	    	" }   "; 
+
+	// Delete all statements associated with ROBOT subjet
+    	public static final String DELETE_ALL_ROBOT = 								// USADO
+		"PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" + 
+		"PREFIX cora: <http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#> " +
+            	" DELETE WHERE {" +
+		"  ?subject 	rdf:type 	cora:Robot ; " +
+		"  		?property      ?value . " +
+	    	" }   "; 
+
+	// Delete all statements associated with HEAR subjet
+    	public static final String DELETE_ALL_HEAR = 								// USADO
+		"PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" + 
+		"PREFIX ontsense: <http://example.org/sense#> " +
+            	" DELETE WHERE {" +
+		"  ?subject 	rdf:type 	ontsense:RobotHear ; " +
+		"  		?property      ?value . " +
+	    	" }   "; 
+
+	// Delete all statements associated with TASTE subjet
+    	public static final String DELETE_ALL_TASTE = 								// USADO
+		"PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" + 
+		"PREFIX ontsense: <http://example.org/sense#> " +
+            	" DELETE WHERE {" +
+		"  ?subject 	rdf:type 	ontsense:RobotTaste ; " +
+		"  		?property      ?value . " +
+	    	" }   "; 
+
+	// Delete all statements associated with TOUCH subjet
+    	public static final String DELETE_ALL_TOUCH = 								// USADO
+		"PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" + 
+		"PREFIX ontsense: <http://example.org/sense#> " +
+            	" DELETE WHERE {" +
+		"  ?subject 	rdf:type 	ontsense:RobotTouch ; " +
+		"  		?property      ?value . " +
+	    	" }   "; 
+
+
+	// Delete all statements associated with SMELL subjet
+    	public static final String DELETE_ALL_SMELL = 								// USADO
+		"PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" + 
+		"PREFIX ontsense: <http://example.org/sense#> " +
+            	" DELETE WHERE {" +
+		"  ?subject 	rdf:type 	ontsense:RobotSmell ; " +
+		"  		?property      ?value . " +
+	    	" }   "; 
+
+	// Delete all statements associated with VISION subjet
+    	public static final String DELETE_ALL_VISION = 								// USADO
+		"PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" + 
+		"PREFIX ontsense: <http://example.org/sense#> " +
+            	" DELETE WHERE {" +
+		"  ?subject 	rdf:type 	ontsense:RobotVision ; " +
+		"  		?property      	?value . " +
+	    	" }   "; 
 
 
 
@@ -221,10 +323,11 @@ public class SparqlAccess {
 
 
 
-
-
-
-
+/// 
+/// These scripts were not used.
+/// They were mantained here just as example of use.
+/// 
+///
 
 
 
@@ -240,7 +343,7 @@ public class SparqlAccess {
 		"  ontsense:vision010 	rdf:type 		ontsense:RobotVision ; " +
 		"  			rdf:type 		owl:NamedIndividual ; " +
 		"   			ontsense:occursAt 	\"2018-04-12T13:24:00.0\"^^xsd:dateTime ; " + 
-		"   			ontsense:generateBy 	ontsense:object002 ; " + 
+		"   			ontsense:generateBy 	\"0000008\"^^xsd:long  ; " + 
 	    	" }   "; 
 
 
@@ -258,7 +361,7 @@ public class SparqlAccess {
 		"  ontsense:touch010 	rdf:type 		ontsense:RobotTouch ; " +
 		"  			rdf:type 		owl:NamedIndividual ; " +
 		"   			ontsense:occursAt 	\"2018-04-12T13:20:15.6\"^^xsd:dateTime ; " + 
-		"   			ontsense:generateBy 	ontsense:object004 ; " +
+		"   			ontsense:generateBy 	\"0000009\"^^xsd:long  ; " +
 		"   			ontsense:hardness 	\"0.8\"^^xsd:double ; " +
 		"   			ontsense:temperature	\"23.0\"^^xsd:double ; " +
 		"   			ontsense:moisture	\"0.1\"^^xsd:double ; " +
@@ -281,7 +384,7 @@ public class SparqlAccess {
 		"  ontsense:taste010 	rdf:type 		ontsense:RobotTaste ; " +
 		"  			rdf:type 		owl:NamedIndividual ; " +
 		"   			ontsense:occursAt 	\"2018-04-12T13:20:15.6\"^^xsd:dateTime ; " + 
-		"   			ontsense:generateBy 	ontsense:object005 ; " +
+		"   			ontsense:generateBy 	\"0000018\"^^xsd:long  ; " +
 		"   			ontsense:sweetness 	\"0.05\"^^xsd:double ; " +
 		"   			ontsense:umani		\"0.05\"^^xsd:double ; " +
 		"   			ontsense:saltiness	\"0.3\"^^xsd:double ; " +
@@ -290,21 +393,7 @@ public class SparqlAccess {
  
 	    	" }   "; 
 
-	/**
-	 * script for a sparql query operation with smell sense  information after a given time		"PREFIX ontsense: <http://example.org/sense#> " +
-		"PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> " +
-		"PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> " +
-		"PREFIX sumo: <http://www.inf.ufrgs.br/phi-group/ontologies/sumo.owl#> " +		
-		"SELECT DISTINCT ?subject ?hasColor ?isMadeOf ?objectId ?isPositionedAt ?tag " +
-		"WHERE { " +
-		"  ?subject rdf:type 			sumo:Object . " +
-		"  ?subject ontsense:hasColor		?hasColor . " +
-		"  ?subject ontsense:isMadeOf		?isMadeOf . " +
-		"  ?subject ontsense:objectId		?objectId . " +			// Literal long
-		"  ?subject ontsense:isPositionedAt	?isPositionedAt . " +
-		"  ?subject ontsense:tag		?tag . " +			// Literal String
-		"    }";
-	 */
+
     	public static final String INSERT_SMELL =
 		"PREFIX os: <http://example.org/sense/> " +
 		"PREFIX ontsense: <http://example.org/sense#> " +
@@ -317,7 +406,7 @@ public class SparqlAccess {
 		"  ontsense:smell010 	rdf:type 		ontsense:RobotSmell ; " +
 		"  			rdf:type 		owl:NamedIndividual ; " +
 		"   			ontsense:occursAt 	\"2018-04-12T13:24:15.6\"^^xsd:dateTime ; " + 
-		"   			ontsense:generateBy 	ontsense:object001 ; " +
+		"   			ontsense:generateBy 	\"0000028\"^^xsd:long  ; " +
 		"   			ontsense:hasSmellType 	ontsense:fruitiSmell ; " +
 	    	" }   "; 
 
@@ -336,7 +425,7 @@ public class SparqlAccess {
 		"  ontsense:sound010 	rdf:type 		ontsense:RobotHear ; " +
 		"  			rdf:type 		owl:NamedIndividual ; " +
 		"   			ontsense:occursAt 	\"2018-04-12T13:20:15.7\"^^xsd:dateTime ; " + 
-		"   			ontsense:generateBy 	ontsense:object007 ; " +
+		"   			ontsense:generateBy 	\"0000038\"^^xsd:long  ; " +
 		"   			ontsense:volume 	\"0.3\"^^xsd:double ; " +
 		"   			ontsense:hasSoundType 	ontsense:liquidFlowingSound ; " +
 	    	" }   "; 
@@ -428,7 +517,7 @@ public class SparqlAccess {
 		"WHERE { " +
 		"  ?subject rdf:type ontsense:RobotVision . " +
 		"  ?subject ontsense:occursAt ?time . " + 
-		"  ?subject ontsense:generateBy ?object . " +
+		"  ?subject ontsense:generateBy ?generateBy . " +
 		"  ?object ?predicate ?value . " +
 		"FILTER ( ?time > \"2018-04-12T13:23:19.9\"^^xsd:dateTime)    }";
 
@@ -445,7 +534,7 @@ public class SparqlAccess {
 		"WHERE { " +
 		"  ?subject rdf:type 			ontsense:RobotTouch . " +
 		"  ?subject ontsense:occursAt 		?time . " + 
-		"  ?subject ontsense:generateBy 	?object . " +
+		"  ?subject ontsense:generateBy 	?generateBy . " +
 		"  ?subject ontsense:temperature	?temp . " +
 		"  ?subject ontsense:moisture		?moist . " +
 		"  ?subject ontsense:roughness		?rough . " +
@@ -462,7 +551,7 @@ public class SparqlAccess {
 		"WHERE { " +
 		"    ?subject rdf:type 				ontsense:RobotTaste . " +
 		"    ?subject ontsense:occursAt 		?time . " + 
-		" 	?subject ontsense:generateBy ?object . " +
+		"    ?subject ontsense:generateBy ?generateBy . " +
 		"    ?subject ontsense:sourness		?sour . " +
 		"    ?subject ontsense:saltiness		?salt . " +
 		"    ?subject ontsense:sweetness		?sweet . " +
@@ -480,7 +569,7 @@ public class SparqlAccess {
 		"WHERE { " +
 		"    ?subject rdf:type 				ontsense:RobotSmell . " +
 		"    ?subject ontsense:occursAt 		?time . " + 
-		"    ?subject ontsense:generateBy 	?object . " +
+		"    ?subject ontsense:generateBy 	?generateBy . " +
 		"    ?subject ontsense:hasSmellType	?smellAtt . " +
 		"    ?object ontsense:hasMaterial 		?valueMat . " +
 		"    ?object ontsense:hasColor 		?valueColor . " +
@@ -499,7 +588,7 @@ public class SparqlAccess {
 		"WHERE { " + 
 		"    ?subject rdf:type 				ontsense:RobotHear . " + 
 		"    ?subject ontsense:occursAt 		?time .  " + 
-		"    ?subject ontsense:generateBy 	?object . " + 
+		"    ?subject ontsense:generateBy 	?generateBy . " + 
 		"    ?subject ontsense:hasSoundType	?soundAtt . " + 
 		"    ?object ontsense:hasMaterial 		?valueMat . " + 
 		"    ?object ontsense:hasColor 		?valueColor . " + 

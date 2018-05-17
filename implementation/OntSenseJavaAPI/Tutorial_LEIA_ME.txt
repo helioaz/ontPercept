@@ -1,0 +1,23 @@
+# DEFINE OS DIVERSOS ARQUIVOS DE TUTORIALS CRIADOS PARA EXERCITAR O PACOTE OntSenseJavaAPI
+
+- Tutorial00.java
+Primeira versão de tutorial. Basicamente exercita diversos comandos SPARQL para manipulação da triple store.
+
+- Tutorial01.java
+Esta versão esta diretamente associada a ontologia ontSense. Além da RDF da ontologia, também foi incluido
+um conjunto de individuos interelacionados.
+Este tutorial usa ontsensePlusData.owl que deve ser construido para essa execução.
+
+- Tutorial02.java
+Esta versão esta diretamente associada a ontologia ontSense. 
+Ao final da leitura e apresentação, o programa entra em loop aguandado mais RDF tripes que podem ser fornecidos
+através de scripts SPARQL fornecidos através do browser na URL localhost:3030
+
+- Tutorial03.java
+Objetivo: testar a remoção de todos os individuos presentes na triple store Fuseki.
+Ao final da construção da base, o programa ativa a rotina "cleanUpAllInfo()" para remover todos os individuos
+da base. 
+
+
+
+

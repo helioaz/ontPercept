@@ -25,7 +25,7 @@ namespace OntSenseCSharpAPI
             // to create a Sparql command for generate the olfatory information
             sSmell = string.Format(SparqlAccess.INSERT_SMELL, countEv, instant.ToString(SparqlAccess.XSD_DATETIME), idObject,
                                    odor.chemicalLevel, odor.decayedLevel, odor.fragrantLevel, odor.fruityLevel, odor.lemonLevel,
-                                   odor.mintyLevel, odor.popocornLevel, odor.pungentLevel, odor.sweetLevel, odor.woodyLevel);
+                                   odor.mintyLevel, odor.popcornLevel, odor.pungentLevel, odor.sweetLevel, odor.woodyLevel);
         }
 
 		/// Constructor of the RobotSmell class. The objective is to create a instance for a odor perception. 
@@ -45,7 +45,7 @@ namespace OntSenseCSharpAPI
             // to create a Sparql command for generate the olfatory information
             sSmell = string.Format(SparqlAccess.INSERT_SMELL_POS, countEv, instant.ToString(SparqlAccess.XSD_DATETIME), 
                                    odor.chemicalLevel, odor.decayedLevel, odor.fragrantLevel, odor.fruityLevel, odor.lemonLevel, 
-                                   odor.mintyLevel, odor.popocornLevel, odor.pungentLevel, odor.sweetLevel, odor.woodyLevel);
+                                   odor.mintyLevel, odor.popcornLevel, odor.pungentLevel, odor.sweetLevel, odor.woodyLevel);
            
 
         }

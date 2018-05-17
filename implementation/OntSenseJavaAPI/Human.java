@@ -52,7 +52,9 @@ public class Human extends Thing {
 	public void setEmotion (EmotionalState emotionSta ) {
 		emotion = emotionSta;
 	}
-
+	public String getEmotion () {
+		return emotion.toString();
+	}
 
 
 

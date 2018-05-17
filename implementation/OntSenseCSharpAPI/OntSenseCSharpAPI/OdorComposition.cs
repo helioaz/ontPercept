@@ -36,7 +36,7 @@ namespace OntSenseCSharpAPI
         public double mintyLevel { get; }
 
         /// Represents the level of popcorn odorant present in a olfatory information.
-        public double popocornLevel { get; }
+        public double popcornLevel { get; }
 
         /// Represents the level of pungent odorant present in a olfatory information.
         public double pungentLevel { get; }
@@ -49,7 +49,7 @@ namespace OntSenseCSharpAPI
 
 
 
-        public OdorComposition(double chemical, double decayed, double fragrant, double fruity, double lemon, double minty, double popocorn, double pungent, double sweet, double woody)
+        public OdorComposition(double chemical, double decayed, double fragrant, double fruity, double lemon, double minty, double popcorn, double pungent, double sweet, double woody)
         {
             chemicalLevel = chemical;
             decayedLevel = decayed;
@@ -57,7 +57,7 @@ namespace OntSenseCSharpAPI
             fruityLevel = fruity;
             lemonLevel = lemon;
             mintyLevel = minty;
-            popocornLevel = popocorn;
+            popcornLevel = popcorn;
             pungentLevel = pungent;
             sweetLevel = sweet;
             woodyLevel = woody;
