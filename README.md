@@ -1,4 +1,4 @@
-# ontSense
+# ontSense: An ontology for social robotics experiments
 
 This project includes the implementation and testing of APIs to access an SPARQL server to update sensory information captured by a humanoid robot. These APIs were implemented in two distinct languages: Java and C#.
  
