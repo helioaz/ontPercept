@@ -1,0 +1,17 @@
+source _firstload.soar
+pushd all
+source all_source.soar
+popd
+pushd elaborations
+source elaborations_source.soar
+popd
+source cmdReception.soar
+source deliveryCracker.soar
+source getKitchenCracker.soar
+source initialize-butler.soar
+source lookForCracker.soar
+source lookForHuman.soar
+source moveLivingRoom.soar
+source moveToCracker.soar
+source moveToHuman.soar
+source takeCracker.soar

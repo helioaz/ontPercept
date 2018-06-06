@@ -1,0 +1,155 @@
+# OntSense Project   
+# 03/2018
+# Phase 4x - takeCracker
+
+# Propose*takeCracker
+# If   the task is Get and the object is Cracker and 
+#      the result of  the last command is success and
+#      the step is 41
+# then propose takeCracker.
+sp {Propose*takeCracker
+   (state <s> ^name butler ^robot <r1>)
+   (<r1> ^task get ^object Cracker ^step 41 )
+   (<r1> ^lastCmdResult success )
+-->
+   (<s> ^operator <o> + =)
+   (<o> ^name takeCracker)  
+}
+
+
+
+# Apply*takeCracker
+# If the takeCracker operator is selected,
+# then take with right hand the craker.
+# ATTENTION: If there are more than one Cracker then the system
+#            will try to catch all
+sp {Apply*takeCracker
+   (state <s> ^name butler ^operator <o>  ^io.output-link <output> ^robot <r1>
+                ^io.input-link.vision <vision>  )
+   (<vision> ^<thing>.tagInfo Cracker)   
+   (<vision> ^<thing>.objectId <identify>)
+   (<r1>  ^step 41 ^lastCmdResult <result> <> inProgress)   
+   (<o>  ^name takeCracker ) 
+-->
+   (<r1> ^lastCmdResult inProgress) 
+   (<r1> ^lastCmdResult <result> -)   
+   (<r1> ^step 42)
+   (<r1> ^step 41 -)
+   (<output> ^TakeRight.objectId <identify>) }
+
+
+
+# Propose*takeCracker*remove
+# If   the task is Get and the object is Cracker and 
+#      the step is 42
+# then propose remove takeCracker.
+sp {Propose*takeCracker*remove
+   (state <s> ^name butler ^robot <r1>  ^io.output-link <output>)
+   (<r1> ^task get ^object Cracker ^step 42 )
+   (<output> ^TakeRight <cmd>)   
+   (<cmd> ^status complete)   
+-->
+   (<s> ^operator <o> + =)
+   (<o> ^name takeCracker*remove)  
+}
+
+
+
+# Apply*takeCracker*remove:
+# If the operator is takeCracker,
+# and there is a completed TakeRight command on the output link,
+# then remove that command and go to reset the head
+sp {Apply*takeCracker*remove
+   (state <s> ^name butler  ^operator <o> 
+              ^io.output-link <output>  ^robot <r1>)
+   (<o>  ^name takeCracker*remove )
+   (<r1> ^lastCmdResult inProgress  ^step 42)
+   (<output> ^TakeRight <cmd>)
+   (<cmd> ^status complete)
+-->
+   (<r1> ^step 43)
+   (<r1> ^step 42 -)   
+   (<r1> ^lastCmdResult success) 
+   (<r1> ^lastCmdResult inProgress - )
+   (<output> ^TakeRight <cmd> -)}
+
+
+
+
+
+
+
+
+
+
+
+# Propose*headReset
+# If   the task is Get and the object is Cracker and 
+#      the result of  the last command is success and
+#      the step is 43
+# then propose headReset.
+sp {Propose*headReset
+   (state <s> ^name butler ^robot <r1>)
+   (<r1> ^task get ^object Cracker ^step 43 )
+   (<r1> ^lastCmdResult success )
+-->
+   (<s> ^operator <o> + =)
+   (<o> ^name headReset)  
+}
+
+
+
+# Apply*headReset
+# If the headReset operator is selected,
+# then  head reset.
+sp {Apply*headReset
+   (state <s> ^name butler ^operator <o>  
+              ^io.output-link <output> ^robot <r1>)
+   (<r1>  ^step 43 ^lastCmdResult <result> <> inProgress) 
+   (<o>  ^name headReset ) 
+-->
+   (<r1> ^lastCmdResult inProgress) 
+   (<r1> ^lastCmdResult <result> -)   
+   (<r1> ^step 44)
+   (<r1> ^step 43 -)
+   (<output> ^HeadReset.dummy 0) }
+
+
+
+# Propose*headReset*remove
+# If   the task is Get and the object is Cracker and 
+#      the step is 44
+# then propose remove headReset.
+sp {Propose*headReset*remove
+   (state <s> ^name butler ^robot <r1>  ^io.output-link <output>)
+   (<r1> ^task get ^object Cracker ^step 44 )
+   (<output> ^HeadReset <cmd>)   
+   (<cmd> ^status complete)   
+-->
+   (<s> ^operator <o> + =)
+   (<o> ^name headReset*remove)  
+}
+
+
+
+# Apply*headReset*remove:
+# If the operator is headReset,
+# and there is a completed head reset command on the output link,
+# then remove that command and go to next phase: moveLivingRoom
+sp {Apply*headReset*remove
+   (state <s> ^name butler  ^operator <o> 
+              ^io.output-link <output>  ^robot <r1>)
+   (<o>  ^name headReset*remove )
+   (<r1> ^lastCmdResult inProgress  ^step 44)
+   (<output> ^HeadReset <cmd>)
+   (<cmd> ^status complete)
+-->
+   (<r1> ^step 51)
+   (<r1> ^step 44 -)   
+   (<r1> ^lastCmdResult success) 
+   (<r1> ^lastCmdResult inProgress - )
+   (<output> ^HeadReset <cmd> -)}
+
+
+
+

@@ -1,0 +1,81 @@
+# OntSense Project   
+# 03/2018
+# Phase 3x - moveToCracker
+
+# Propose*moveToCracker
+# If   the task is Get and the object is Cracker and 
+#      the result of  the last command is success and
+#      the step is 31
+# then propose moveToCracker.
+sp {Propose*moveToCracker
+   (state <s> ^name butler ^robot <r1>)
+   (<r1> ^task get ^object Cracker ^step 31 )
+   (<r1> ^lastCmdResult success )
+-->
+   (<s> ^operator <o> + =)
+   (<o> ^name moveToCracker)  
+}
+
+
+
+# Apply*moveToCracker
+# If the moveToCracker operator is selected,
+# then send a command to look for a cracker package.
+sp {Apply*moveToCracker
+   (state <s> ^name butler ^operator <o>  
+              ^io.output-link <output>   ^io.input-link.vision <vision> ^robot <r1> )
+   (<vision> ^<thing>.tagInfo Cracker)
+   (<vision> ^<thing>.objectId <identify>)   
+   (<r1>  ^step 31 ^lastCmdResult <result> <> inProgress)
+   (<o>  ^name moveToCracker ) 
+-->
+   (<r1> ^lastCmdResult inProgress) 
+   (<r1> ^lastCmdResult <result> -)   
+   (<r1> ^step 32)
+   (<r1> ^step 31 -)
+   (<output> ^MoveID.objectId <identify>) }
+
+
+
+# Propose*moveToCracker*remove
+# If   the task is Get and the object is Cracker and 
+#      the command is complete
+#      the step is 32
+# then propose remove moveToCracker.
+sp {Propose*moveToCracker*remove
+   (state <s> ^name butler ^robot <r1> ^io.output-link <output>)
+   (<r1> ^task get ^object Cracker ^step 32 )
+   (<output> ^MoveID  <cmd>)
+   (<cmd> ^status complete)   
+-->
+   (<s> ^operator <o> + =)
+   (<o> ^name moveToCracker*remove)  
+}
+
+
+
+
+
+
+# Apply*moveToCracker*remove:
+# If the operator is moveToCracker,
+# and there is a completed command on the output link,
+# then remove that command and go to next phase: takeCracker
+sp {Apply*moveToCracker*remove
+   (state <s> ^name butler  ^operator <o> 
+              ^io.output-link <output>  ^robot <r1>)
+   (<o>  ^name moveToCracker*remove )
+   (<r1> ^lastCmdResult inProgress  ^step 32)
+   (<output> ^MoveID  <cmd>)
+   (<cmd> ^status complete)
+-->
+   (<r1> ^step 41)
+   (<r1> ^step 32 -)
+   (<r1> ^lastCmdResult success) 
+   (<r1> ^lastCmdResult inProgress - )
+   (<output> ^MoveID <cmd> -)}
+
+
+
+
+

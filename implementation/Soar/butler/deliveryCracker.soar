@@ -1,0 +1,98 @@
+# OntSense Project 
+# 03/2018
+# Phase 8x - deliveryCracker
+
+# Propose*deliveryCracker
+# If   the task is Get and the object is Cracker and 
+#      the result of  the last command is success and
+#      the step is 81
+# then propose deliveryCracker.
+sp {Propose*deliveryCracker
+(state <s> ^name butler ^robot <r1>)
+   (<r1> ^task get ^object Cracker ^step 81 )
+   (<r1> ^lastCmdResult success )
+-->
+   (<s> ^operator <o> + )
+   (<o> ^name deliveryCracker)  
+}
+
+
+
+# Apply*deliveryCracker*Normal
+# If the deliveryCracker operator is selected,
+# then inform the human to take the Cracker.
+sp {Apply*deliveryCracker*Normal
+   (state <s> ^name butler ^operator <o> ^io.output-link <output> 
+              ^io.input-link.vision <vision> ^robot <r1> ^robot <r1> )
+   (<vision> ^<thing>.tagInfo Human)
+   (<vision> ^<thing>.emotion <> anger)
+   (<r1> ^lastCmdResult <result>)
+   (<o>  ^name deliveryCracker ) 
+-->
+   (<r1> ^lastCmdResult inProgress) 
+   (<r1> ^lastCmdResult <result> -)   
+   (<r1> ^step 82)
+   (<r1> ^step 81 -)
+   (<output> ^Speech.text |Mariana, take the cracker.|) }
+
+
+# Apply*deliveryCracker*Anger
+# If the deliveryCracker operator is selected,
+# then inform the human to take the Cracker.
+sp {Apply*deliveryCracker*Anger
+   (state <s> ^name butler ^operator <o> ^io.output-link <output> 
+              ^io.input-link.vision <vision> ^robot <r1> ^robot <r1> )
+   (<vision> ^<thing>.tagInfo Human)
+   (<vision> ^<thing>.emotion anger)
+   (<r1> ^lastCmdResult <result>)
+   (<o>  ^name deliveryCracker ) 
+-->
+   (<r1> ^lastCmdResult inProgress) 
+   (<r1> ^lastCmdResult <result> -)   
+   (<r1> ^step 82)
+   (<r1> ^step 81 -)
+   (<output> ^Speech.text |Adorable Princess Mariana, please accept this cookie package with love...|) }
+
+
+# Propose*deliveryCracker*remove
+# If   the task is Get and the object is Cracker and 
+#      the command is complete
+#      the step is 82
+# then propose remove deliveryCracker.
+sp {Propose*deliveryCracker*remove
+   (state <s> ^name butler ^robot <r1> ^io.output-link <output>)
+   (<r1> ^task get ^object Cracker ^step 82 )
+   (<output> ^Speech <cmd>)
+   (<cmd> ^status complete)   
+-->
+   (<s> ^operator <o> + =)
+   (<o> ^name deliveryCracker*remove)  
+}
+
+
+
+
+
+
+# Apply*deliveryCracker*remove:
+# If the operator is deliveryCracker,
+# and there is a completed command on the output link,
+# then remove that command.
+sp {Apply*deliveryCracker*remove
+   (state <s> ^name butler  ^operator <o> 
+              ^io.output-link <output>  ^robot <r1>)
+   (<o>  ^name deliveryCracker*remove )
+   (<r1> ^lastCmdResult <command> inProgress  ^step 82)
+   (<r1> ^task <tskOld> ^object <objOld>)   
+   (<output> ^Speech <cmd>)
+   (<cmd> ^status complete)
+-->
+   (<r1>  ^step 0  ^lastCmdResult noCommand  ^task null  ^object null )
+   (<r1> ^step 82 - )
+   (<r1>  ^lastCmdResult <command> - )
+   (<r1> ^task <tskOld> -)
+   (<r1> ^object <objOld> -)
+   (<output> ^Speech <cmd> -) 
+   (halt)}
+
+

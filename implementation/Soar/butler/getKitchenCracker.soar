@@ -1,0 +1,74 @@
+# OntSense Project   
+# 03/2018
+# Phase 1x - getKitchenCracker
+
+
+# Propose*getKitchenCracker
+# If   the task is Get and the object is Cracker and empty hands and step equal 11,       
+# then propose move to Kitchen.
+sp {Propose*getKitchenCracker
+(state <s> ^name butler ^robot <r1>)
+   (<r1> ^task get ^object Cracker ^step 11 )
+-->
+   (<s> ^operator <o> + =)
+   (<o> ^name getKitchenCracker)  
+}
+
+
+
+# Apply*getKitchenCracker
+# If the getKitchenCracker operator is selected,
+# then move to Kitchen 
+sp {Apply*getKitchenCracker
+   (state <s> ^name butler ^operator <o> ^io.output-link <output> ^robot <r1> 
+              ^kitchen.position <ktcPos>)
+   (<o>  ^name getKitchenCracker )   
+   (<r1>  ^step 11 ^lastCmdResult <result> <> inProgress)
+   (<ktcPos>  ^x <kX>   ^y <kY>    ^z <kZ>)
+ 
+-->
+   (<r1> ^step 12)
+   (<r1> ^step 11 -)    
+   (<r1> ^lastCmdResult inProgress) 
+   (<r1> ^lastCmdResult <result> -)   
+   (<output> ^Move <movPar>)
+   (<movPar> ^x <kX>  ^y <kY> ^z <kZ>) }
+
+
+
+
+# Propose*getKitchenCracker*remove
+# If   the task is Get and the object is Cracker and step equal 12 and
+#      the command is complete
+# then propose remove move.
+sp {Propose*getKitchenCracker*remove
+(state <s> ^name butler ^robot <r1> ^io.output-link <output>)
+   (<r1> ^task get ^object Cracker ^step 12 )
+   (<output> ^Move <move>)   
+   (<move> ^status complete)   
+-->
+   (<s> ^operator <o> + =)
+   (<o> ^name getKitchenCracker*remove)  
+}
+
+
+
+
+# Apply*getKitchenCracker*remove:
+# If the move operator is selected,
+# and there is a completed move command on the output link,
+# then remove that command and go to next phase: lookForCracker
+sp {Apply*getKitchenCracker*remove
+   (state <s> ^name butler  ^operator <o> 
+              ^io.output-link <output> ^robot <r1> )
+   (<o>  ^name getKitchenCracker*remove ) 
+   (<r1> ^lastCmdResult inProgress ^step 12)
+   (<output> ^Move <move>)
+   (<move> ^status complete)
+-->
+   (<r1> ^step 21)
+   (<r1> ^step 12 -)      
+   (<r1> ^lastCmdResult success) 
+   (<r1> ^lastCmdResult inProgress - )  
+   (<output> ^Move <move> -)}
+

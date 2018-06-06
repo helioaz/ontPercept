@@ -1,0 +1,81 @@
+# OntSense Project   
+# 03/2018
+# Phase 6x - lookForHuman
+
+
+# Propose*lookForHuman
+# If   the task is Get and the object is Cracker and 
+#      the result of  the last command is success and
+#      the step is 61
+# then propose lookForHuman.
+sp {Propose*lookForHuman
+(state <s> ^name butler ^robot <r1>)
+   (<r1> ^task get ^object Cracker ^step 61 )
+   (<r1> ^lastCmdResult success )
+-->
+   (<s> ^operator <o> + =)
+   (<o> ^name lookForHuman)  
+}
+
+
+
+# Apply*lookForHuman
+# If the lookForHuman operator is selected,
+# then send a command to look for a cracker package.
+sp {Apply*lookForHuman
+   (state <s> ^name butler ^operator <o>  
+              ^io.output-link <output>  ^robot <r1> )
+   (<r1> ^lastCmdResult <result>)
+   (<o>  ^name lookForHuman ) 
+-->
+   (<r1> ^lastCmdResult inProgress) 
+   (<r1> ^lastCmdResult <result> -)   
+   (<r1> ^step 62)
+   (<r1> ^step 61 -)
+   (<output> ^LookFor.text Human) }
+
+
+
+
+
+# Propose*lookForHuman*remove
+# If   the task is Get and the object is Cracker and the step is 62
+#      it saw a Human and the command is complete
+#      
+# then propose remove moveToCracker.
+sp {Propose*lookForHuman*remove
+   (state <s> ^name butler ^robot <r1>  ^io.output-link <output>
+              ^io.input-link.vision <vision> )
+   (<r1> ^task get ^object Cracker ^step 62 )
+   (<vision> ^<thing>.tagInfo Human)   
+   (<output> ^LookFor <cmd>)   
+   (<cmd> ^status complete)   
+-->
+   (<s> ^operator <o> + =)
+   (<o> ^name lookForHuman*remove)  
+}
+
+
+
+
+
+
+# Apply*lookForHuman*remove:
+# If the operator is lookForHuman,
+# and there is a completed command on the output link,
+# then remove that command and go to next phase: moveToHuman
+sp {Apply*lookForHuman*remove
+   (state <s> ^name butler  ^operator <o> 
+              ^io.output-link <output>  ^robot <r1>)
+   (<o>  ^name lookForHuman*remove) 
+   (<r1> ^lastCmdResult inProgress  ^step 62)
+   (<output> ^LookFor <cmd>)
+   (<cmd> ^status complete)
+-->
+#   (wait 500)
+   (<r1> ^step 71)
+   (<r1> ^step 62 -)
+   (<r1> ^lastCmdResult success) 
+   (<r1> ^lastCmdResult inProgress - ) 
+   (<output> ^LookFor <cmd> -) }
+

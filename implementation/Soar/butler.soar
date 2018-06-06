@@ -1,0 +1,3 @@
+pushd butler
+source butler_source.soar
+popd

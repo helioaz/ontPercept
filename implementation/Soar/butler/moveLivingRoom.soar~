@@ -1,0 +1,81 @@
+# OntSense Project   
+# 03/2017
+# Phase 5x - moveLivingRoom
+
+# Propose*moveLivingRoom
+# If   the task is Get and the object is Cracker and 
+#      the result of  the last command is success and
+#      the step is 51
+# then propose moveLivingRoom.
+sp {Propose*moveLivingRoom
+(state <s> ^name butler ^robot <r1>)
+   (<r1> ^task get ^object Cracker ^step 51 )
+   (<r1> ^lastCmdResult success )
+-->
+   (<s> ^operator <o> + )
+   (<o> ^name moveLivingRoom) }
+
+
+
+# Apply*moveLivingRoom
+# If the moveLivingRoom operator is selected,
+# then send a command to return to living room.
+sp {Apply*moveLivingRoom
+   (state <s> ^name butler ^operator <o>  ^living.position <livingPos>
+              ^io.output-link <output>  ^robot <r1> )
+   (<livingPos>  ^x <kX>   ^y <kY>    ^z <kZ>)
+   (<r1> ^lastCmdResult <result>)
+   (<o>  ^name moveLivingRoom ) 
+-->
+   (<r1> ^lastCmdResult inProgress) 
+   (<r1> ^lastCmdResult <result> -)   
+   (<r1> ^step 52)
+   (<r1> ^step 51 -)
+   (<output> ^Move <movPar>)
+   (<movPar> ^x <kX>  ^y <kY> ^z <kZ>) }
+
+
+
+# Propose*moveLivingRoom*remove
+# If   the task is Get and the object is Cracker and
+#      the command is complete
+#      the step is 52
+# then propose remove moveLivingRoom.
+sp {Propose*moveLivingRoom*remove
+   (state <s> ^name butler ^robot <r1> ^io.output-link <output> )
+   (<r1> ^task get ^object Cracker ^step 52 )
+      (<output> ^Move  <cmd>)
+   (<cmd> ^status complete)   
+-->
+   (<s> ^operator <o> + =)
+   (<o> ^name moveLivingRoom*remove)  
+}
+
+
+
+
+
+
+# Apply*moveLivingRoom*removeCmd:
+# If the operator is moveLivingRoom,
+# and there is a completed command on the output link,
+# then remove that command  and go to next phase: lookForHuman
+sp {Apply*moveLivingRoom*remove
+   (state <s> ^name butler  ^operator <o> 
+              ^io.output-link <output>  ^robot <r1>)
+   (<o>  ^name moveLivingRoom*remove )   
+   (<r1> ^lastCmdResult inProgress  ^step 52)
+   (<output> ^Move  <cmd>)
+   (<cmd> ^status complete)
+-->
+   (<r1> ^step 61)
+   (<r1> ^step 52 -)   
+   (<r1> ^lastCmdResult success) 
+   (<r1> ^lastCmdResult  inProgress - )
+   (<output> ^Move <cmd> -)}
+
+
+
+
+
+

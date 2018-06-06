@@ -1,0 +1,95 @@
+# OntSense Project   / cmdReception rule
+# 03/2018
+
+
+
+sp {Monitor*operator-application*cmdReception
+   (state <s> ^name butler  ^operator <o>  ^robot <r1>
+              ^io.input-link <input>)
+   (<o> ^name cmdReception) 
+   (<input> ^action.task <tsk> ^action.object <obj> )
+   (<r1>  ^lastCmdResult <stp>)   
+-->
+   (write (crlf) | CMD_RECEPTION (| <tsk> |:| <obj> |:| <stp> |)|)}
+
+
+
+
+sp {Monitor*operator-application*getKitchenCracker
+   (state <s> ^name butler
+              ^operator <o> ^robot <r1>)
+   (<o> ^name getKitchenCracker)
+   (<r1>  ^lastCmdResult <stp> inProgress)    
+-->
+   (write (crlf)  | MOVE_KITCHEN (| <stp> |)|)}
+
+
+
+sp {Monitor*operator-application*lookForCracker
+   (state <s> ^name butler
+              ^operator <o> ^robot <r1>)
+   (<o> ^name lookForCracker)
+   (<r1>  ^lastCmdResult <stp> inProgress)   
+-->
+   (write (crlf)  | LOOK_FOR (| <stp> |)|)}
+
+
+
+sp {Monitor*operator-application*moveToCracker
+   (state <s> ^name butler
+              ^operator <o> ^robot <r1>)
+   (<o> ^name moveToCracker)
+   (<r1>  ^lastCmdResult <stp> inProgress)
+-->
+   (write (crlf)  | MOVE_TO_OBJECT (| <stp> |)|)}
+
+
+
+sp {Monitor*operator-application*takeCracker
+   (state <s> ^name butler
+              ^operator <o> ^robot <r1>)
+   (<r1>  ^lastCmdResult <stp> inProgress)
+   (<o> ^name takeCracker)
+-->
+   (write (crlf)  | TAKE_OBJECT (| <stp> |)|)}
+
+
+sp {Monitor*operator-application*moveLivingRoom
+   (state <s> ^name butler
+              ^operator <o> ^robot <r1>)
+   (<r1>  ^lastCmdResult <stp> inProgress)
+   (<o> ^name moveLivingRoom)
+-->
+   (write (crlf)  | MOVE_LIVING_ROOM (| <stp> |)|)}
+
+
+
+sp {Monitor*operator-application*lookForHuman
+   (state <s> ^name butler
+              ^operator <o> ^robot <r1>)
+   (<o> ^name lookForHuman)
+   (<r1>  ^lastCmdResult <stp> inProgress)    
+-->  
+   (write (crlf)  | LOOKFOR_HUMAN (| <stp> |)|)}
+
+
+
+sp {Monitor*operator-application*moveToHuman
+   (state <s> ^name butler
+              ^operator <o> ^robot <r1>)
+   (<o> ^name moveToHuman)
+   (<r1>  ^lastCmdResult <stp> inProgress)   
+-->
+   (write (crlf)  | MOVE_TO_HUMAN (| <stp> |)|)}
+
+
+
+sp {Monitor*operator-application*deliveryCracker
+   (state <s> ^name butler
+              ^operator <o> ^robot <r1>)
+   (<o> ^name deliveryCracker)
+   (<r1>  ^lastCmdResult <stp> inProgress)    
+-->
+   (write (crlf)  | TALK (| <stp> |)|)}
+
+

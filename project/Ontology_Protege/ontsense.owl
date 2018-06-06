@@ -586,9 +586,9 @@
     
 
 
-    <!-- http://example.org/sense#umani -->
+    <!-- http://example.org/sense#umami -->
 
-    <owl:DatatypeProperty rdf:about="http://example.org/sense#umani">
+    <owl:DatatypeProperty rdf:about="http://example.org/sense#umami">
         <rdfs:subPropertyOf rdf:resource="http://example.org/sense#tasteSense"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:comment xml:lang="en">a taste sensation that is meaty or savory and is produced by several amino acids and nucleotides (such as glutamate and aspartate)</rdfs:comment>
@@ -840,6 +840,13 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/sense#isSenseOf"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#Robot"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
                 <owl:onProperty rdf:resource="http://example.org/sense#generateBy"/>
                 <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
                 <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#long"/>
@@ -919,6 +926,19 @@
 
     <rdf:Description rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/basicPos.owl#CartesianPositionPoint">
         <rdfs:comment xml:lang="en">A CartesianPositionPoint denotes the quantitative position of an object in a cartesian coordinate system.</rdfs:comment>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#Robot -->
+
+    <rdf:Description rdf:about="http://www.inf.ufrgs.br/phi-group/ontologies/cora.owl#Robot">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://example.org/sense#hasEmotionalState"/>
+                <owl:someValuesFrom rdf:resource="http://example.org/sense#EmotionalState"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
     </rdf:Description>
     
 

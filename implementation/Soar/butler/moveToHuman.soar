@@ -1,0 +1,78 @@
+# OntSense Project   
+# 03/2018
+# Phase 7x - moveToHuman
+
+# Propose*moveToHuman
+# If   the task is Get and the object is Cracker and 
+#      the result of  the last command is success and
+#      the step is 71
+# then propose moveToHuman.
+sp {Propose*moveToHuman
+(state <s> ^name butler ^robot <r1>)
+   (<r1> ^task get ^object Cracker ^step 71 )
+   (<r1> ^lastCmdResult success )
+-->
+   (<s> ^operator <o> + =)
+   (<o> ^name moveToHuman)  
+}
+
+
+
+# Apply*moveToHuman
+# If the moveToHuman operator is selected,
+# then send a command to look for a human in the living room.
+sp {Apply*moveToHuman
+   (state <s> ^name butler ^operator <o>  
+              ^io.output-link <output>   ^io.input-link.vision <vision> ^robot <r1> )
+   (<vision> ^<thing>.tagInfo Human)
+   (<vision> ^<thing>.objectId <identify>)
+   (<r1> ^lastCmdResult <result>)
+   (<o>  ^name moveToHuman ) 
+-->
+   (<r1> ^lastCmdResult inProgress) 
+   (<r1> ^lastCmdResult <result> -)   
+   (<r1> ^step 72)
+   (<r1> ^step 71 -)
+   (<output> ^MoveID.objectId <identify>) }
+
+
+
+
+# Propose*moveToHuman*remove
+# If   the task is Get and the object is Cracker and 
+#      the command is complete
+#      the step is 72
+# then propose remove moveToHuman.
+sp {Propose*moveToHuman*remove
+   (state <s> ^name butler ^robot <r1> ^io.output-link <output> )
+   (<r1> ^task get ^object Cracker ^step 72 )
+   (<output> ^MoveID <cmd>)   
+   (<cmd> ^status complete)   
+-->
+   (<s> ^operator <o> + =)
+   (<o> ^name moveToHuman*remove)  
+}
+
+
+
+
+
+
+# Apply*moveToHuman*remove:
+# If the operator is moveToHuman,
+# and there is a completed command on the output link,
+# then remove that command.
+sp {Apply*moveToHuman*remove
+   (state <s> ^name butler  ^operator <o> 
+              ^io.output-link <output>  ^robot <r1>)
+   (<o>  ^name moveToHuman*remove )
+   (<r1> ^lastCmdResult inProgress  ^step 72)
+   (<output> ^MoveID <cmd>)
+   (<cmd> ^status complete)
+-->
+   (<r1> ^step 81)
+   (<r1> ^step 72 -)
+   (<r1> ^lastCmdResult success) 
+   (<r1> ^lastCmdResult inProgress - )
+   (<output> ^MoveID <cmd> -)}
+

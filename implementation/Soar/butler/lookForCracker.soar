@@ -1,0 +1,80 @@
+# OntSense Project   
+# 03/2018
+# Phase 2x - lookForCracker
+
+
+# Propose*lookForCracker
+# If   the task is Get and the object is Cracker and 
+#      the result of  the last command is success and
+#      the step is 21
+# then propose lookForCracker.
+sp {Propose*lookForCracker
+   (state <s> ^name butler ^robot <r1>)
+   (<r1> ^task get ^object Cracker ^step 21 )
+   (<r1> ^lastCmdResult success )   
+-->
+   (<s> ^operator <o> + =)
+   (<o> ^name lookForCracker)  
+}
+
+
+
+# Apply*lookForCracker
+# If the lookForCracker operator is selected,
+# then send a command to look for a cracker package.
+sp {Apply*lookForCracker
+   (state <s> ^name butler ^operator <o>  
+              ^io.output-link <output>  ^robot <r1> )
+   (<o>  ^name lookForCracker )    
+   (<r1> ^step 21 ^lastCmdResult <result> <> inProgress)
+-->
+   (<r1> ^step 22)
+   (<r1> ^step 21 -)   
+   (<r1> ^lastCmdResult inProgress) 
+   (<r1> ^lastCmdResult <result> -)   
+   (<output> ^LookFor.text Cracker) }
+
+
+
+
+
+# Propose*lookForCracker*remove
+# If   the task is Get and the object is Cracker and the step is 22 and
+#      it saw a Cracker and the the command is complete
+# then propose remove lookForCracker.
+sp {Propose*lookForCracker*remove
+   (state <s> ^name butler ^io.output-link <output> ^robot <r1>
+              ^io.input-link.vision <vision>)
+   (<r1> ^task get  ^object Cracker   ^step 22 )
+   (<vision> ^<thing>.tagInfo Cracker)
+   (<output> ^LookFor <cmd>)
+  (<cmd> ^status complete)   
+-->
+   (<s> ^operator <o> + =)
+   (<o> ^name lookForCracker*remove)  
+}
+
+
+
+# Apply*lookForCracker*remove:
+# If the operator is lookForCracker*remove,
+# and there is a completed command on the output link,
+# then remove that command and go to next phase: moveToCracker
+sp {Apply*lookForCracker*remove
+   (state <s> ^name butler  ^io.output-link <output>  
+              ^operator <o>  ^robot <r1>)
+   (<o>  ^name lookForCracker*remove )
+   (<r1> ^lastCmdResult  inProgress ^step 22)
+   (<output> ^LookFor <cmd>)
+   (<cmd> ^status complete)
+-->
+#   (wait 500)   
+   (<r1> ^step 31)
+   (<r1> ^step 22 -)
+   (<r1> ^lastCmdResult success) 
+   (<r1> ^lastCmdResult inProgress - )
+   (<output> ^LookFor <cmd> -) }
+
+
+
+

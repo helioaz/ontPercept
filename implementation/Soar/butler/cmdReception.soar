@@ -1,0 +1,38 @@
+# OntSense Project   
+# 03/2018
+# Phase 0 - cmdReception
+
+# Propose*cmdReception
+# If the human gives an task and step equal 0,     
+# then propose process new commmand 
+sp {Propose*cmdReception
+(state <s> ^name butler
+           ^io.input-link <i1>
+           ^robot <r1>)
+(<i1> ^action.task <> null)
+(<r1> ^step 0)
+-->
+   (<s> ^operator <o> + =)
+   (<o> ^name cmdReception)  
+}
+
+# Apply*cmdReception
+# If the cmdReception operator is selected,
+# then set the task and 
+#      the object associated with new command and
+#      register the first step for the phase getKitchenCracker 
+sp {Apply*cmdReception
+(state <s> ^name butler ^operator <o> 
+           ^io.input-link <input> ^robot <r1>)
+(<input> ^action.task <tskNew> ^action.object <objNew>)
+(<r1> ^task <tskOld> ^object <objOld>)
+(<o>  ^name cmdReception ) 
+-->
+   (<r1> ^task <tskNew> ^object <objNew> ^step 11  )
+   (<r1> ^task <tskOld> -)
+   (<r1> ^object <objOld> -)
+   (<input> ^action.task <tskNew> -) 
+   (<input> ^action.object <objNew> - )
+   (<r1> ^step 0 -) }
+
+

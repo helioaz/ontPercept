@@ -1,0 +1,15 @@
+sp {elaborate*top-state*top-state
+   (state <s> ^superstate nil)
+-->
+   (<s> ^top-state <s>)
+}
+
+
+#### Propose wait for a state-no-change
+sp {top-state*propose*wait
+(state <s> ^attribute state
+           ^choices none
+          -^operator.name wait)
+-->
+(<s> ^operator <o> +)
+(<o> ^name wait)}
