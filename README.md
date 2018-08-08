@@ -1,4 +1,4 @@
-# ontSense: An ontology for social robotics experiments
+# ontPercept: An ontology for social robotics experiments
 
 This project includes the implementation and testing of APIs to access an SPARQL server to update sensory information captured by a humanoid robot. These APIs were implemented in two distinct languages: Java and C#.
  
@@ -6,17 +6,17 @@ The directories used in configuration management are strutured as:
 
   - documentation: manuals and reports.
   - implementation: source files associated with the project. Three subdirectories have been created: 
-      - OntSenseCSharpAPI (C# version of the API), 
-      - OntSenseJavaAPI   (Java version of the API)  and 
+      - OntPerceptCSharpAPI (C# version of the API), 
+      - OntPerceptJavaAPI   (Java version of the API)  and 
       - SoarFiles (cognitive architecture instance used to test the system).
   - project: maintains models created for the  ontology and software development.
 
-## What is ontSense?
+## What is ontPercept?
 Nowadays, state-of-the-art robots are capable of millimetric motion accuracy by performing highly repetitive tasks, however, as a constraint they operate in highly structured environments where objects are in known and predictable locations. Thus, it is not surprising that robots are more often used in high-volume operations such as painting and welding, rather than operations where diversity of actions, direct contact with humans, and variability of the environment meet fundamental requirements. 
 
 Social robotics is an area of research that aims to make viable the direct interaction of robots with humans in unstructured environments. It uses several techniques,  such as, machine learning, cognitive modeling, artificial intelligence, knowledge representation and ontology.    One factor that compromises the rapid evolution of social robotics  is the difficulty in modeling cognitive systems due to the volume and complexity of information produced by a chaotic world full of sensory information. In addition, the validation of results with the use of real environments involving buildings, streets and people presents a high cost of installation and maintenance. 
 
-The OntSense ontology  models the senses captured by the agent robotic sensors. This modeling  facilitates the reproduction of experiments associated with cognitive models and the comparison among different implementations. 
+The OntPercept ontology  models the senses captured by the agent robotic sensors. This modeling  facilitates the reproduction of experiments associated with cognitive models and the comparison among different implementations. 
 
 The main characteristics of this ontology are:
 
@@ -25,7 +25,7 @@ The main characteristics of this ontology are:
   - to be adherence to the open source model with the availability of versions through the GitHub repository  This provision encourages open collaboration in the ontology evolution  and  APIs associated.	
   
   ## How to use onSense?
- The best way is to access the wiki page of GitHub:  https://github.com/helioaz/ontSense/wiki
+ The best way is to access the wiki page of GitHub:  https://github.com/helioaz/ontPercept/wiki
   
   ## Publications
   1. AZEVEDO, H.; BELO, J. P. R. ; ROMERO, R. A. F. . Reducing the gap between cognitive and robotic systems. In: 26th IEEE International Symposium on Robot and Human Interactive Communication - RO-MAN2017, 2017, Lisboa. 26th IEEE International Symposium on Robot and Human Interactive Communication - RO-MAN2017, 2017.
